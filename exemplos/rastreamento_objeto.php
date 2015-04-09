@@ -26,7 +26,7 @@
     $rastreamento->setTipo(Correios::TIPO_RASTREAMENTO_LISTA);
     $rastreamento->setResultado(Correios::RESULTADO_RASTREAMENTO_ULTIMO);
 //    $rastreamento->addObjeto('PG838104611BR');
-    $rastreamento->addObjeto('SF214707032BR');
+    $rastreamento->addObjeto('CP286819413CN');
 //    $rastreamento->addObjeto('PG838103664BR');
     if ($rastreamento->processaConsulta())
     {
