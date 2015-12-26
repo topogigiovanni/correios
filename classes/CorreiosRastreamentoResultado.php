@@ -1,14 +1,13 @@
 <?php
 
-  /**
-   * Classe que irá conter o resultado de um rastreamento de encomendas.
-   *  
-   * @author Ivan Wilhelm <ivan.whm@me.com>
-   * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
-   * @version 1.0
-   */
-  class CorreiosRastreamentoResultado extends CorreiosRastreamento
-  {
+/**
+ * Classe que irá conter o resultado de um rastreamento de encomendas.
+ *  
+ * @author Ivan Wilhelm <ivan.whm@outlook.com>
+ * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
+ * @version 1.0
+ */
+class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Contém a versão do SRO do XML.
@@ -50,9 +49,8 @@
      * 
      * @param string $versao Versão do SRO do XML.
      */
-    public function setVersao($versao)
-    {
-      $this->versao = $versao;
+    public function setVersao($versao) {
+        $this->versao = $versao;
     }
 
     /**
@@ -60,9 +58,8 @@
      * 
      * @param integer $quantidade Quantidade de objetos consultados.
      */
-    public function setQuantidade($quantidade)
-    {
-      $this->quantidade = (int) $quantidade;
+    public function setQuantidade($quantidade) {
+        $this->quantidade = (int) $quantidade;
     }
 
     /**
@@ -70,9 +67,8 @@
      * 
      * @param string $tipoPesquisa Lista ou intervalo de objetos.
      */
-    public function setTipoPesquisa($tipoPesquisa)
-    {
-      $this->tipoPesquisa = $tipoPesquisa;
+    public function setTipoPesquisa($tipoPesquisa) {
+        $this->tipoPesquisa = $tipoPesquisa;
     }
 
     /**
@@ -80,9 +76,8 @@
      * 
      * @param string $tipoResultado Último evento ou todos os eventos.
      */
-    public function setTipoResultado($tipoResultado)
-    {
-      $this->tipoResultado = $tipoResultado;
+    public function setTipoResultado($tipoResultado) {
+        $this->tipoResultado = $tipoResultado;
     }
 
     /**
@@ -90,9 +85,8 @@
      * 
      * @param CorreiosRastreamentoResultadoOjeto $objeto Resultado.
      */
-    public function addResultado(CorreiosRastreamentoResultadoOjeto $objeto)
-    {
-      $this->resultados[] = $objeto;
+    public function addResultado(CorreiosRastreamentoResultadoOjeto $objeto) {
+        $this->resultados[] = $objeto;
     }
 
     /**
@@ -100,9 +94,8 @@
      * 
      * @return string
      */
-    public function getVersao()
-    {
-      return $this->versao;
+    public function getVersao() {
+        return $this->versao;
     }
 
     /**
@@ -110,9 +103,8 @@
      * 
      * @return integer 
      */
-    public function getQuantidade()
-    {
-      return $this->quantidade;
+    public function getQuantidade() {
+        return $this->quantidade;
     }
 
     /**
@@ -120,9 +112,8 @@
      * 
      * @return string
      */
-    public function getTipoPesquisa()
-    {
-      return $this->tipoPesquisa;
+    public function getTipoPesquisa() {
+        return $this->tipoPesquisa;
     }
 
     /**
@@ -130,9 +121,8 @@
      * 
      * @return string
      */
-    public function getTipoResultado()
-    {
-      return $this->tipoResultado;
+    public function getTipoResultado() {
+        return $this->tipoResultado;
     }
 
     /**
@@ -140,10 +130,8 @@
      * 
      * @return CorreiosRastreamentoResultadoOjeto[] 
      */
-    public function getResultados()
-    {
-      return $this->resultados;
+    public function getResultados() {
+        return $this->resultados;
     }
 
-  }
-  
+}

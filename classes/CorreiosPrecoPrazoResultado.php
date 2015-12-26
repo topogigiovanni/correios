@@ -1,16 +1,15 @@
 <?php
 
-  /**
-   * Classe que irá conter o resultado de uma consulta remota de preço
-   * e prazo de entrega dos Correios.
-   *  
-   * @author Ivan Wilhelm <ivan.whm@me.com>
-   * @see http://www.correios.com.br/webServices/PDF/SCPP_manual_implementacao_calculo_remoto_de_precos_e_prazos.pdf
-   * @version 1.2
-   * @final
-   */
-  final class CorreiosPrecoPrazoResultado
-  {
+/**
+ * Classe que irá conter o resultado de uma consulta remota de preço
+ * e prazo de entrega dos Correios.
+ *  
+ * @author Ivan Wilhelm <ivan.whm@outlook.com>
+ * @see http://www.correios.com.br/webServices/PDF/SCPP_manual_implementacao_calculo_remoto_de_precos_e_prazos.pdf
+ * @version 1.2
+ * @final
+ */
+final class CorreiosPrecoPrazoResultado {
 
     /**
      * Contém o código do serviço.
@@ -89,32 +88,23 @@
      * @param stdClass $retorno Retorno da consulta.
      * @param string $tipoCalculo Tipo de cálculo.
      */
-    public function __construct(stdClass $retorno, $tipoCalculo)
-    {
-      $this->setCodigo($retorno->Codigo);
-      $this->setErro($retorno->Erro);
-      $this->setMensagemErro($retorno->MsgErro);
+    public function __construct(stdClass $retorno, $tipoCalculo) {
+        $this->setCodigo($retorno->Codigo);
+        $this->setErro($retorno->Erro);
+        $this->setMensagemErro($retorno->MsgErro);
 
-      if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) or
-          ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or
-          ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
-          ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE))
-      {
-        $this->setPrazoEntrega($retorno->PrazoEntrega);
-        $this->setEntregaDomiciliar($retorno->EntregaDomiciliar);
-        $this->setEntregaSabado($retorno->EntregaSabado);
-      }
+        if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) or ( $tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or ( $tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or ( $tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
+            $this->setPrazoEntrega($retorno->PrazoEntrega);
+            $this->setEntregaDomiciliar($retorno->EntregaDomiciliar);
+            $this->setEntregaSabado($retorno->EntregaSabado);
+        }
 
-      if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) or
-          ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO) or
-          ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
-          ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE))
-      {
-        $this->setValor($retorno->Valor);
-        $this->setValorMaoPropria($retorno->ValorMaoPropria);
-        $this->setValorAvisoRecebimento($retorno->ValorAvisoRecebimento);
-        $this->setValorValorDeclarado($retorno->ValorValorDeclarado);
-      }
+        if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) or ( $tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO) or ( $tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or ( $tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE)) {
+            $this->setValor($retorno->Valor);
+            $this->setValorMaoPropria($retorno->ValorMaoPropria);
+            $this->setValorAvisoRecebimento($retorno->ValorAvisoRecebimento);
+            $this->setValorValorDeclarado($retorno->ValorValorDeclarado);
+        }
     }
 
     /**
@@ -122,9 +112,8 @@
      * 
      * @param string $codigo Código do serviço.
      */
-    private function setCodigo($codigo)
-    {
-      $this->codigo = (string) $codigo;
+    private function setCodigo($codigo) {
+        $this->codigo = (string) $codigo;
     }
 
     /**
@@ -132,9 +121,8 @@
      * 
      * @param string $valor Valor do frete.
      */
-    private function setValor($valor)
-    {
-      $this->valor = (float) str_replace(',', '.', $valor);
+    private function setValor($valor) {
+        $this->valor = (float) str_replace(',', '.', $valor);
     }
 
     /**
@@ -142,9 +130,8 @@
      * 
      * @param string $prazoEntrega Prazo de entrega.
      */
-    private function setPrazoEntrega($prazoEntrega)
-    {
-      $this->prazoEntrega = (integer) $prazoEntrega;
+    private function setPrazoEntrega($prazoEntrega) {
+        $this->prazoEntrega = (integer) $prazoEntrega;
     }
 
     /**
@@ -152,9 +139,8 @@
      * 
      * @param string $valorMaoPropria Valor da mão própria.
      */
-    private function setValorMaoPropria($valorMaoPropria)
-    {
-      $this->valorMaoPropria = (float) str_replace(',', '.', $valorMaoPropria);
+    private function setValorMaoPropria($valorMaoPropria) {
+        $this->valorMaoPropria = (float) str_replace(',', '.', $valorMaoPropria);
     }
 
     /**
@@ -162,9 +148,8 @@
      * 
      * @param string $valorAvisoRecebimento Valor do aviso de recebimento.
      */
-    private function setValorAvisoRecebimento($valorAvisoRecebimento)
-    {
-      $this->valorAvisoRecebimento = (float) str_replace(',', '.', $valorAvisoRecebimento);
+    private function setValorAvisoRecebimento($valorAvisoRecebimento) {
+        $this->valorAvisoRecebimento = (float) str_replace(',', '.', $valorAvisoRecebimento);
     }
 
     /**
@@ -172,9 +157,8 @@
      * 
      * @param string $valorValorDeclarado Valor do valor declarado.
      */
-    private function setValorValorDeclarado($valorValorDeclarado)
-    {
-      $this->valorValorDeclarado = (float) str_replace(',', '.', $valorValorDeclarado);
+    private function setValorValorDeclarado($valorValorDeclarado) {
+        $this->valorValorDeclarado = (float) str_replace(',', '.', $valorValorDeclarado);
     }
 
     /**
@@ -182,9 +166,8 @@
      * 
      * @param string $entregaDomiciliar Entrega domiciliar.
      */
-    private function setEntregaDomiciliar($entregaDomiciliar)
-    {
-      $this->entregaDomiciliar = (boolean) ($entregaDomiciliar == 'S');
+    private function setEntregaDomiciliar($entregaDomiciliar) {
+        $this->entregaDomiciliar = (boolean) ($entregaDomiciliar == 'S');
     }
 
     /**
@@ -192,9 +175,8 @@
      * 
      * @param string $entregaSabado Entrega aos sábados.
      */
-    private function setEntregaSabado($entregaSabado)
-    {
-      $this->entregaSabado = (boolean) ($entregaSabado == 'S');
+    private function setEntregaSabado($entregaSabado) {
+        $this->entregaSabado = (boolean) ($entregaSabado == 'S');
     }
 
     /**
@@ -202,9 +184,8 @@
      * 
      * @param string $erro Código do erro.
      */
-    private function setErro($erro)
-    {
-      $this->erro = (integer) $erro;
+    private function setErro($erro) {
+        $this->erro = (integer) $erro;
     }
 
     /**
@@ -212,9 +193,8 @@
      * 
      * @param string $mensagemErro Mensagem de erro.
      */
-    private function setMensagemErro($mensagemErro)
-    {
-      $this->mensagemErro = (string) $mensagemErro;
+    private function setMensagemErro($mensagemErro) {
+        $this->mensagemErro = (string) $mensagemErro;
     }
 
     /**
@@ -222,9 +202,8 @@
      * 
      * @return string
      */
-    public function getCodigo()
-    {
-      return $this->codigo;
+    public function getCodigo() {
+        return $this->codigo;
     }
 
     /**
@@ -232,9 +211,8 @@
      * 
      * @return float
      */
-    public function getValor()
-    {
-      return $this->valor;
+    public function getValor() {
+        return $this->valor;
     }
 
     /**
@@ -242,9 +220,8 @@
      * 
      * @return integer
      */
-    public function getPrazoEntrega()
-    {
-      return $this->prazoEntrega;
+    public function getPrazoEntrega() {
+        return $this->prazoEntrega;
     }
 
     /**
@@ -252,9 +229,8 @@
      * 
      * @return float
      */
-    public function getValorMaoPropria()
-    {
-      return $this->valorMaoPropria;
+    public function getValorMaoPropria() {
+        return $this->valorMaoPropria;
     }
 
     /**
@@ -262,9 +238,8 @@
      * 
      * @return float
      */
-    public function getValorAvisoRecebimento()
-    {
-      return $this->valorAvisoRecebimento;
+    public function getValorAvisoRecebimento() {
+        return $this->valorAvisoRecebimento;
     }
 
     /**
@@ -272,9 +247,8 @@
      * 
      * @return float
      */
-    public function getValorValorDeclarado()
-    {
-      return $this->valorValorDeclarado;
+    public function getValorValorDeclarado() {
+        return $this->valorValorDeclarado;
     }
 
     /**
@@ -282,9 +256,8 @@
      * 
      * @return boolean
      */
-    public function getEntregaDomiciliar()
-    {
-      return $this->entregaDomiciliar;
+    public function getEntregaDomiciliar() {
+        return $this->entregaDomiciliar;
     }
 
     /**
@@ -292,9 +265,8 @@
      * 
      * @return boolean
      */
-    public function getEntregaSabado()
-    {
-      return $this->entregaSabado;
+    public function getEntregaSabado() {
+        return $this->entregaSabado;
     }
 
     /**
@@ -303,9 +275,8 @@
      * 
      * @return integer
      */
-    public function getErro()
-    {
-      return $this->erro;
+    public function getErro() {
+        return $this->erro;
     }
 
     /**
@@ -313,10 +284,8 @@
      * 
      * @return string
      */
-    public function getMensagemErro()
-    {
-      return $this->mensagemErro;
+    public function getMensagemErro() {
+        return $this->mensagemErro;
     }
 
-  }
-  
+}

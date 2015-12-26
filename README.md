@@ -28,10 +28,12 @@ A versão atual destas classes está trabalhando com a versão 1.9 do webservice
 
 **Histórico de alterações**
 
+* **06/01/2016**:
+* Testes de compatibilidade com o PHP7
+* Validação do funcionamento das classes
 * **03/03/2014**: 
 * Ajustes para a versão 1.9 do manual dos Correios com a inclusão dos métodos para calcular somente o preço ou somente o prazo de forma a exibir os resultados separadamente.
 * Incluído chamada aos métodos CalcPrecoPrazoData, CalcPrecoData e CalcPrazoData, que realizam o cálculo a partir de uma database informada, podendo, em alguns casos retornar valores e/ou prazos diferentes.
-
 
 Rastreamento de encomendas
 ==========================
@@ -50,6 +52,9 @@ A versão atual destas classes está trabalhando com a versão 1.5 do webservice
 
 **Histórico de alterações**
 
+* **06/01/2016**:
+* Testes de compatibilidade com o PHP7
+* Validação do funcionamento das classes
 * **26/03/2014**:
 * Inclusão dos novos tipos de eventos: BLQ, CMT, LDE e TRI na classe Correios.
 * Atualização dos status de rastreamento de acordo com nova tabela de eventos dos Correios http://www.correios.com.br/voce/acompanhar/rastreamento/atualizacaoSRO.cfm (Créditos ao Renato Bigliazzi)
@@ -72,6 +77,9 @@ informações a respeito de um objeto ou para entrada de dados externas em seus 
 
 **Histórico de alterações**
 
+* **06/01/2016**:
+* Testes de compatibilidade com o PHP7
+* Validação do funcionamento das classes
 * **07/03/2014**:
 * Inclusão da sigla LZ (Objeto Internacional) (Créditos ao Renato Bigliazzi)
 * **03/03/2014**:
@@ -82,7 +90,7 @@ Contatos
 
 Ivan Wilhelm
 
-E-mail: ivan.whm@me.com
+E-mail: ivan.whm@outlook.com
 
 Twitter: @ivanwhm
 

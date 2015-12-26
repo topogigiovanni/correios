@@ -3,7 +3,7 @@
   /**
    * Classe que irá conter um objeto de rastreamento de encomendas.
    *  
-   * @author Ivan Wilhelm <ivan.whm@me.com>
+   * @author Ivan Wilhelm <ivan.whm@outlook.com>
    * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
    * @version 1.0
    */

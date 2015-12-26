@@ -1,14 +1,13 @@
 <?php
 
-  /**
-   * Classe que irá conter um evento de rastreamento de encomendas.
-   *  
-   * @author Ivan Wilhelm <ivan.whm@me.com>
-   * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
-   * @version 1.1
-   */
-  final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResultadoOjeto
-  {
+/**
+ * Classe que irá conter um evento de rastreamento de encomendas.
+ *  
+ * @author Ivan Wilhelm <ivan.whm@outlook.com>
+ * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
+ * @version 1.1
+ */
+final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResultadoOjeto {
 
     /**
      * Contém o tipo do evento de retorno.
@@ -127,9 +126,8 @@
      * 
      * @param string $tipo Tipo do evento de retorno.
      */
-    public function setTipo($tipo)
-    {
-      $this->tipo = $tipo;
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
     }
 
     /**
@@ -137,9 +135,8 @@
      * 
      * @param integer $status Status do evento de retorno.
      */
-    public function setStatus($status)
-    {
-      $this->status = $status;
+    public function setStatus($status) {
+        $this->status = $status;
     }
 
     /**
@@ -147,9 +144,8 @@
      * 
      * @param string $data Data do evento.
      */
-    public function setData($data)
-    {
-      $this->data = $data;
+    public function setData($data) {
+        $this->data = $data;
     }
 
     /**
@@ -157,9 +153,8 @@
      * 
      * @param string $hora Hora do evento.
      */
-    public function setHora($hora)
-    {
-      $this->hora = $hora;
+    public function setHora($hora) {
+        $this->hora = $hora;
     }
 
     /**
@@ -167,9 +162,8 @@
      * 
      * @param string $descricao Descrição do evento.
      */
-    public function setDescricao($descricao)
-    {
-      $this->descricao = $descricao;
+    public function setDescricao($descricao) {
+        $this->descricao = $descricao;
     }
 
     /**
@@ -177,9 +171,8 @@
      * 
      * @param string $comentario Comentário adicional sobre o evento.
      */
-    public function setComentario($comentario)
-    {
-      $this->comentario = $comentario;
+    public function setComentario($comentario) {
+        $this->comentario = $comentario;
     }
 
     /**
@@ -187,9 +180,8 @@
      * 
      * @param string $local Local onde ocorreu o evento.
      */
-    public function setLocalEvento($local)
-    {
-      $this->localEvento = $local;
+    public function setLocalEvento($local) {
+        $this->localEvento = $local;
     }
 
     /**
@@ -197,9 +189,8 @@
      * 
      * @param string $codigo CEP da unidade ECT.
      */
-    public function setCodigoEvento($codigo)
-    {
-      $this->codigoEvento = $codigo;
+    public function setCodigoEvento($codigo) {
+        $this->codigoEvento = $codigo;
     }
 
     /**
@@ -207,9 +198,8 @@
      * 
      * @param string $cidade Cidade onde ocorreu o evento.
      */
-    public function setCidadeEvento($cidade)
-    {
-      $this->cidadeEvento = $cidade;
+    public function setCidadeEvento($cidade) {
+        $this->cidadeEvento = $cidade;
     }
 
     /**
@@ -217,9 +207,8 @@
      * 
      * @param string $uf Unidade da federação.
      */
-    public function setUfEvento($uf)
-    {
-      $this->ufEvento = $uf;
+    public function setUfEvento($uf) {
+        $this->ufEvento = $uf;
     }
 
     /**
@@ -227,9 +216,8 @@
      * 
      * @param boolean $possuiDestino Indica se possui destino.
      */
-    public function setPossuiDestino($possuiDestino)
-    {
-      $this->possuiDestino = $possuiDestino;
+    public function setPossuiDestino($possuiDestino) {
+        $this->possuiDestino = $possuiDestino;
     }
 
     /**
@@ -237,9 +225,8 @@
      * 
      * @param string $localDestino Local de destino.
      */
-    public function setLocalDestino($localDestino)
-    {
-      $this->localDestino = $localDestino;
+    public function setLocalDestino($localDestino) {
+        $this->localDestino = $localDestino;
     }
 
     /**
@@ -247,9 +234,8 @@
      * 
      * @param string $codigoDestino CEP de destino.
      */
-    public function setCodigoDestino($codigoDestino)
-    {
-      $this->codigoDestino = $codigoDestino;
+    public function setCodigoDestino($codigoDestino) {
+        $this->codigoDestino = $codigoDestino;
     }
 
     /**
@@ -257,9 +243,8 @@
      * 
      * @param string $cidadeDestino Cidade de destino.
      */
-    public function setCidadeDestino($cidadeDestino)
-    {
-      $this->cidadeDestino = $cidadeDestino;
+    public function setCidadeDestino($cidadeDestino) {
+        $this->cidadeDestino = $cidadeDestino;
     }
 
     /**
@@ -267,9 +252,8 @@
      * 
      * @param string $bairroDestino Bairro de destino.
      */
-    public function setBairroDestino($bairroDestino)
-    {
-      $this->bairroDestino = $bairroDestino;
+    public function setBairroDestino($bairroDestino) {
+        $this->bairroDestino = $bairroDestino;
     }
 
     /**
@@ -277,9 +261,8 @@
      * 
      * @param string $ufDestino UF de destino.
      */
-    public function setUfDestino($ufDestino)
-    {
-      $this->ufDestino = $ufDestino;
+    public function setUfDestino($ufDestino) {
+        $this->ufDestino = $ufDestino;
     }
 
     /**
@@ -287,9 +270,8 @@
      * 
      * @return string
      */
-    public function getTipo()
-    {
-      return $this->tipo;
+    public function getTipo() {
+        return $this->tipo;
     }
 
     /**
@@ -297,9 +279,8 @@
      * 
      * @return string 
      */
-    public function getDescricaoTipo()
-    {
-      return (isset(Correios::$tipoEvento[$this->tipo]) ? Correios::$tipoEvento[$this->tipo] : '');
+    public function getDescricaoTipo() {
+        return (isset(Correios::$tipoEvento[$this->tipo]) ? Correios::$tipoEvento[$this->tipo] : '');
     }
 
     /**
@@ -307,9 +288,8 @@
      * 
      * @return integer
      */
-    public function getStatus()
-    {
-      return $this->status;
+    public function getStatus() {
+        return $this->status;
     }
 
     /**
@@ -317,9 +297,8 @@
      * 
      * @return string
      */
-    public function getData()
-    {
-      return $this->data;
+    public function getData() {
+        return $this->data;
     }
 
     /**
@@ -327,9 +306,8 @@
      * 
      * @return string
      */
-    public function getHora()
-    {
-      return $this->hora;
+    public function getHora() {
+        return $this->hora;
     }
 
     /**
@@ -337,9 +315,8 @@
      * 
      * @return string
      */
-    public function getDescricao()
-    {
-      return $this->descricao;
+    public function getDescricao() {
+        return $this->descricao;
     }
 
     /**
@@ -347,9 +324,8 @@
      * 
      * @return string
      */
-    public function getComentario()
-    {
-      return $this->comentario;
+    public function getComentario() {
+        return $this->comentario;
     }
 
     /**
@@ -357,9 +333,8 @@
      * 
      * @return string
      */
-    public function getLocalEvento()
-    {
-      return $this->localEvento;
+    public function getLocalEvento() {
+        return $this->localEvento;
     }
 
     /**
@@ -367,9 +342,8 @@
      * 
      * @return string
      */
-    public function getCodigoEvento()
-    {
-      return $this->codigoEvento;
+    public function getCodigoEvento() {
+        return $this->codigoEvento;
     }
 
     /**
@@ -377,9 +351,8 @@
      * 
      * @return string
      */
-    public function getCidadeEvento()
-    {
-      return $this->cidadeEvento;
+    public function getCidadeEvento() {
+        return $this->cidadeEvento;
     }
 
     /**
@@ -387,9 +360,8 @@
      * 
      * @return string
      */
-    public function getUfEvento()
-    {
-      return $this->ufEvento;
+    public function getUfEvento() {
+        return $this->ufEvento;
     }
 
     /**
@@ -397,9 +369,8 @@
      * 
      * @return boolean
      */
-    public function getPossuiDestino()
-    {
-      return $this->possuiDestino;
+    public function getPossuiDestino() {
+        return $this->possuiDestino;
     }
 
     /**
@@ -407,9 +378,8 @@
      * 
      * @return string
      */
-    public function getLocalDestino()
-    {
-      return $this->localDestino;
+    public function getLocalDestino() {
+        return $this->localDestino;
     }
 
     /**
@@ -417,9 +387,8 @@
      * 
      * @return string
      */
-    public function getCodigoDestino()
-    {
-      return $this->codigoDestino;
+    public function getCodigoDestino() {
+        return $this->codigoDestino;
     }
 
     /**
@@ -427,9 +396,8 @@
      * 
      * @return string
      */
-    public function getCidadeDestino()
-    {
-      return $this->cidadeDestino;
+    public function getCidadeDestino() {
+        return $this->cidadeDestino;
     }
 
     /**
@@ -437,9 +405,8 @@
      * 
      * @return string
      */
-    public function getBairroDestino()
-    {
-      return $this->bairroDestino;
+    public function getBairroDestino() {
+        return $this->bairroDestino;
     }
 
     /**
@@ -447,28 +414,24 @@
      * 
      * @return string
      */
-    public function getUfDestino()
-    {
-      return $this->ufDestino;
+    public function getUfDestino() {
+        return $this->ufDestino;
     }
 
     /**
      * Retorna a descrição do status do objeto.
      * @return string
      */
-    public function getDescricaoStatus()
-    {
-      return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] : 'Status desconhecido.';
+    public function getDescricaoStatus() {
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] : 'Status desconhecido.';
     }
 
     /**
      * Retorna a descrição do status do objeto.
      * @return string
      */
-    public function getAcaoStatus()
-    {
-      return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] : 'Ação desconhecida.';
+    public function getAcaoStatus() {
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] : 'Ação desconhecida.';
     }
 
-  }
-  
+}
