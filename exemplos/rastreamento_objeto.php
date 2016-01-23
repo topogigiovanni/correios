@@ -2,7 +2,7 @@
 
 /**
  * Contém um exemplo de utilização da classe de rastreamento de objetos.
- * 
+ *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
  * @version 1.1
  */
@@ -24,7 +24,7 @@ try {
     //Envia os parâmetros
     $rastreamento->setTipo(Correios::TIPO_RASTREAMENTO_LISTA);
     $rastreamento->setResultado(Correios::RESULTADO_RASTREAMENTO_ULTIMO);
-    $rastreamento->addObjeto('PI295858551BR');
+    $rastreamento->addObjeto('DU098628720BR');
     if ($rastreamento->processaConsulta()) {
         $retorno = $rastreamento->getRetorno();
         if ($retorno->getQuantidade() > 0) {

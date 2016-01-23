@@ -17,7 +17,7 @@ Cálculo Remoto de Preço e Prazo de entrega
 ==========================================
 
 O cálculo remoto de preços e prazos de encomendas dos Correios é destinado aos clientes que possuem contrato de Sedex, e-Sedex e PAC, que necessitam calcular, no seu website e de forma personalizada, o preço e o prazo de entrega de uma encomenda.
- 
+
 É possível também a um cliente que não possui contrato de encomenda com os Correios realizar o cálculo, porém, neste caso os preços apresentados serão aqueles praticados no balcão da agência.
 
 Você pode baixar a especificação do webservice de preços e prazos [aqui](http://www.correios.com.br/webServices/PDF/SCPP_manual_implementacao_calculo_remoto_de_precos_e_prazos.pdf).
@@ -31,7 +31,7 @@ A versão atual destas classes está trabalhando com a versão 1.9 do webservice
 * **06/01/2016**:
 * Testes de compatibilidade com o PHP7
 * Validação do funcionamento das classes
-* **03/03/2014**: 
+* **03/03/2014**:
 * Ajustes para a versão 1.9 do manual dos Correios com a inclusão dos métodos para calcular somente o preço ou somente o prazo de forma a exibir os resultados separadamente.
 * Incluído chamada aos métodos CalcPrecoPrazoData, CalcPrecoData e CalcPrazoData, que realizam o cálculo a partir de uma database informada, podendo, em alguns casos retornar valores e/ou prazos diferentes.
 
@@ -52,6 +52,8 @@ A versão atual destas classes está trabalhando com a versão 1.5 do webservice
 
 **Histórico de alterações**
 
+* **23/01/2016**:
+* Inclusão das siglas de rastreamento DU e DV.
 * **06/01/2016**:
 * Testes de compatibilidade com o PHP7
 * Validação do funcionamento das classes
