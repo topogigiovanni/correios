@@ -3,7 +3,7 @@
 /**
  * Classe base para para a validação e geração de dígito verificador
  * de SRO dos Correios.
- * 
+ *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
  * @version 1.0
  * @abstract
@@ -13,8 +13,8 @@ abstract class CorreiosSro {
     /**
      * Contém as siglas e suas respectivas descrições, adotadas
      * no sistema de identificador de objetos.
-     * 
-     * @see http://www.correios.com.br/servicos/rastreamento/internacional/siglas.cfm
+     *
+     * @see http://www.correios.com.br/para-voce/precisa-de-ajuda/como-rastrear-um-objeto/siglas-utilizadas-no-rastreamento-de-objeto
      * @var array
      */
     protected static $siglasComDescricao = array(
@@ -60,6 +60,8 @@ abstract class CorreiosSro {
         'DP' => 'REM EXPRES COM AR DIGITAL PRF',
         'DS' => 'REM EXPRES COM AR DIGITAL SANTANDER',
         'DT' => 'REMESSA ECON.SEG.TRANSITO C/AR DIGITAL',
+        'DU' => 'e-SEDEX',
+        'DV' => 'SEDEX c/ AR digital',
         'DX' => 'ENCOMENDA SEDEX 10 (LÓGICO)',
         'EA' => 'OBJETO INTERNACIONAL',
         'EB' => 'OBJETO INTERNACIONAL',
