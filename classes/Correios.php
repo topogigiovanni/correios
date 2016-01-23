@@ -2,11 +2,14 @@
 
 /**
  * Classe base para os serviços dos Correios.
- * 
+ *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
  * @version 1.2
  * @abstract
  */
+
+namespace correios;
+
 abstract class Correios {
 
     const URL_CALCULADOR = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL';
@@ -71,7 +74,7 @@ abstract class Correios {
 
     /**
      * Contém os formatos aceitos.
-     * 
+     *
      * @var array
      * @static
      */
@@ -83,7 +86,7 @@ abstract class Correios {
 
     /**
      * Contém todos os serviços aceitos.
-     * 
+     *
      * @var array
      * @static
      */
@@ -110,7 +113,7 @@ abstract class Correios {
 
     /**
      * Contém os tipos de rastreamento aceitos.
-     * 
+     *
      * @var array
      * @static
      */
@@ -121,7 +124,7 @@ abstract class Correios {
 
     /**
      * Contém os resultados de rastreamento aceitos.
-     * 
+     *
      * @var array
      * @static
      */
@@ -133,7 +136,7 @@ abstract class Correios {
 
     /**
      * Contém a lista de tipos de cálculo de preços e prazos possíveis.
-     * 
+     *
      * @var array
      * @static
      */
@@ -148,7 +151,7 @@ abstract class Correios {
 
     /**
      * Contém a lista dos eventos de rastreamento.
-     * 
+     *
      * @var array
      * @static
      */
@@ -182,7 +185,7 @@ abstract class Correios {
 
     /**
      * Contém a descrição dos serviços.
-     * 
+     *
      * @var array
      * @static
      */
@@ -210,11 +213,11 @@ abstract class Correios {
     /**
      * Contém a relação de mensagens de retorno ao cliente quando ocorre algum
      * evento na entrega pelos correios.
-     * 
+     *
      * Eventos atualizados de acordo com a nova tabela de eventos disponibilizada pelos Correios.
-     * 
+     *
      * @see http://www.correios.com.br/voce/acompanhar/rastreamento/atualizacaoSRO.cfm
-     * 
+     *
      * @var array
      * @static
      */
@@ -1127,7 +1130,7 @@ abstract class Correios {
 
     /**
      * Contém o usuário de acesso aos serviços.
-     * 
+     *
      * @var string
      */
     private $usuario;
@@ -1140,7 +1143,7 @@ abstract class Correios {
 
     /**
      * Cria um objeto de comunicação com os Correios.
-     * 
+     *
      * @param string $usuario Usuário.
      * @param string $senha Senha.
      */
@@ -1151,7 +1154,7 @@ abstract class Correios {
 
     /**
      * Retorna o usuário de acesso aos serviços.
-     * 
+     *
      * @return string
      */
     protected function getUsuario() {
@@ -1160,7 +1163,7 @@ abstract class Correios {
 
     /**
      * Retorna a senha de acesso aos serviços.
-     * 
+     *
      * @return string
      */
     protected function getSenha() {
@@ -1169,7 +1172,7 @@ abstract class Correios {
 
     /**
      * Returna os parâmetros necessários para a chamada.
-     * 
+     *
      * @return array
      * @abstract
      */
@@ -1177,8 +1180,8 @@ abstract class Correios {
 
     /**
      * Realiza o processamento da consulta.
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      * @abstract
      */
     abstract public function processaConsulta();

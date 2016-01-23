@@ -2,51 +2,54 @@
 
 /**
  * Classe que irá conter o resultado de um rastreamento de encomendas.
- *  
+ *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
  * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
- * @version 1.0
+ * @version 1.2
  */
+
+namespace correios\Rastreamento;
+
 class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Contém a versão do SRO do XML.
-     * 
+     *
      * @var string
      */
     private $versao;
 
     /**
      * Contém a quantidade de objetos consultados.
-     * 
+     *
      * @var integer
      */
     private $quantidade;
 
     /**
      * Contém a lista ou intervalo de objetos.
-     * 
+     *
      * @var string
      */
     private $tipoPesquisa;
 
     /**
      * Contém o último evento ou todos os eventos.
-     * 
+     *
      * @var string
      */
     private $tipoResultado;
 
     /**
      * Contém resultados em forma de eventos.
-     * 
+     *
      * @var CorreiosRastreamentoResultadoOjeto[]
      */
     private $resultados;
 
     /**
      * Indica a versão do SRO do XML.
-     * 
+     *
      * @param string $versao Versão do SRO do XML.
      */
     public function setVersao($versao) {
@@ -55,7 +58,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Indica a quantidade de objetos consultados.
-     * 
+     *
      * @param integer $quantidade Quantidade de objetos consultados.
      */
     public function setQuantidade($quantidade) {
@@ -64,7 +67,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Indica a lista ou intervalo de objetos.
-     * 
+     *
      * @param string $tipoPesquisa Lista ou intervalo de objetos.
      */
     public function setTipoPesquisa($tipoPesquisa) {
@@ -73,7 +76,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Indica o último evento ou todos os eventos.
-     * 
+     *
      * @param string $tipoResultado Último evento ou todos os eventos.
      */
     public function setTipoResultado($tipoResultado) {
@@ -82,7 +85,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Adiciona um resultado de objeto.
-     * 
+     *
      * @param CorreiosRastreamentoResultadoOjeto $objeto Resultado.
      */
     public function addResultado(CorreiosRastreamentoResultadoOjeto $objeto) {
@@ -91,7 +94,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Retorna a versão do SRO do XML.
-     * 
+     *
      * @return string
      */
     public function getVersao() {
@@ -100,8 +103,8 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Retorna a quantidade de objetos consultados.
-     * 
-     * @return integer 
+     *
+     * @return integer
      */
     public function getQuantidade() {
         return $this->quantidade;
@@ -109,7 +112,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Retorna a lista ou intervalo de objetos.
-     * 
+     *
      * @return string
      */
     public function getTipoPesquisa() {
@@ -118,7 +121,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Retorna o último evento ou todos os eventos.
-     * 
+     *
      * @return string
      */
     public function getTipoResultado() {
@@ -127,8 +130,8 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
 
     /**
      * Retorna os resultados em forma de eventos.
-     * 
-     * @return CorreiosRastreamentoResultadoOjeto[] 
+     *
+     * @return CorreiosRastreamentoResultadoOjeto[]
      */
     public function getResultados() {
         return $this->resultados;

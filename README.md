@@ -28,6 +28,8 @@ A versão atual destas classes está trabalhando com a versão 1.9 do webservice
 
 **Histórico de alterações**
 
+* **23/01/2016**:
+* Atualização para compatibilidade com namespaces.
 * **06/01/2016**:
 * Testes de compatibilidade com o PHP7
 * Validação do funcionamento das classes
@@ -54,6 +56,7 @@ A versão atual destas classes está trabalhando com a versão 1.5 do webservice
 
 * **23/01/2016**:
 * Atualização das siglas de rastreamento e atualização da URL oficial dos Correios.
+* Atualização para compatibilidade com namespaces.
 * **06/01/2016**:
 * Testes de compatibilidade com o PHP7
 * Validação do funcionamento das classes
@@ -79,6 +82,8 @@ informações a respeito de um objeto ou para entrada de dados externas em seus 
 
 **Histórico de alterações**
 
+* **23/01/2016**:
+* Atualização para compatibilidade com namespaces.
 * **06/01/2016**:
 * Testes de compatibilidade com o PHP7
 * Validação do funcionamento das classes

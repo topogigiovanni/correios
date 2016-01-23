@@ -2,11 +2,14 @@
 
 /**
  * Classe base para a obtenção de informações a respeito de um SRO.
- * 
+ *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @version 1.0
+ * @version 1.2
  * @final
  */
+
+namespace correios\Sro;
+
 final class CorreiosSroDados extends CorreiosSro {
 
     /**
@@ -48,7 +51,7 @@ final class CorreiosSroDados extends CorreiosSro {
     /**
      * Cria um objeto para obter os dados do SRO.
      * @param string $sro Código de rastreamento.
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($sro) {
         if (parent::validaSro($sro)) {
@@ -59,7 +62,7 @@ final class CorreiosSroDados extends CorreiosSro {
             $this->digitoVerificador = substr($sro, 10, 1);
             $this->paisOrigem = substr($sro, 11, 2);
         } else {
-            throw new Exception('O número de objeto informado é inválido.');
+            throw new \Exception('O número de objeto informado é inválido.');
         }
     }
 

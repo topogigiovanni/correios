@@ -4,8 +4,16 @@
  * Contém um exemplo de utilização da classe de rastreamento de objetos.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @version 1.1
+ * @version 1.2
  */
+
+namespace correios\Exemplos;
+
+use \correios as correios;
+use \correios\Sro as sro;
+use \correios\Rastreamento as rastreamento;
+
+
 //Ajusta a codificação e o tipo do conteúdo
 header('Content-type: text/txt; charset=utf-8');
 
@@ -20,10 +28,11 @@ require '../classes/CorreiosSroDados.php';
 
 try {
     //Cria o objeto
-    $rastreamento = new CorreiosRastreamento('ECT', 'SRO');
+    $rastreamento = new rastreamento\CorreiosRastreamento('ECT', 'SRO');
     //Envia os parâmetros
-    $rastreamento->setTipo(Correios::TIPO_RASTREAMENTO_LISTA);
-    $rastreamento->setResultado(Correios::RESULTADO_RASTREAMENTO_ULTIMO);
+    $rastreamento->setTipo(correios\Correios::TIPO_RASTREAMENTO_LISTA);
+    $rastreamento->setResultado(correios\Correios::RESULTADO_RASTREAMENTO_ULTIMO);
+    $rastreamento->addObjeto('DU131229547BR');
     $rastreamento->addObjeto('DU098628720BR');
     if ($rastreamento->processaConsulta()) {
         $retorno = $rastreamento->getRetorno();
@@ -35,7 +44,7 @@ try {
             foreach ($retorno->getResultados() as $resultado) {
                 echo 'Objeto.................................: ' . $resultado->getObjeto() . PHP_EOL;
                 //Se desejar obter informações sobre o objeto
-                $dadosObjeto = new CorreiosSroDados($resultado->getObjeto());
+                $dadosObjeto = new sro\CorreiosSroDados($resultado->getObjeto());
                 echo 'Serviço................................: ' . $dadosObjeto->getDescricaoTipoServico() . PHP_EOL;
                 echo PHP_EOL;
                 foreach ($resultado->getEventos() as $eventos) {
@@ -55,8 +64,8 @@ try {
             }
         }
     } else {
-        echo 'Nenhum rastreamento encontrado.';
+        echo 'Nenhum rastreamento encontrado.' . PHP_EOL;
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     echo 'Ocorreu um erro ao processar sua solicitação. Erro: ' . $e->getMessage() . PHP_EOL;
 }

@@ -2,128 +2,133 @@
 
 /**
  * Classe que irá conter um evento de rastreamento de encomendas.
- *  
+ *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
  * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
- * @version 1.1
+ * @version 1.2
  */
+
+namespace correios\Rastreamento;
+
+use \correios as correios;
+
 final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResultadoOjeto {
 
     /**
      * Contém o tipo do evento de retorno.
-     * 
+     *
      * @var string
      */
     private $tipo;
 
     /**
      * Contém o status do evento de retorno.
-     * 
+     *
      * @var integer
      */
     private $status;
 
     /**
      * Contém a data do evento.
-     * 
+     *
      * @var string
      */
     private $data;
 
     /**
      * Contém a hora do evento.
-     * 
+     *
      * @var string
      */
     private $hora;
 
     /**
      * Contém a descrição do evento.
-     * 
+     *
      * @var string
      */
     private $descricao;
 
     /**
      * Contém um comentário adicional sobre o evento.
-     * 
+     *
      * @var string
      */
     private $comentario;
 
     /**
      * Contém o local onde ocorreu o evento.
-     * 
+     *
      * @var string
      */
     private $localEvento;
 
     /**
      * Contém o CEP da unidade ECT.
-     * 
+     *
      * @var string
      */
     private $codigoEvento;
 
     /**
      * Contém a cidade onde ocorreu o evento.
-     * 
+     *
      * @var string
      */
     private $cidadeEvento;
 
     /**
      * Contém a unidade da federação onde ocorreu o evento.
-     * 
+     *
      * @var string
      */
     private $ufEvento;
 
     /**
      * Contém o local de destino.
-     * 
+     *
      * @var string
      */
     private $localDestino;
 
     /**
      * Contém o CEP de destino.
-     * 
+     *
      * @var string
      */
     private $codigoDestino;
 
     /**
      * Contém a cidade de destino.
-     * 
+     *
      * @var string
      */
     private $cidadeDestino;
 
     /**
      * Contém o bairro de destino.
-     * 
+     *
      * @var string
      */
     private $bairroDestino;
 
     /**
      * Contém a unidade da federação de destino.
-     * 
+     *
      * @var string
      */
     private $ufDestino;
 
     /**
      * Indica se o evento possui informação do destino.
-     * 
+     *
      * @var boolean
      */
     private $possuiDestino;
 
     /**
      * Indica o tipo do evento de retorno.
-     * 
+     *
      * @param string $tipo Tipo do evento de retorno.
      */
     public function setTipo($tipo) {
@@ -132,7 +137,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica o status do evento de retorno.
-     * 
+     *
      * @param integer $status Status do evento de retorno.
      */
     public function setStatus($status) {
@@ -141,7 +146,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica a data do evento.
-     * 
+     *
      * @param string $data Data do evento.
      */
     public function setData($data) {
@@ -150,7 +155,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica a hora do evento.
-     * 
+     *
      * @param string $hora Hora do evento.
      */
     public function setHora($hora) {
@@ -159,7 +164,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica a descrição do evento.
-     * 
+     *
      * @param string $descricao Descrição do evento.
      */
     public function setDescricao($descricao) {
@@ -168,7 +173,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica um comentário adicional sobre o evento.
-     * 
+     *
      * @param string $comentario Comentário adicional sobre o evento.
      */
     public function setComentario($comentario) {
@@ -177,7 +182,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica o local onde ocorreu o evento.
-     * 
+     *
      * @param string $local Local onde ocorreu o evento.
      */
     public function setLocalEvento($local) {
@@ -186,7 +191,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica o CEP da unidade ECT.
-     * 
+     *
      * @param string $codigo CEP da unidade ECT.
      */
     public function setCodigoEvento($codigo) {
@@ -195,7 +200,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica a cidade onde ocorreu o evento.
-     * 
+     *
      * @param string $cidade Cidade onde ocorreu o evento.
      */
     public function setCidadeEvento($cidade) {
@@ -204,7 +209,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica a unidade da federação.
-     * 
+     *
      * @param string $uf Unidade da federação.
      */
     public function setUfEvento($uf) {
@@ -213,7 +218,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica se o evento possui destino.
-     * 
+     *
      * @param boolean $possuiDestino Indica se possui destino.
      */
     public function setPossuiDestino($possuiDestino) {
@@ -222,7 +227,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica o local de destino.
-     * 
+     *
      * @param string $localDestino Local de destino.
      */
     public function setLocalDestino($localDestino) {
@@ -231,7 +236,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica o CEP de destino.
-     * 
+     *
      * @param string $codigoDestino CEP de destino.
      */
     public function setCodigoDestino($codigoDestino) {
@@ -240,7 +245,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica a cidade de destino.
-     * 
+     *
      * @param string $cidadeDestino Cidade de destino.
      */
     public function setCidadeDestino($cidadeDestino) {
@@ -249,7 +254,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica o bairro de destino.
-     * 
+     *
      * @param string $bairroDestino Bairro de destino.
      */
     public function setBairroDestino($bairroDestino) {
@@ -258,7 +263,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Indica a UF de destino.
-     * 
+     *
      * @param string $ufDestino UF de destino.
      */
     public function setUfDestino($ufDestino) {
@@ -267,7 +272,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna o tipo do evento de retorno.
-     * 
+     *
      * @return string
      */
     public function getTipo() {
@@ -276,16 +281,16 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a descrição do tipo.
-     * 
-     * @return string 
+     *
+     * @return string
      */
     public function getDescricaoTipo() {
-        return (isset(Correios::$tipoEvento[$this->tipo]) ? Correios::$tipoEvento[$this->tipo] : '');
+        return (isset(correios\Correios::$tipoEvento[$this->tipo]) ? correios\Correios::$tipoEvento[$this->tipo] : '');
     }
 
     /**
      * Retorna o status do evento de retorno.
-     * 
+     *
      * @return integer
      */
     public function getStatus() {
@@ -294,7 +299,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a data do evento.
-     * 
+     *
      * @return string
      */
     public function getData() {
@@ -303,7 +308,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a hora do evento.
-     * 
+     *
      * @return string
      */
     public function getHora() {
@@ -312,7 +317,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a descrição do evento.
-     * 
+     *
      * @return string
      */
     public function getDescricao() {
@@ -321,7 +326,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna um comentário adicional sobre o evento.
-     * 
+     *
      * @return string
      */
     public function getComentario() {
@@ -330,7 +335,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna o local onde ocorreu o evento.
-     * 
+     *
      * @return string
      */
     public function getLocalEvento() {
@@ -339,7 +344,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna o CEP da unidade ECT.
-     * 
+     *
      * @return string
      */
     public function getCodigoEvento() {
@@ -348,7 +353,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a cidade onde ocorreu o evento.
-     * 
+     *
      * @return string
      */
     public function getCidadeEvento() {
@@ -357,7 +362,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a unidade da federação.
-     * 
+     *
      * @return string
      */
     public function getUfEvento() {
@@ -366,7 +371,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna se o evento possui destino.
-     * 
+     *
      * @return boolean
      */
     public function getPossuiDestino() {
@@ -375,7 +380,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna o local de destino.
-     * 
+     *
      * @return string
      */
     public function getLocalDestino() {
@@ -384,7 +389,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna o CEP de destino.
-     * 
+     *
      * @return string
      */
     public function getCodigoDestino() {
@@ -393,7 +398,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a cidade de destino.
-     * 
+     *
      * @return string
      */
     public function getCidadeDestino() {
@@ -402,7 +407,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna o bairro de destino.
-     * 
+     *
      * @return string
      */
     public function getBairroDestino() {
@@ -411,7 +416,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
 
     /**
      * Retorna a UF de destino.
-     * 
+     *
      * @return string
      */
     public function getUfDestino() {
@@ -423,7 +428,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] : 'Status desconhecido.';
+        return isset(correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] : 'Status desconhecido.';
     }
 
     /**
@@ -431,7 +436,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getAcaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] : 'Ação desconhecida.';
+        return isset(correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] : 'Ação desconhecida.';
     }
 
 }

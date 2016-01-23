@@ -5,9 +5,12 @@
  * de SRO dos Correios.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @version 1.1
+ * @version 1.2
  * @abstract
  */
+
+namespace correios\Sro;
+
 abstract class CorreiosSro {
 
     /**
