@@ -21,16 +21,16 @@
 
 namespace correios\PrecoPrazo;
 
-use \correios as correios;
+use correios\Correios;
 
-final class CorreiosPrecoPrazo extends correios\Correios {
+final class CorreiosPrecoPrazo extends Correios {
 
     /**
      * Contém o tipo de cálculo de preço.
      * @see Correios::$tiposCalculo
      * @var string
      */
-    private $tipoCalculo = correios\Correios::TIPO_CALCULO_PRECO_TODOS;
+    private $tipoCalculo = Correios::TIPO_CALCULO_PRECO_TODOS;
 
     /**
      * Contém o CEP de origem.
@@ -52,7 +52,7 @@ final class CorreiosPrecoPrazo extends correios\Correios {
 
     /**
      * Contém o formato da encomenda.
-     * @see correios\Correios::$formatos
+     * @see Correios::$formatos
      * @var integer
      */
     private $formato;
@@ -107,7 +107,7 @@ final class CorreiosPrecoPrazo extends correios\Correios {
 
     /**
      * Contém os códigos de serviço utilizados.
-     * @see correios\Correios::$servicos
+     * @see Correios::$servicos
      * @var array
      */
     private $servicosConsulta = array();
@@ -126,7 +126,7 @@ final class CorreiosPrecoPrazo extends correios\Correios {
      * @param string $senha Senha.
      * @param string $tipoCalculo Tipo de cálculo.
      */
-    public function __construct($usuario = '', $senha = '', $tipoCalculo = correios\Correios::TIPO_CALCULO_PRECO_TODOS) {
+    public function __construct($usuario = '', $senha = '', $tipoCalculo = Correios::TIPO_CALCULO_PRECO_TODOS) {
         parent::__construct($usuario, $senha);
         $this->setTipoCalculo($tipoCalculo);
     }
@@ -356,8 +356,8 @@ final class CorreiosPrecoPrazo extends correios\Correios {
      * @return array
      */
     protected function getParametros() {
-        if (($this->tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or
-            ($this->tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
+        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
             $parametros = array(
                 'nCdServico' => (string) $this->getServicos(),
                 'sCepOrigem' => (string) $this->cepOrigem,
@@ -382,9 +382,9 @@ final class CorreiosPrecoPrazo extends correios\Correios {
             );
         }
         //Se as chamadas tiverem database de cálculo
-        if (($this->tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE) or
-            ($this->tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE) or
-            ($this->tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE)) {
+        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE) or
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE) or
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE)) {
             $parametros['sDtCalculo'] = (string) $this->dataBaseCalculo->format('d/m/Y');
         }
         return $parametros;
@@ -407,27 +407,27 @@ final class CorreiosPrecoPrazo extends correios\Correios {
 
                 //Define os métodos de consulta e retorno
                 switch ($this->tipoCalculo) {
-                    case correios\Correios::TIPO_CALCULO_PRECO_TODOS:
+                    case Correios::TIPO_CALCULO_PRECO_TODOS:
                         $metodoConsulta = 'CalcPrecoPrazo';
                         $metodoRetorno = 'CalcPrecoPrazoResult';
                         break;
-                    case correios\Correios::TIPO_CALCULO_PRECO_SO_PRAZO:
+                    case Correios::TIPO_CALCULO_PRECO_SO_PRAZO:
                         $metodoConsulta = 'CalcPrazo';
                         $metodoRetorno = 'CalcPrazoResult';
                         break;
-                    case correios\Correios::TIPO_CALCULO_PRECO_SO_PRECO:
+                    case Correios::TIPO_CALCULO_PRECO_SO_PRECO:
                         $metodoConsulta = 'CalcPreco';
                         $metodoRetorno = 'CalcPrecoResult';
                         break;
-                    case correios\Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE:
+                    case Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE:
                         $metodoConsulta = 'CalcPrecoPrazoData';
                         $metodoRetorno = 'CalcPrecoPrazoDataResult';
                         break;
-                    case correios\Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE:
+                    case Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE:
                         $metodoConsulta = 'CalcPrazoData';
                         $metodoRetorno = 'CalcPrazoDataResult';
                         break;
-                    case correios\Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE:
+                    case Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE:
                         $metodoConsulta = 'CalcPrecoData';
                         $metodoRetorno = 'CalcPrecoDataResult';
                         break;

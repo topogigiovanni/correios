@@ -12,7 +12,7 @@
 
 namespace correios\PrecoPrazo;
 
-use \correios as correios;
+use correios\Correios;
 
 final class CorreiosPrecoPrazoResultado {
 
@@ -98,19 +98,19 @@ final class CorreiosPrecoPrazoResultado {
         $this->setErro($retorno->Erro);
         $this->setMensagemErro($retorno->MsgErro);
 
-        if (($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_TODOS) or
-            ($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or
-            ($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
-            ($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
+        if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) or
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
             $this->setPrazoEntrega($retorno->PrazoEntrega);
             $this->setEntregaDomiciliar($retorno->EntregaDomiciliar);
             $this->setEntregaSabado($retorno->EntregaSabado);
         }
 
-        if (($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_TODOS) or
-            ($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRECO) or
-            ($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
-            ($tipoCalculo == correios\Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE)) {
+        if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) or
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO) or
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE)) {
             $this->setValor($retorno->Valor);
             $this->setValorMaoPropria($retorno->ValorMaoPropria);
             $this->setValorAvisoRecebimento($retorno->ValorAvisoRecebimento);

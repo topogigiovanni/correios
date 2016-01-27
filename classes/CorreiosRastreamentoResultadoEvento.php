@@ -10,7 +10,7 @@
 
 namespace correios\Rastreamento;
 
-use \correios as correios;
+use correios\Correios;
 
 final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResultadoOjeto {
 
@@ -285,7 +285,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoTipo() {
-        return (isset(correios\Correios::$tipoEvento[$this->tipo]) ? correios\Correios::$tipoEvento[$this->tipo] : '');
+        return (isset(Correios::$tipoEvento[$this->tipo]) ? Correios::$tipoEvento[$this->tipo] : '');
     }
 
     /**
@@ -428,7 +428,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoStatus() {
-        return isset(correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] : 'Status desconhecido.';
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] : 'Status desconhecido.';
     }
 
     /**
@@ -436,7 +436,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getAcaoStatus() {
-        return isset(correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? correios\Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] : 'Ação desconhecida.';
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] : 'Ação desconhecida.';
     }
 
 }

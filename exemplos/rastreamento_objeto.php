@@ -9,9 +9,10 @@
 
 namespace correios\Exemplos;
 
-use \correios as correios;
-use \correios\Sro as sro;
-use \correios\Rastreamento as rastreamento;
+use correios\Correios;
+use correios\Sro\CorreiosSro;
+use correios\Sro\CorreiosSroDados;
+use correios\Rastreamento\CorreiosRastreamento;
 
 
 //Ajusta a codificação e o tipo do conteúdo
@@ -28,12 +29,11 @@ require '../classes/CorreiosSroDados.php';
 
 try {
     //Cria o objeto
-    $rastreamento = new rastreamento\CorreiosRastreamento('ECT', 'SRO');
+    $rastreamento = new CorreiosRastreamento('ECT', 'SRO');
     //Envia os parâmetros
-    $rastreamento->setTipo(correios\Correios::TIPO_RASTREAMENTO_LISTA);
-    $rastreamento->setResultado(correios\Correios::RESULTADO_RASTREAMENTO_ULTIMO);
+    $rastreamento->setTipo(Correios::TIPO_RASTREAMENTO_LISTA);
+    $rastreamento->setResultado(Correios::RESULTADO_RASTREAMENTO_ULTIMO);
     $rastreamento->addObjeto('DU131229547BR');
-    $rastreamento->addObjeto('DU098628720BR');
     if ($rastreamento->processaConsulta()) {
         $retorno = $rastreamento->getRetorno();
         if ($retorno->getQuantidade() > 0) {
@@ -44,7 +44,7 @@ try {
             foreach ($retorno->getResultados() as $resultado) {
                 echo 'Objeto.................................: ' . $resultado->getObjeto() . PHP_EOL;
                 //Se desejar obter informações sobre o objeto
-                $dadosObjeto = new sro\CorreiosSroDados($resultado->getObjeto());
+                $dadosObjeto = new CorreiosSroDados($resultado->getObjeto());
                 echo 'Serviço................................: ' . $dadosObjeto->getDescricaoTipoServico() . PHP_EOL;
                 echo PHP_EOL;
                 foreach ($resultado->getEventos() as $eventos) {

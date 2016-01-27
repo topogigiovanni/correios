@@ -22,10 +22,10 @@
 
 namespace correios\Rastreamento;
 
-use \correios as correios;
-use \correios\Sro as sro;
+use correios\Correios;
+use correios\Sro\CorreiosSro;
 
-class CorreiosRastreamento extends correios\Correios {
+class CorreiosRastreamento extends Correios {
 
     /**
      * Contém a definição de como a lista de identificadores de objetos deverá ser
@@ -93,7 +93,7 @@ class CorreiosRastreamento extends correios\Correios {
      * @throws \Exception
      */
     public function addObjeto($objeto) {
-        if (sro\CorreiosSro::validaSro($objeto)) {
+        if (CorreiosSro::validaSro($objeto)) {
             $this->objetos[] = $objeto;
         } else {
             throw new \Exception('O número de objeto informado é inválido.');

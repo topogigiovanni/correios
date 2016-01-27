@@ -28,6 +28,8 @@ A versão atual destas classes está trabalhando com a versão 1.9 do webservice
 
 **Histórico de alterações**
 
+* **27/01/2016**:
+* Correções diversas nos namespaces.
 * **23/01/2016**:
 * Atualização para compatibilidade com namespaces.
 * **06/01/2016**:
@@ -54,6 +56,8 @@ A versão atual destas classes está trabalhando com a versão 1.5 do webservice
 
 **Histórico de alterações**
 
+* **27/01/2016**:
+* Correções diversas nos namespaces.
 * **23/01/2016**:
 * Atualização das siglas de rastreamento e atualização da URL oficial dos Correios.
 * Atualização para compatibilidade com namespaces.
@@ -82,6 +86,8 @@ informações a respeito de um objeto ou para entrada de dados externas em seus 
 
 **Histórico de alterações**
 
+* **27/01/2016**:
+* Correções diversas nos namespaces.
 * **23/01/2016**:
 * Atualização para compatibilidade com namespaces.
 * **06/01/2016**:
