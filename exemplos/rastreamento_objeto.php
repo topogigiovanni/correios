@@ -9,6 +9,8 @@
 
 namespace correios\Exemplos;
 
+require __DIR__ . '/../vendor/autoload.php';
+
 use correios\Correios;
 use correios\Sro\CorreiosSro;
 use correios\Sro\CorreiosSroDados;
@@ -19,13 +21,13 @@ use correios\Rastreamento\CorreiosRastreamento;
 header('Content-type: text/txt; charset=utf-8');
 
 //Importa as classes
-require '../classes/Correios.php';
-require '../classes/CorreiosRastreamento.php';
-require '../classes/CorreiosRastreamentoResultado.php';
-require '../classes/CorreiosRastreamentoResultadoOjeto.php';
-require '../classes/CorreiosRastreamentoResultadoEvento.php';
-require '../classes/CorreiosSro.php';
-require '../classes/CorreiosSroDados.php';
+#require '../classes/Correios.php';
+#require '../classes/CorreiosRastreamento.php';
+#require '../classes/CorreiosRastreamentoResultado.php';
+#require '../classes/CorreiosRastreamentoResultadoOjeto.php';
+#require '../classes/CorreiosRastreamentoResultadoEvento.php';
+#require '../classes/CorreiosSro.php';
+#require '../classes/CorreiosSroDados.php';
 
 try {
     //Cria o objeto
