@@ -9,6 +9,8 @@
 
 namespace correios\Exemplos;
 
+require __DIR__ . '/../vendor/autoload.php';
+
 use correios\Sro\CorreiosSro;
 use correios\Sro\CorreiosSroDados;
 
@@ -16,8 +18,8 @@ use correios\Sro\CorreiosSroDados;
 header('Content-type: text/txt; charset=utf-8');
 
 //Importa as classes
-require '../classes/CorreiosSro.php';
-require '../classes/CorreiosSroDados.php';
+#require '../classes/CorreiosSro.php';
+#require '../classes/CorreiosSroDados.php';
 
 try {
     echo '============================' . PHP_EOL;

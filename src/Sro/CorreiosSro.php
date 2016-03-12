@@ -259,16 +259,21 @@ abstract class CorreiosSro {
      */
     public static function validaSro($sro) {
         //Valida a estrutura do SRO
-        if (preg_match('/[A-Z]{2}[0-9]{9}[A-Z]{2}/', $sro)) {
-            //Valida a sigla do SRO
-            if (isset(self::$siglasComDescricao[substr($sro, 0, 2)])) {
-                //Valida o dígito verificador
-                if (self::calculaDigitoVerificador(substr($sro, 2, 8)) == substr($sro, 10, 1)) {
-                    return TRUE;
-                }
-            }
+        if ( ! preg_match('/[A-Z]{2}[0-9]{9}[A-Z]{2}/', $sro)) {
+            return false;
         }
-        return FALSE;
+
+        //Valida a sigla do SRO
+        if ( ! isset(self::$siglasComDescricao[substr($sro, 0, 2)])) {
+            return false;
+        }
+
+        //Valida o dígito verificador
+        if (self::calculaDigitoVerificador(substr($sro, 2, 8)) != substr($sro, 10, 1)) {
+            return false;
+        }
+    
+        return true;
     }
 
     /**
