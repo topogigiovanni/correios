@@ -22,18 +22,21 @@ try {
     //Cria o objeto
     $rastreamento = new CorreiosRastreamento('ECT', 'SRO');
     //Envia os parâmetros
-    $rastreamento->setTipo(Correios::TIPO_RASTREAMENTO_LISTA);
-    $rastreamento->setResultado(Correios::RESULTADO_RASTREAMENTO_ULTIMO);
+    $rastreamento->setTipo(Correios::TIPO_RASTREAMENTO_INTERVALO);
+    $rastreamento->setResultado(Correios::RESULTADO_RASTREAMENTO_TODOS);
+    $rastreamento->setLingua(Correios::LINGUA_PORTUGUES);
+    $rastreamento->addObjeto('DU607265998BR');
     $rastreamento->addObjeto('DU131229547BR');
     if ($rastreamento->processaConsulta()) {
 	$retorno = $rastreamento->getRetorno();
 	if ($retorno->getQuantidade() > 0) {
 	    echo 'Versão.................................: ' . $retorno->getVersao() . PHP_EOL;
 	    echo 'Quantidade.............................: ' . $retorno->getQuantidade() . PHP_EOL;
-	    echo 'Tipo de pesquisa.......................: ' . $retorno->getTipoPesquisa() . PHP_EOL;
-	    echo 'Tipo de resultado......................: ' . $retorno->getTipoResultado() . PHP_EOL . PHP_EOL;
 	    foreach ($retorno->getResultados() as $resultado) {
 		echo 'Objeto.................................: ' . $resultado->getObjeto() . PHP_EOL;
+		echo 'Sigla..................................: ' . $resultado->getSigla() . PHP_EOL;
+		echo 'Nome...................................: ' . $resultado->getNome() . PHP_EOL;
+		echo 'Categoria..............................: ' . $resultado->getCategoria() . PHP_EOL;
 		//Se desejar obter informações sobre o objeto
 		$dadosObjeto = new CorreiosSroDados($resultado->getObjeto());
 		echo 'Serviço................................: ' . $dadosObjeto->getDescricaoTipoServico() . PHP_EOL;
@@ -45,12 +48,8 @@ try {
 		    echo ' - Ação relacionada ao status..........: ' . $eventos->getAcaoStatus() . PHP_EOL;
 		    echo ' - Data................................: ' . $eventos->getData() . ' ' . $eventos->getHora() . PHP_EOL;
 		    echo ' - Descrição...........................: ' . $eventos->getDescricao() . PHP_EOL;
-		    echo ' - Comentários.........................: ' . $eventos->getComentario() . PHP_EOL;
+		    echo ' - Detalhes............................: ' . $eventos->getDetalhe() . PHP_EOL;
 		    echo ' - Local do evento.....................: ' . $eventos->getLocalEvento() . ' (' . $eventos->getCidadeEvento() . ', ' . $eventos->getUfEvento() . ')' . PHP_EOL;
-		    if ($eventos->getPossuiDestino()) {
-			echo ' - Local de destino....................: ' . $eventos->getLocalDestino() . ' (' . $eventos->getCidadeDestino() . ' - ' . $eventos->getBairroDestino() . ', ' . $eventos->getUfDestino() . ' - ' . $eventos->getCodigoDestino() . ')' . PHP_EOL;
-		    }
-		    echo PHP_EOL;
 		}
 	    }
 	}

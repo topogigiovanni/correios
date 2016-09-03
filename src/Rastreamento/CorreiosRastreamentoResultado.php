@@ -4,8 +4,7 @@
  * Classe que irá conter o resultado de um rastreamento de encomendas.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
- * @version 1.2
+ * @version 1.3
  */
 
 namespace correios\Rastreamento;
@@ -25,20 +24,6 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
      * @var integer
      */
     private $quantidade;
-
-    /**
-     * Contém a lista ou intervalo de objetos.
-     *
-     * @var string
-     */
-    private $tipoPesquisa;
-
-    /**
-     * Contém o último evento ou todos os eventos.
-     *
-     * @var string
-     */
-    private $tipoResultado;
 
     /**
      * Contém resultados em forma de eventos.
@@ -66,24 +51,6 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
     }
 
     /**
-     * Indica a lista ou intervalo de objetos.
-     *
-     * @param string $tipoPesquisa Lista ou intervalo de objetos.
-     */
-    public function setTipoPesquisa($tipoPesquisa) {
-        $this->tipoPesquisa = $tipoPesquisa;
-    }
-
-    /**
-     * Indica o último evento ou todos os eventos.
-     *
-     * @param string $tipoResultado Último evento ou todos os eventos.
-     */
-    public function setTipoResultado($tipoResultado) {
-        $this->tipoResultado = $tipoResultado;
-    }
-
-    /**
      * Adiciona um resultado de objeto.
      *
      * @param CorreiosRastreamentoResultadoOjeto $objeto Resultado.
@@ -108,24 +75,6 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
      */
     public function getQuantidade() {
         return $this->quantidade;
-    }
-
-    /**
-     * Retorna a lista ou intervalo de objetos.
-     *
-     * @return string
-     */
-    public function getTipoPesquisa() {
-        return $this->tipoPesquisa;
-    }
-
-    /**
-     * Retorna o último evento ou todos os eventos.
-     *
-     * @return string
-     */
-    public function getTipoResultado() {
-        return $this->tipoResultado;
     }
 
     /**

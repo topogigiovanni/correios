@@ -3,8 +3,7 @@
  * Classe que irá conter um objeto de rastreamento de encomendas.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
- * @version 1.2
+ * @version 1.3
  */
 
 namespace correios\Rastreamento;
@@ -18,6 +17,27 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      * @var string
      */
     private $objeto;
+
+    /**
+     * Contém a sigla do objeto enviado.
+     *
+     * @var string
+     */
+    private $sigla;
+
+    /**
+     * Contém o nome do objeto enviado.
+     *
+     * @var string
+     */
+    private $nome;
+
+    /**
+     * Contém a categoria do objeto enviado.
+     *
+     * @var string
+     */
+    private $categoria;
 
     /**
      * Contém a descrição de um determinado evento.
@@ -36,6 +56,36 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
       $this->objeto = $objeto;
     }
 
+    /**
+     * Indica a sigla do objeto enviado.
+     *
+     * @param string $sigla Sigla do objeto enviado.
+     */
+    public function setSigla($sigla)
+    {
+      $this->sigla = $sigla;
+    }
+
+    /**
+     * Indica o nome do objeto enviado.
+     *
+     * @param string $nome Nome do objeto enviado.
+     */
+    public function setNome($nome)
+    {
+      $this->nome = $nome;
+    }
+
+    /**
+     * Indica a categoria do objeto enviado.
+     *
+     * @param string $categoria Categoria do objeto enviado.
+     */
+    public function setCategoria($categoria)
+    {
+      $this->categoria = $categoria;
+    }        
+    
     /**
      * Adiciona um evento ao rastreamento.
      *
@@ -56,6 +106,36 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
       return $this->objeto;
     }
 
+    /**
+     * Retorna a sigla do objeto enviado.
+     *
+     * @return string
+     */
+    public function getSigla()
+    {
+      return $this->sigla;
+    }
+
+    /**
+     * Retorna o nome do objeto enviado.
+     *
+     * @return string
+     */
+    public function getNome()
+    {
+      return $this->nome;
+    }
+
+    /**
+     * Retorna a categoria do objeto enviado.
+     *
+     * @return string
+     */
+    public function getCategoria()
+    {
+      return $this->categoria;
+    }
+    
     /**
      * Retorna a descrição de um determinado evento.
      *

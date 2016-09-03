@@ -4,8 +4,7 @@
  * Classe que irá conter um evento de rastreamento de encomendas.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @see http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf
- * @version 1.2
+ * @version 1.3
  */
 
 namespace correios\Rastreamento;
@@ -50,11 +49,11 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     private $descricao;
 
     /**
-     * Contém um comentário adicional sobre o evento.
+     * Contém o detalhe sobre o evento.
      *
      * @var string
      */
-    private $comentario;
+    private $detalhe;
 
     /**
      * Contém o local onde ocorreu o evento.
@@ -83,48 +82,6 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @var string
      */
     private $ufEvento;
-
-    /**
-     * Contém o local de destino.
-     *
-     * @var string
-     */
-    private $localDestino;
-
-    /**
-     * Contém o CEP de destino.
-     *
-     * @var string
-     */
-    private $codigoDestino;
-
-    /**
-     * Contém a cidade de destino.
-     *
-     * @var string
-     */
-    private $cidadeDestino;
-
-    /**
-     * Contém o bairro de destino.
-     *
-     * @var string
-     */
-    private $bairroDestino;
-
-    /**
-     * Contém a unidade da federação de destino.
-     *
-     * @var string
-     */
-    private $ufDestino;
-
-    /**
-     * Indica se o evento possui informação do destino.
-     *
-     * @var boolean
-     */
-    private $possuiDestino;
 
     /**
      * Indica o tipo do evento de retorno.
@@ -172,12 +129,12 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
-     * Indica um comentário adicional sobre o evento.
+     * Indica o detalhe sobre o evento.
      *
-     * @param string $comentario Comentário adicional sobre o evento.
+     * @param string $detalhe Detalhe sobre o evento.
      */
-    public function setComentario($comentario) {
-        $this->comentario = $comentario;
+    public function setDetalhe($detalhe) {
+        $this->detalhe = $detalhe;
     }
 
     /**
@@ -214,60 +171,6 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      */
     public function setUfEvento($uf) {
         $this->ufEvento = $uf;
-    }
-
-    /**
-     * Indica se o evento possui destino.
-     *
-     * @param boolean $possuiDestino Indica se possui destino.
-     */
-    public function setPossuiDestino($possuiDestino) {
-        $this->possuiDestino = $possuiDestino;
-    }
-
-    /**
-     * Indica o local de destino.
-     *
-     * @param string $localDestino Local de destino.
-     */
-    public function setLocalDestino($localDestino) {
-        $this->localDestino = $localDestino;
-    }
-
-    /**
-     * Indica o CEP de destino.
-     *
-     * @param string $codigoDestino CEP de destino.
-     */
-    public function setCodigoDestino($codigoDestino) {
-        $this->codigoDestino = $codigoDestino;
-    }
-
-    /**
-     * Indica a cidade de destino.
-     *
-     * @param string $cidadeDestino Cidade de destino.
-     */
-    public function setCidadeDestino($cidadeDestino) {
-        $this->cidadeDestino = $cidadeDestino;
-    }
-
-    /**
-     * Indica o bairro de destino.
-     *
-     * @param string $bairroDestino Bairro de destino.
-     */
-    public function setBairroDestino($bairroDestino) {
-        $this->bairroDestino = $bairroDestino;
-    }
-
-    /**
-     * Indica a UF de destino.
-     *
-     * @param string $ufDestino UF de destino.
-     */
-    public function setUfDestino($ufDestino) {
-        $this->ufDestino = $ufDestino;
     }
 
     /**
@@ -325,12 +228,12 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
-     * Retorna um comentário adicional sobre o evento.
+     * Retorna o detalhe sobre o evento.
      *
      * @return string
      */
-    public function getComentario() {
-        return $this->comentario;
+    public function getDetalhe() {
+        return $this->detalhe;
     }
 
     /**
@@ -370,65 +273,13 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
-     * Retorna se o evento possui destino.
-     *
-     * @return boolean
-     */
-    public function getPossuiDestino() {
-        return $this->possuiDestino;
-    }
-
-    /**
-     * Retorna o local de destino.
-     *
-     * @return string
-     */
-    public function getLocalDestino() {
-        return $this->localDestino;
-    }
-
-    /**
-     * Retorna o CEP de destino.
-     *
-     * @return string
-     */
-    public function getCodigoDestino() {
-        return $this->codigoDestino;
-    }
-
-    /**
-     * Retorna a cidade de destino.
-     *
-     * @return string
-     */
-    public function getCidadeDestino() {
-        return $this->cidadeDestino;
-    }
-
-    /**
-     * Retorna o bairro de destino.
-     *
-     * @return string
-     */
-    public function getBairroDestino() {
-        return $this->bairroDestino;
-    }
-
-    /**
-     * Retorna a UF de destino.
-     *
-     * @return string
-     */
-    public function getUfDestino() {
-        return $this->ufDestino;
-    }
-
-    /**
      * Retorna a descrição do status do objeto.
      * @return string
      */
     public function getDescricaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] : 'Status desconhecido.';
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ?
+                     Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] :
+                     'Status desconhecido.';
     }
 
     /**
@@ -436,7 +287,9 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getAcaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ? Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] : 'Ação desconhecida.';
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ?
+                     Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] :
+                     'Ação desconhecida.';
     }
 
 }
