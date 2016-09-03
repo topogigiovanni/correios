@@ -42,7 +42,7 @@ try {
 		echo 'Serviço................................: ' . $dadosObjeto->getDescricaoTipoServico() . PHP_EOL;
 		echo PHP_EOL;
 		foreach ($resultado->getEventos() as $eventos) {
-		    echo ' - Tipo................................: ' . $eventos->getTipo() . ' - ' . $eventos->getDescricaoTipo() . PHP_EOL;
+		    echo ' - Tipo................................: ' . $eventos->getTipoEvento() . ' - ' . $eventos->getDescricaoTipo() . PHP_EOL;
 		    echo ' - Status..............................: ' . $eventos->getStatus() . PHP_EOL;
 		    echo ' - Descrição do status.................: ' . $eventos->getDescricaoStatus() . PHP_EOL;
 		    echo ' - Ação relacionada ao status..........: ' . $eventos->getAcaoStatus() . PHP_EOL;
