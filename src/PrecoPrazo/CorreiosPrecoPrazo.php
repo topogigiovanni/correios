@@ -355,7 +355,7 @@ final class CorreiosPrecoPrazo extends Correios {
      * @return array
      */
     protected function getParametros() {
-        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or
+        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) ||
             ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
             $parametros = array(
                 'nCdServico' => (string) $this->getServicos(),
@@ -381,8 +381,8 @@ final class CorreiosPrecoPrazo extends Correios {
             );
         }
         //Se as chamadas tiverem database de cálculo
-        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE) or
-            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE) or
+        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE) ||
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE) ||
             ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE)) {
             $parametros['sDtCalculo'] = (string) $this->dataBaseCalculo->format('d/m/Y');
         }
