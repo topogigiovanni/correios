@@ -14,8 +14,7 @@
  * praticados no balcão da agência.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @see http://www.correios.com.br/webServices/PDF/SCPP_manual_implementacao_calculo_remoto_de_precos_e_prazos.pdf
- * @version 1.2
+ * @version 1.3
  * @final
  */
 
@@ -400,7 +399,7 @@ final class CorreiosPrecoPrazo extends Correios {
         //Ativa o uso de URL FOpen
         ini_set("allow_url_fopen", 1);
         ini_set("soap.wsdl_cache_enabled", 0);
-        //Inicia transação junto a Braspag
+        //Inicia transação junto aos Correios
         try {
             if (@fopen(parent::URL_CALCULADOR, 'r')) {
                 $soap = new \SoapClient(parent::URL_CALCULADOR);

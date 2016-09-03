@@ -5,8 +5,7 @@
  * e prazo de entrega dos Correios.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @see http://www.correios.com.br/webServices/PDF/SCPP_manual_implementacao_calculo_remoto_de_precos_e_prazos.pdf
- * @version 1.2
+ * @version 1.3
  * @final
  */
 
