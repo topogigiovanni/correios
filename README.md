@@ -46,6 +46,8 @@ A versão atual destas classes está trabalhando com a versão 1.5 do webservice
 
 **Histórico de alterações**
 
+* **03/09/2016**:
+* Atualização das classes para a versão 1.7 do webservice de rastreamento
 * **02/09/2016**:
 * Inclusão inicial de testes automatizados e integração contínua com Travis-CI
 * **27/01/2016**:
