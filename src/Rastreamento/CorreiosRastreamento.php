@@ -164,28 +164,22 @@ class CorreiosRastreamento extends Correios {
      * @throws Exception
      */
     public function processaConsulta() {
-	//Ativa o uso de URL FOpen
 	ini_set("allow_url_fopen", 1);
 	ini_set("soap.wsdl_cache_enabled", 0);
-	//Inicialização do retorno
 	$retorno = FALSE;
 	//Valida se o servidor está no ar
 	if (@fopen(parent::URL_RASTREADOR, 'r')) {
 	    try {
-            //Inicia a consulta
             $soap = new \SoapClient(parent::URL_RASTREADOR);
             $resultado = $soap->buscaEventosLista($this->getParametros());
-            //Verifica se houve retorno
+
             if ($resultado instanceof \stdClass) {
-                //Monta informações do rastreamento
                 $rastreamento = new CorreiosRastreamentoResultado();
                 $rastreamento->setVersao(isset($resultado->return->versao) ? (string) $resultado->return->versao : '');
                 $rastreamento->setQuantidade(isset($resultado->return->qtd) ? (int) $resultado->return->qtd : 0);
-                //Se houver resultado
                 if ($rastreamento->getQuantidade() > 0 && isset($resultado->return->objeto)) {
                     //Verifica os objetos
                     foreach ($resultado->return->objeto as $objetoDetalhe) {
-                        //Monta informações do objeto
                         $objeto = new CorreiosRastreamentoResultadoOjeto();
                         $objeto->setObjeto(isset($objetoDetalhe->numero) ? (string) $objetoDetalhe->numero : '');
                         $objeto->setSigla(isset($objetoDetalhe->sigla) ? (string) $objetoDetalhe->sigla : '');
@@ -193,7 +187,6 @@ class CorreiosRastreamento extends Correios {
                         $objeto->setCategoria(isset($objetoDetalhe->categoria) ? (string) $objetoDetalhe->categoria : '');
                         //Verifica os eventos do objeto
                         foreach ($objetoDetalhe->evento as $eventoObjeto) {
-                            //Monta as informações do(s) evento(s) do objeto
                             $evento = new CorreiosRastreamentoResultadoEvento();
                             $evento->setTipoEvento(isset($eventoObjeto->tipo) ? (string) $eventoObjeto->tipo : '');
                             $evento->setStatus(isset($eventoObjeto->status) ? (integer) $eventoObjeto->status : 0);
@@ -205,12 +198,11 @@ class CorreiosRastreamento extends Correios {
                             $evento->setCodigoEvento(isset($eventoObjeto->codigo) ? (string) $eventoObjeto->codigo : '');
                             $evento->setCidadeEvento(isset($eventoObjeto->cidade) ? (string) $eventoObjeto->cidade : '');
                             $evento->setUfEvento(isset($eventoObjeto->uf) ? (string) $eventoObjeto->uf : '');
-                            //Adiciona o evento no objeto
+
                             $objeto->addEvento($evento);
                         }
-                        //Adiciona o resultado ao rastreamento
+
                         $rastreamento->addResultado($objeto);
-                        //Se chegou aqui, possui um rastreamento
                         $retorno = TRUE;
                     }
                 }
