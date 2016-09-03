@@ -18,7 +18,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      *
      * @var string
      */
-    private $tipo;
+    private $tipoEvento;
 
     /**
      * Contém o status do evento de retorno.
@@ -86,10 +86,10 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     /**
      * Indica o tipo do evento de retorno.
      *
-     * @param string $tipo Tipo do evento de retorno.
+     * @param string $tipoEvento Tipo do evento de retorno.
      */
-    public function setTipo($tipo) {
-        $this->tipo = $tipo;
+    public function setTipoEvento($tipoEvento) {
+        $this->tipotipoEvento = $tipoEvento;
     }
 
     /**
@@ -178,8 +178,8 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      *
      * @return string
      */
-    public function getTipo() {
-        return $this->tipo;
+    public function getTipoEvento() {
+        return $this->tipoEvento;
     }
 
     /**
@@ -188,7 +188,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoTipo() {
-        return (isset(Correios::$tipoEvento[$this->tipo]) ? Correios::$tipoEvento[$this->tipo] : '');
+        return (isset(Correios::$tipoEvento[$this->tipoEvento]) ? Correios::$tipoEvento[$this->tipoEvento] : '');
     }
 
     /**
@@ -277,8 +277,8 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ?
-                     Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['mensagem'] :
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]) ?
+                     Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]['mensagem'] :
                      'Status desconhecido.';
     }
 
@@ -287,8 +287,8 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getAcaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipo]) ?
-                     Correios::$statusRastreamento[$this->getStatus()][$this->tipo]['acao'] :
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]) ?
+                     Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]['acao'] :
                      'Ação desconhecida.';
     }
 

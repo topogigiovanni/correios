@@ -172,50 +172,50 @@ class CorreiosRastreamento extends Correios {
 	//Valida se o servidor está no ar
 	if (@fopen(parent::URL_RASTREADOR, 'r')) {
 	    try {
-		//Inicia a consulta
-		$soap = new \SoapClient(parent::URL_RASTREADOR);
-		$resultado = $soap->buscaEventosLista($this->getParametros());
-		//Verifica se houve retorno
-		if ($resultado instanceof \stdClass) {
-		    //Monta informações do rastreamento
-		    $rastreamento = new CorreiosRastreamentoResultado();
-		    $rastreamento->setVersao(isset($resultado->return->versao) ? (string) $resultado->return->versao : '');
-		    $rastreamento->setQuantidade(isset($resultado->return->qtd) ? (int) $resultado->return->qtd : 0);
-		    //Se houver resultado
-		    if ($rastreamento->getQuantidade() > 0 and isset($resultado->return->objeto)) {
-			//Verifica os objetos
-			foreach ($resultado->return->objeto as $objetoDetalhe) {
-			    //Monta informações do objeto
-			    $objeto = new CorreiosRastreamentoResultadoOjeto();
-			    $objeto->setObjeto(isset($objetoDetalhe->numero) ? (string) $objetoDetalhe->numero : '');
-			    $objeto->setSigla(isset($objetoDetalhe->sigla) ? (string) $objetoDetalhe->sigla : '');
-			    $objeto->setNome(isset($objetoDetalhe->nome) ? (string) $objetoDetalhe->nome : '');
-			    $objeto->setCategoria(isset($objetoDetalhe->categoria) ? (string) $objetoDetalhe->categoria : '');
-			    //Verifica os eventos do objeto
-			    foreach ($objetoDetalhe->evento as $eventoObjeto) {
-				//Monta as informações do(s) evento(s) do objeto
-				$evento = new CorreiosRastreamentoResultadoEvento();
-				$evento->setTipo(isset($eventoObjeto->tipo) ? (string) $eventoObjeto->tipo : '');
-				$evento->setStatus(isset($eventoObjeto->status) ? (integer) $eventoObjeto->status : 0);
-				$evento->setData(isset($eventoObjeto->data) ? (string) $eventoObjeto->data : '');
-				$evento->setHora(isset($eventoObjeto->hora) ? (string) $eventoObjeto->hora : '');
-				$evento->setDescricao(isset($eventoObjeto->descricao) ? (string) $eventoObjeto->descricao : '');
-				$evento->setDetalhe(isset($eventoObjeto->detalhe) ? (string) $eventoObjeto->detalhe : '');
-				$evento->setLocalEvento(isset($eventoObjeto->local) ? (string) $eventoObjeto->local : '');
-				$evento->setCodigoEvento(isset($eventoObjeto->codigo) ? (string) $eventoObjeto->codigo : '');
-				$evento->setCidadeEvento(isset($eventoObjeto->cidade) ? (string) $eventoObjeto->cidade : '');
-				$evento->setUfEvento(isset($eventoObjeto->uf) ? (string) $eventoObjeto->uf : '');
-				//Adiciona o evento no objeto
-				$objeto->addEvento($evento);
-			    }
-			    //Adiciona o resultado ao rastreamento
-			    $rastreamento->addResultado($objeto);
-			    //Se chegou aqui, possui um rastreamento
-			    $retorno = TRUE;
-			}
-		    }
-		    $this->retorno = $rastreamento;
-		}
+            //Inicia a consulta
+            $soap = new \SoapClient(parent::URL_RASTREADOR);
+            $resultado = $soap->buscaEventosLista($this->getParametros());
+            //Verifica se houve retorno
+            if ($resultado instanceof \stdClass) {
+                //Monta informações do rastreamento
+                $rastreamento = new CorreiosRastreamentoResultado();
+                $rastreamento->setVersao(isset($resultado->return->versao) ? (string) $resultado->return->versao : '');
+                $rastreamento->setQuantidade(isset($resultado->return->qtd) ? (int) $resultado->return->qtd : 0);
+                //Se houver resultado
+                if ($rastreamento->getQuantidade() > 0 and isset($resultado->return->objeto)) {
+                    //Verifica os objetos
+                    foreach ($resultado->return->objeto as $objetoDetalhe) {
+                        //Monta informações do objeto
+                        $objeto = new CorreiosRastreamentoResultadoOjeto();
+                        $objeto->setObjeto(isset($objetoDetalhe->numero) ? (string) $objetoDetalhe->numero : '');
+                        $objeto->setSigla(isset($objetoDetalhe->sigla) ? (string) $objetoDetalhe->sigla : '');
+                        $objeto->setNome(isset($objetoDetalhe->nome) ? (string) $objetoDetalhe->nome : '');
+                        $objeto->setCategoria(isset($objetoDetalhe->categoria) ? (string) $objetoDetalhe->categoria : '');
+                        //Verifica os eventos do objeto
+                        foreach ($objetoDetalhe->evento as $eventoObjeto) {
+                            //Monta as informações do(s) evento(s) do objeto
+                            $evento = new CorreiosRastreamentoResultadoEvento();
+                            $evento->setTipoEvento(isset($eventoObjeto->tipo) ? (string) $eventoObjeto->tipo : '');
+                            $evento->setStatus(isset($eventoObjeto->status) ? (integer) $eventoObjeto->status : 0);
+                            $evento->setData(isset($eventoObjeto->data) ? (string) $eventoObjeto->data : '');
+                            $evento->setHora(isset($eventoObjeto->hora) ? (string) $eventoObjeto->hora : '');
+                            $evento->setDescricao(isset($eventoObjeto->descricao) ? (string) $eventoObjeto->descricao : '');
+                            $evento->setDetalhe(isset($eventoObjeto->detalhe) ? (string) $eventoObjeto->detalhe : '');
+                            $evento->setLocalEvento(isset($eventoObjeto->local) ? (string) $eventoObjeto->local : '');
+                            $evento->setCodigoEvento(isset($eventoObjeto->codigo) ? (string) $eventoObjeto->codigo : '');
+                            $evento->setCidadeEvento(isset($eventoObjeto->cidade) ? (string) $eventoObjeto->cidade : '');
+                            $evento->setUfEvento(isset($eventoObjeto->uf) ? (string) $eventoObjeto->uf : '');
+                            //Adiciona o evento no objeto
+                            $objeto->addEvento($evento);
+                        }
+                        //Adiciona o resultado ao rastreamento
+                        $rastreamento->addResultado($objeto);
+                        //Se chegou aqui, possui um rastreamento
+                        $retorno = TRUE;
+                    }
+                }
+                $this->retorno = $rastreamento;
+            }
 	    } catch (\SoapFault $sf) {
 		    throw new \Exception($sf->getMessage());
 	    }
