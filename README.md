@@ -1,17 +1,7 @@
-Correios
+Correios [![Build Status](https://travis-ci.org/ivanwhm/correios.svg)](https://travis-ci.org/ivanwhm/correios)
 ========
 
 Várias Classes em PHP para diversos serviços dos Correios.
-
-Estrutura das pastas
-====================
-
-classes: Contém as classes necessárias para as consultas.
-
-exemplos: Contém exemplos de cada uma das consultas disponíveis.
-
-manuais: Contém os manuais oficiais dos Correios.
-
 
 Cálculo Remoto de Preço e Prazo de entrega
 ==========================================
@@ -28,6 +18,8 @@ A versão atual destas classes está trabalhando com a versão 1.9 do webservice
 
 **Histórico de alterações**
 
+* **02/09/2018**:
+* Inclusão inicial de testes automatizados e integração contínua com Travis-CI
 * **27/01/2016**:
 * Correções diversas nos namespaces.
 * **23/01/2016**:
@@ -56,6 +48,8 @@ A versão atual destas classes está trabalhando com a versão 1.5 do webservice
 
 **Histórico de alterações**
 
+* **02/09/2018**:
+* Inclusão inicial de testes automatizados e integração contínua com Travis-CI
 * **27/01/2016**:
 * Correções diversas nos namespaces.
 * **23/01/2016**:
@@ -86,6 +80,8 @@ informações a respeito de um objeto ou para entrada de dados externas em seus 
 
 **Histórico de alterações**
 
+* **02/09/2018**:
+* Inclusão inicial de testes automatizados e integração contínua com Travis-CI
 * **27/01/2016**:
 * Correções diversas nos namespaces.
 * **23/01/2016**:
