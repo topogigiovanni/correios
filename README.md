@@ -18,7 +18,9 @@ A versão atual destas classes está trabalhando com a versão 1.9 do webservice
 
 **Histórico de alterações**
 
-* **02/09/2018**:
+* **03/09/2016**:
+* Pequenos ajustes nas documentações dos métodos
+* **02/09/2016**:
 * Inclusão inicial de testes automatizados e integração contínua com Travis-CI
 * **27/01/2016**:
 * Correções diversas nos namespaces.
@@ -40,15 +42,13 @@ Cada consulta ao sistema fornece informações sobre o rastreamento de até 50 o
 
 O Cliente deverá informar os números dos objetos a rastrear através de uma conexão HTTP (HyperText Transfer Protocol).
 
-Você pode baixar a especificação do webservice de preços e prazos [aqui](http://blog.correios.com.br/comercioeletronico/wp-content/uploads/2011/10/Guia-Tecnico-Rastreamento-XML-Cliente-Vers%C3%A3o-e-commerce-v-1-5.pdf).
-
 Os manuais de especificação serão salvos também na pasta manuais deste projeto, afim de manter um histórico.
 
-A versão atual destas classes está trabalhando com a versão 1.5 do webservice dos Correios.
+A versão atual destas classes está trabalhando com a versão 1.7 do webservice dos Correios.
 
 **Histórico de alterações**
 
-* **02/09/2018**:
+* **02/09/2016**:
 * Inclusão inicial de testes automatizados e integração contínua com Travis-CI
 * **27/01/2016**:
 * Correções diversas nos namespaces.
@@ -80,7 +80,7 @@ informações a respeito de um objeto ou para entrada de dados externas em seus 
 
 **Histórico de alterações**
 
-* **02/09/2018**:
+* **02/09/2017**:
 * Inclusão inicial de testes automatizados e integração contínua com Travis-CI
 * **27/01/2016**:
 * Correções diversas nos namespaces.
