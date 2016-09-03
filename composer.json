@@ -1,4 +1,20 @@
 {
+	"name": "ivan/correios",
+	"description": "Várias Classes em PHP para diversos serviços dos Correios (Cálculo de preços e prazos de entrega, rastreamento de objetos e validação/geração de SRO)",
+	"type": "library",
+	"license": "Apache License",
+	"authors": [
+		{
+			"name": "Ivan Wilhelm",
+			"email": "ivan.whm@me.com"
+		}
+	],
+	"require": {
+
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^5.5"
+	},
 	"autoload": {
 		"psr-4": {
 			"correios\\" : "src/"
