@@ -2,3 +2,7 @@
 composer.lock
 /nbproject/
 .vscode
+.idea
+.settings
+.project
+.buildpath
