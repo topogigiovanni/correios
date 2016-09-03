@@ -55,9 +55,9 @@ try {
                 if ($calculo->getDataBaseCalculo() instanceof \DateTime) {
                     echo 'Database de cálculo....................: ' . $calculo->getDataBaseCalculo()->format('d/m/Y') . PHP_EOL;
                 }
-                if (($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS) or
-                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) or
-                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
+                if (($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS) ||
+                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) ||
+                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) ||
                     ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
                     $entregaDomiciliar = $retorno->getEntregaDomiciliar() ? 'Sim' : 'Não';
                     $entregaSabado = $retorno->getEntregaSabado() ? 'Sim' : 'Não';
@@ -65,9 +65,9 @@ try {
                     echo 'Entrega domiciliar.....................: ' . $entregaDomiciliar . PHP_EOL;
                     echo 'Entrega sábado.........................: ' . $entregaSabado . PHP_EOL;
                 }
-                if (($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS) or
-                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_SO_PRECO) or
-                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) or
+                if (($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS) ||
+                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_SO_PRECO) ||
+                    ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) ||
                     ($calculo->getTipoCalculo() == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE)) {
                     echo 'Valor..................................: R$ ' . number_format($retorno->getValor(), 2, ',', '.') . PHP_EOL;
                     echo 'Valor do serviço mão própria...........: R$ ' . number_format($retorno->getValorMaoPropria(), 2, ',', '.') . PHP_EOL;
