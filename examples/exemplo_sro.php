@@ -4,7 +4,7 @@
  * Contém um exemplo de utilização da classe geração/validação de SRO.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @version 1.2
+ * @version 1.3
  */
 
 namespace correios\Exemplos;
@@ -16,10 +16,6 @@ use correios\Sro\CorreiosSroDados;
 
 //Ajusta a codificação e o tipo do conteúdo
 header('Content-type: text/txt; charset=utf-8');
-
-//Importa as classes
-#require '../classes/CorreiosSro.php';
-#require '../classes/CorreiosSroDados.php';
 
 try {
     echo '============================' . PHP_EOL;

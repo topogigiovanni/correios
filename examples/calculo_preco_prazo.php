@@ -5,10 +5,12 @@
  * dos Correios.
  *
  * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @version 1.2
+ * @version 1.3
  */
 
 namespace Exemplos;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 use correios\Correios;
 use correios\PrecoPrazo\CorreiosPrecoPrazo;
@@ -18,15 +20,10 @@ header('Content-type: text/txt; charset=utf-8');
 
 date_default_timezone_set('America/Sao_Paulo');
 
-//Importa as classes
-require '../classes/Correios.php';
-require '../classes/CorreiosPrecoPrazo.php';
-require '../classes/CorreiosPrecoPrazoResultado.php';
-
 try {
     //Cria o objeto, definindo que o retorno deve ser preço e prazo.
     //Nesta nova versão é possível retornar apenas o preço ou apenas o prazo.
-    $calculo = new CorreiosPrecoPrazo('', '', Correios::TIPO_CALCULO_PRECO_TODOS);
+    $calculo = new CorreiosPrecoPrazo('ECT', 'ECT', Correios::TIPO_CALCULO_PRECO_TODOS);
     //Envia os parâmetros
     //Parâmetros necessários apenas nos tipos de cálculo todos OU SO_PRAZO
     $calculo->setCepOrigem('89050100');
@@ -38,7 +35,7 @@ try {
     //Parâmetros necessários apenas nos tipos de cálculo TODOS ou SO_PRECO
     $calculo->setFormato(Correios::FORMATO_CAIXA_PACOTE);
     $calculo->setPeso(9.56);
-    $calculo->setValorDeclarado(9637.89);
+    $calculo->setValorDeclarado(637.89);
     $calculo->hasMaoPropria(FALSE);
     $calculo->hasAvisoRecebimento(TRUE);
     $calculo->setAltura(2.0);
