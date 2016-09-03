@@ -182,7 +182,7 @@ class CorreiosRastreamento extends Correios {
                 $rastreamento->setVersao(isset($resultado->return->versao) ? (string) $resultado->return->versao : '');
                 $rastreamento->setQuantidade(isset($resultado->return->qtd) ? (int) $resultado->return->qtd : 0);
                 //Se houver resultado
-                if ($rastreamento->getQuantidade() > 0 and isset($resultado->return->objeto)) {
+                if ($rastreamento->getQuantidade() > 0 && isset($resultado->return->objeto)) {
                     //Verifica os objetos
                     foreach ($resultado->return->objeto as $objetoDetalhe) {
                         //Monta informações do objeto
