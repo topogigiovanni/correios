@@ -100,7 +100,7 @@ final class CorreiosPrecoPrazo extends Correios {
 
     /**
      * Contém a database para o cálculo.
-     * @var DateTime
+     * @var \DateTime
      */
     private $dataBaseCalculo;
 
@@ -404,6 +404,9 @@ final class CorreiosPrecoPrazo extends Correios {
             if (@fopen(parent::URL_CALCULADOR, 'r')) {
                 $soap = new \SoapClient(parent::URL_CALCULADOR);
 
+                $metodoConsulta = '';
+                $metodoRetorno = '';
+                
                 //Define os métodos de consulta e retorno
                 switch ($this->tipoCalculo) {
                     case Correios::TIPO_CALCULO_PRECO_TODOS:
