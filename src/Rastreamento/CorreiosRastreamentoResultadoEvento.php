@@ -89,7 +89,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @param string $tipoEvento Tipo do evento de retorno.
      */
     public function setTipoEvento($tipoEvento) {
-        $this->tipotipoEvento = $tipoEvento;
+        $this->tipoEvento = $tipoEvento;
     }
 
     /**
