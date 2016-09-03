@@ -56,6 +56,6 @@ try {
     } else {
 	echo 'Nenhum rastreamento encontrado.' . PHP_EOL;
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     echo 'Ocorreu um erro ao processar sua solicitação. Erro: ' . $e->getMessage() . PHP_EOL;
 }
