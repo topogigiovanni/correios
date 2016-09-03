@@ -38,7 +38,7 @@ final class CorreiosSroDados extends CorreiosSro {
 
     /**
      * Contém o dígito verificador do objeto.
-     * @var integer
+     * @var string
      */
     private $digitoVerificador;
 
@@ -54,7 +54,7 @@ final class CorreiosSroDados extends CorreiosSro {
      * @throws \Exception
      */
     public function __construct($sro) {
-        if (parent::validaSro($sro)) {
+        if ($this->validaSro($sro)) {
             $this->sro = $sro;
             $this->siglaTipoServico = substr($sro, 0, 2);
             $this->descricaoTipoServico = self::$siglasComDescricao[substr($sro, 0, 2)];
@@ -100,7 +100,7 @@ final class CorreiosSroDados extends CorreiosSro {
 
     /**
      * Retorna o dígito verificador do objeto.
-     * @return integer
+     * @return string
      */
     public function getDigitoVerificador() {
         return $this->digitoVerificador;
