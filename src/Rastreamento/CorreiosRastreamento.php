@@ -71,11 +71,11 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function setTipo($tipo) {
-	if (in_array($tipo, parent::$tiposRastreamento)) {
-	    $this->tipo = $tipo;
-	} else {
-	    throw new \Exception('O tipo de rastreamento informado é inválido.');
-	}
+        if (in_array($tipo, parent::$tiposRastreamento)) {
+            $this->tipo = $tipo;
+        } else {
+            throw new \Exception('O tipo de rastreamento informado é inválido.');
+        }
     }
 
     /**
@@ -85,11 +85,11 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function setLingua($lingua) {
-	if (in_array($lingua, parent::$linguasRastreamento)) {
-	    $this->lingua = $lingua;
-	} else {
-	    throw new \Exception('O idioma de rastreamento informado é inválido.');
-	}
+        if (in_array($lingua, parent::$linguasRastreamento)) {
+            $this->lingua = $lingua;
+        } else {
+            throw new \Exception('O idioma de rastreamento informado é inválido.');
+        }
     }
 
     /**
@@ -99,11 +99,11 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function setResultado($resultado) {
-	if (in_array($resultado, parent::$resultadosRastreamento)) {
-	    $this->resultado = $resultado;
-	} else {
-	    throw new \Exception('O tipos de resultado de rastreamento informado é inválido.');
-	}
+        if (in_array($resultado, parent::$resultadosRastreamento)) {
+            $this->resultado = $resultado;
+        } else {
+            throw new \Exception('O tipos de resultado de rastreamento informado é inválido.');
+        }
     }
 
     /**
@@ -113,22 +113,21 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function addObjeto($objeto) {
-	if (CorreiosSro::validaSro($objeto)) {
-	    $this->objetos[] = $objeto;
-	} else {
-	    throw new \Exception('O número de objeto informado é inválido.');
-	}
+        if (CorreiosSro::validaSro($objeto)) {
+            $this->objetos[] = $objeto;
+        } else {
+            throw new \Exception('O número de objeto informado é inválido.');
+        }
     }
 
     /**
      * Retorna a lista dos objetos a serem pesquisados um após o outro,
      * sem espaços ou outro símbolo separador.
      *
-     * @return string
+     * @return array
      */
     private function getObjetos() {
-	$objetos = implode('', $this->objetos);
-	return $objetos;
+        return $this->objetos;
     }
 
     /**
@@ -137,7 +136,7 @@ class CorreiosRastreamento extends Correios {
      * @return CorreiosRastreamentoResultado
      */
     public function getRetorno() {
-	return $this->retorno;
+        return $this->retorno;
     }
 
     /**
@@ -146,15 +145,15 @@ class CorreiosRastreamento extends Correios {
      * @return array
      */
     protected function getParametros() {
-	$parametros = array(
-	    'usuario' => (string) $this->getUsuario(),
-	    'senha' => (string) $this->getSenha(),
-	    'tipo' => (string) $this->tipo,
-	    'lingua' => (string) $this->lingua,
-	    'resultado' => (string) $this->resultado,
-	    'objetos' => (string) $this->getObjetos(),
-	);
-	return $parametros;
+        $parametros = array(
+            'usuario' => (string) $this->getUsuario(),
+            'senha' => (string) $this->getSenha(),
+            'tipo' => (string) $this->tipo,
+            'lingua' => (string) $this->lingua,
+            'resultado' => (string) $this->resultado,
+            'objetos' => $this->getObjetos(),
+        );
+        return $parametros;
     }
 
     /**
@@ -164,55 +163,80 @@ class CorreiosRastreamento extends Correios {
      * @throws Exception
      */
     public function processaConsulta() {
-	ini_set("allow_url_fopen", 1);
-	ini_set("soap.wsdl_cache_enabled", 0);
-	$retorno = FALSE;
-	//Valida se o servidor está no ar
-	if (@fopen(parent::URL_RASTREADOR, 'r')) {
-	    try {
-            $soap = new \SoapClient(parent::URL_RASTREADOR);
-            $resultado = $soap->buscaEventosLista($this->getParametros());
 
-            if ($resultado instanceof \stdClass) {
-                $rastreamento = new CorreiosRastreamentoResultado();
-                $rastreamento->setVersao(isset($resultado->return->versao) ? (string) $resultado->return->versao : '');
-                $rastreamento->setQuantidade(isset($resultado->return->qtd) ? (int) $resultado->return->qtd : 0);
-                if ($rastreamento->getQuantidade() > 0 && isset($resultado->return->objeto)) {
-                    //Verifica os objetos
-                    foreach ($resultado->return->objeto as $objetoDetalhe) {
-                        $objeto = new CorreiosRastreamentoResultadoOjeto();
-                        $objeto->setObjeto(isset($objetoDetalhe->numero) ? (string) $objetoDetalhe->numero : '');
-                        $objeto->setSigla(isset($objetoDetalhe->sigla) ? (string) $objetoDetalhe->sigla : '');
-                        $objeto->setNome(isset($objetoDetalhe->nome) ? (string) $objetoDetalhe->nome : '');
-                        $objeto->setCategoria(isset($objetoDetalhe->categoria) ? (string) $objetoDetalhe->categoria : '');
-                        //Verifica os eventos do objeto
-                        foreach ($objetoDetalhe->evento as $eventoObjeto) {
-                            $evento = new CorreiosRastreamentoResultadoEvento();
-                            $evento->setTipoEvento(isset($eventoObjeto->tipo) ? (string) $eventoObjeto->tipo : '');
-                            $evento->setStatus(isset($eventoObjeto->status) ? (integer) $eventoObjeto->status : 0);
-                            $evento->setData(isset($eventoObjeto->data) ? (string) $eventoObjeto->data : '');
-                            $evento->setHora(isset($eventoObjeto->hora) ? (string) $eventoObjeto->hora : '');
-                            $evento->setDescricao(isset($eventoObjeto->descricao) ? (string) $eventoObjeto->descricao : '');
-                            $evento->setDetalhe(isset($eventoObjeto->detalhe) ? (string) $eventoObjeto->detalhe : '');
-                            $evento->setLocalEvento(isset($eventoObjeto->local) ? (string) $eventoObjeto->local : '');
-                            $evento->setCodigoEvento(isset($eventoObjeto->codigo) ? (string) $eventoObjeto->codigo : '');
-                            $evento->setCidadeEvento(isset($eventoObjeto->cidade) ? (string) $eventoObjeto->cidade : '');
-                            $evento->setUfEvento(isset($eventoObjeto->uf) ? (string) $eventoObjeto->uf : '');
+        ini_set("allow_url_fopen", 1);
+        ini_set("soap.wsdl_cache_enabled", 0);
+        ini_set("default_socket_timeout", 15);
 
-                            $objeto->addEvento($evento);
+        $retorno = FALSE;
+        //Valida se o servidor está no ar
+        if (@fopen(parent::URL_RASTREADOR, 'r')) {
+            try {
+                $soap = new \SoapClient(parent::URL_RASTREADOR);
+                $resultado = $soap->buscaEventosLista($this->getParametros());
+
+                if ($resultado instanceof \stdClass) {
+                    $rastreamento = new CorreiosRastreamentoResultado();
+                    $rastreamento->setVersao(isset($resultado->return->versao) ? (string) $resultado->return->versao : '');
+                    $rastreamento->setQuantidade(isset($resultado->return->qtd) ? (int) $resultado->return->qtd : 0);
+                    if ($rastreamento->getQuantidade() > 0 && isset($resultado->return->objeto)) {
+                        //Verifica os objetos
+                        foreach ((array) $resultado->return->objeto as $objetoDetalhe) {
+                            if (!isset($objetoDetalhe->erro)) {
+                                $objeto = new CorreiosRastreamentoResultadoObjeto();
+                                $objeto->setObjeto(isset($objetoDetalhe->numero) ? (string) $objetoDetalhe->numero : '');
+                                $objeto->setSigla(isset($objetoDetalhe->sigla) ? (string) $objetoDetalhe->sigla : '');
+                                $objeto->setNome(isset($objetoDetalhe->nome) ? (string) $objetoDetalhe->nome : '');
+                                $objeto->setCategoria(isset($objetoDetalhe->categoria) ? (string) $objetoDetalhe->categoria : '');
+
+                                if (isset($objetoDetalhe->evento) && is_array($objetoDetalhe->evento)) {
+                                    //Verifica os eventos do objeto
+                                    foreach ((array) $objetoDetalhe->evento as $eventoObjeto) {
+                                        $evento = new CorreiosRastreamentoResultadoEvento();
+                                        $evento->setTipoDoEvento(isset($eventoObjeto->tipo) ? (string) $eventoObjeto->tipo : '');
+                                        $evento->setStatus(isset($eventoObjeto->status) ? (integer) $eventoObjeto->status : 0);
+                                        $evento->setData(isset($eventoObjeto->data) ? (string) $eventoObjeto->data : '');
+                                        $evento->setHora(isset($eventoObjeto->hora) ? (string) $eventoObjeto->hora : '');
+                                        $evento->setDescricao(isset($eventoObjeto->descricao) ? (string) $eventoObjeto->descricao : '');
+                                        $evento->setLocalEvento(isset($eventoObjeto->local) ? (string) $eventoObjeto->local : '');
+                                        $evento->setCodigoEvento(isset($eventoObjeto->codigo) ? (string) $eventoObjeto->codigo : '');
+                                        $evento->setCidadeEvento(isset($eventoObjeto->cidade) ? (string) $eventoObjeto->cidade : '');
+                                        $evento->setUfEvento(isset($eventoObjeto->uf) ? (string) $eventoObjeto->uf : '');
+                                        //Adiciona os detalhes do evento na lista
+                                        $objeto->addEvento($evento);
+                                    }
+                                } elseif (isset($objetoDetalhe->evento) && $objetoDetalhe->evento instanceof \stdClass) {
+                                    $evento = new CorreiosRastreamentoResultadoEvento();
+                                    $evento->setTipoDoEvento(isset($objetoDetalhe->evento->tipo) ? (string) $objetoDetalhe->evento->tipo : '');
+                                    $evento->setStatus(isset($objetoDetalhe->evento->status) ? (integer) $objetoDetalhe->evento->status : 0);
+                                    $evento->setData(isset($objetoDetalhe->evento->data) ? (string) $objetoDetalhe->evento->data : '');
+                                    $evento->setHora(isset($objetoDetalhe->evento->hora) ? (string) $objetoDetalhe->evento->hora : '');
+                                    $evento->setDescricao(isset($objetoDetalhe->evento->descricao) ? (string) $objetoDetalhe->evento->descricao : '');
+                                    $evento->setLocalEvento(isset($objetoDetalhe->evento->local) ? (string) $objetoDetalhe->evento->local : '');
+                                    $evento->setCodigoEvento(isset($objetoDetalhe->evento->codigo) ? (string) $objetoDetalhe->evento->codigo : '');
+                                    $evento->setCidadeEvento(isset($objetoDetalhe->evento->cidade) ? (string) $objetoDetalhe->evento->cidade : '');
+                                    $evento->setUfEvento(isset($objetoDetalhe->evento->uf) ? (string) $objetoDetalhe->evento->uf : '');
+                                    //Adiciona os detalhes do evento na lista
+                                    $objeto->addEvento($evento);
+                                }
+
+                                //Adiciona o resultado do objeto na lista
+                                $rastreamento->addResultado($objeto);
+                            } else {
+                                $reduzQtd = (int) $rastreamento->getQuantidade();
+                                $rastreamento->setQuantidade($reduzQtd--);
+                            }
+
+                            $retorno = TRUE;
                         }
-
-                        $rastreamento->addResultado($objeto);
-                        $retorno = TRUE;
                     }
+                    $this->retorno = $rastreamento;
                 }
-                $this->retorno = $rastreamento;
+            } catch (\SoapFault $sf) {
+                throw new \Exception($sf->getMessage());
             }
-	    } catch (\SoapFault $sf) {
-		    throw new \Exception($sf->getMessage());
-	    }
-	}
-	return $retorno;
+        }
+        return $retorno;
     }
 
 }

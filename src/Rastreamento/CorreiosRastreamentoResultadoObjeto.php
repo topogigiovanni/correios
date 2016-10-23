@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Classe que irá conter um objeto de rastreamento de encomendas.
  *
@@ -8,8 +9,7 @@
 
 namespace correios\Rastreamento;
 
-class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
-{
+class CorreiosRastreamentoResultadoObjeto extends CorreiosRastreamentoResultado {
 
     /**
      * Contém o número do objeto enviado.
@@ -51,9 +51,8 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @param string $objeto Número do objeto enviado.
      */
-    public function setObjeto($objeto)
-    {
-      $this->objeto = $objeto;
+    public function setObjeto($objeto) {
+        $this->objeto = $objeto;
     }
 
     /**
@@ -61,9 +60,8 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @param string $sigla Sigla do objeto enviado.
      */
-    public function setSigla($sigla)
-    {
-      $this->sigla = $sigla;
+    public function setSigla($sigla) {
+        $this->sigla = $sigla;
     }
 
     /**
@@ -71,9 +69,8 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @param string $nome Nome do objeto enviado.
      */
-    public function setNome($nome)
-    {
-      $this->nome = $nome;
+    public function setNome($nome) {
+        $this->nome = $nome;
     }
 
     /**
@@ -81,19 +78,17 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @param string $categoria Categoria do objeto enviado.
      */
-    public function setCategoria($categoria)
-    {
-      $this->categoria = $categoria;
-    }        
-    
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
+    }
+
     /**
      * Adiciona um evento ao rastreamento.
      *
      * @param CorreiosRastreamentoResultadoEvento $evento Evento do objeto.
      */
-    public function addEvento(CorreiosRastreamentoResultadoEvento $evento)
-    {
-      $this->evento[] = $evento;
+    public function addEvento(CorreiosRastreamentoResultadoEvento $evento) {
+        $this->evento[] = $evento;
     }
 
     /**
@@ -101,9 +96,8 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @return string
      */
-    public function getObjeto()
-    {
-      return $this->objeto;
+    public function getObjeto() {
+        return $this->objeto;
     }
 
     /**
@@ -111,9 +105,8 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @return string
      */
-    public function getSigla()
-    {
-      return $this->sigla;
+    public function getSigla() {
+        return $this->sigla;
     }
 
     /**
@@ -121,9 +114,8 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @return string
      */
-    public function getNome()
-    {
-      return $this->nome;
+    public function getNome() {
+        return $this->nome;
     }
 
     /**
@@ -131,19 +123,17 @@ class CorreiosRastreamentoResultadoOjeto extends CorreiosRastreamentoResultado
      *
      * @return string
      */
-    public function getCategoria()
-    {
-      return $this->categoria;
+    public function getCategoria() {
+        return $this->categoria;
     }
-    
+
     /**
      * Retorna a descrição de um determinado evento.
      *
      * @return CorreiosRastreamentoResultadoEvento[]
      */
-    public function getEventos()
-    {
-      return $this->evento;
+    public function getEventos() {
+        return $this->evento;
     }
 
 }

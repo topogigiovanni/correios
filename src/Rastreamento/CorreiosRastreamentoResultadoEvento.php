@@ -11,14 +11,14 @@ namespace correios\Rastreamento;
 
 use correios\Correios;
 
-final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResultadoOjeto {
+final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResultadoObjeto {
 
     /**
      * Contém o tipo do evento de retorno.
      *
      * @var string
      */
-    private $tipoEvento;
+    private $tipoDoEvento;
 
     /**
      * Contém o status do evento de retorno.
@@ -49,13 +49,6 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     private $descricao;
 
     /**
-     * Contém o detalhe sobre o evento.
-     *
-     * @var string
-     */
-    private $detalhe;
-
-    /**
      * Contém o local onde ocorreu o evento.
      *
      * @var string
@@ -84,102 +77,21 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     private $ufEvento;
 
     /**
-     * Indica o tipo do evento de retorno.
-     *
-     * @param string $tipoEvento Tipo do evento de retorno.
-     */
-    public function setTipoEvento($tipoEvento) {
-        $this->tipoEvento = $tipoEvento;
-    }
-
-    /**
-     * Indica o status do evento de retorno.
-     *
-     * @param integer $status Status do evento de retorno.
-     */
-    public function setStatus($status) {
-        $this->status = $status;
-    }
-
-    /**
-     * Indica a data do evento.
-     *
-     * @param string $data Data do evento.
-     */
-    public function setData($data) {
-        $this->data = $data;
-    }
-
-    /**
-     * Indica a hora do evento.
-     *
-     * @param string $hora Hora do evento.
-     */
-    public function setHora($hora) {
-        $this->hora = $hora;
-    }
-
-    /**
-     * Indica a descrição do evento.
-     *
-     * @param string $descricao Descrição do evento.
-     */
-    public function setDescricao($descricao) {
-        $this->descricao = $descricao;
-    }
-
-    /**
-     * Indica o detalhe sobre o evento.
-     *
-     * @param string $detalhe Detalhe sobre o evento.
-     */
-    public function setDetalhe($detalhe) {
-        $this->detalhe = $detalhe;
-    }
-
-    /**
-     * Indica o local onde ocorreu o evento.
-     *
-     * @param string $local Local onde ocorreu o evento.
-     */
-    public function setLocalEvento($local) {
-        $this->localEvento = $local;
-    }
-
-    /**
-     * Indica o CEP da unidade ECT.
-     *
-     * @param string $codigo CEP da unidade ECT.
-     */
-    public function setCodigoEvento($codigo) {
-        $this->codigoEvento = $codigo;
-    }
-
-    /**
-     * Indica a cidade onde ocorreu o evento.
-     *
-     * @param string $cidade Cidade onde ocorreu o evento.
-     */
-    public function setCidadeEvento($cidade) {
-        $this->cidadeEvento = $cidade;
-    }
-
-    /**
-     * Indica a unidade da federação.
-     *
-     * @param string $uf Unidade da federação.
-     */
-    public function setUfEvento($uf) {
-        $this->ufEvento = $uf;
-    }
-
-    /**
      * Retorna o tipo do evento de retorno.
      *
      * @return string
      */
-    public function getTipoEvento() {
-        return $this->tipoEvento;
+    public function getTipoDoEvento() {
+        return $this->tipoDoEvento;
+    }
+
+    /**
+     * Indica o tipo do evento de retorno.
+     *
+     * @param string $tipoDoEvento Tipo do evento de retorno.
+     */
+    public function setTipoDoEvento($tipoDoEvento) {
+        $this->tipoDoEvento = $tipoDoEvento;
     }
 
     /**
@@ -188,16 +100,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoTipo() {
-        return (isset(Correios::$tipoEvento[$this->tipoEvento]) ? Correios::$tipoEvento[$this->tipoEvento] : '');
-    }
-
-    /**
-     * Retorna o status do evento de retorno.
-     *
-     * @return integer
-     */
-    public function getStatus() {
-        return $this->status;
+        return (isset(Correios::$tipoEvento[$this->tipoDoEvento]) ? Correios::$tipoEvento[$this->tipoDoEvento] : '');
     }
 
     /**
@@ -210,12 +113,30 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
+     * Indica a data do evento.
+     *
+     * @param string $data Data do evento.
+     */
+    public function setData($data) {
+        $this->data = $data;
+    }
+
+    /**
      * Retorna a hora do evento.
      *
      * @return string
      */
     public function getHora() {
         return $this->hora;
+    }
+
+    /**
+     * Indica a hora do evento.
+     *
+     * @param string $hora Hora do evento.
+     */
+    public function setHora($hora) {
+        $this->hora = $hora;
     }
 
     /**
@@ -228,12 +149,12 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
-     * Retorna o detalhe sobre o evento.
+     * Indica a descrição do evento.
      *
-     * @return string
+     * @param string $descricao Descrição do evento.
      */
-    public function getDetalhe() {
-        return $this->detalhe;
+    public function setDescricao($descricao) {
+        $this->descricao = $descricao;
     }
 
     /**
@@ -246,12 +167,30 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
+     * Indica o local onde ocorreu o evento.
+     *
+     * @param string $local Local onde ocorreu o evento.
+     */
+    public function setLocalEvento($local) {
+        $this->localEvento = $local;
+    }
+
+    /**
      * Retorna o CEP da unidade ECT.
      *
      * @return string
      */
     public function getCodigoEvento() {
         return $this->codigoEvento;
+    }
+
+    /**
+     * Indica o CEP da unidade ECT.
+     *
+     * @param string $codigo CEP da unidade ECT.
+     */
+    public function setCodigoEvento($codigo) {
+        $this->codigoEvento = $codigo;
     }
 
     /**
@@ -264,6 +203,15 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
+     * Indica a cidade onde ocorreu o evento.
+     *
+     * @param string $cidade Cidade onde ocorreu o evento.
+     */
+    public function setCidadeEvento($cidade) {
+        $this->cidadeEvento = $cidade;
+    }
+
+    /**
      * Retorna a unidade da federação.
      *
      * @return string
@@ -273,23 +221,52 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
     }
 
     /**
-     * Retorna a descrição do status do objeto.
-     * @return string
+     * Indica a unidade da federação.
+     *
+     * @param string $uf Unidade da federação.
      */
-    public function getDescricaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]) ?
-                     Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]['mensagem'] :
-                     'Status desconhecido.';
+    public function setUfEvento($uf) {
+        $this->ufEvento = $uf;
     }
 
     /**
      * Retorna a descrição do status do objeto.
+     * 
+     * @return string
+     */
+    public function getDescricaoStatus() {
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]) ?
+                Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]['mensagem'] :
+                'Status desconhecido.';
+    }
+
+    /**
+     * Retorna o status do evento de retorno.
+     *
+     * @return integer
+     */
+    public function getStatus() {
+        return $this->status;
+    }
+
+    /**
+     * Indica o status do evento de retorno.
+     *
+     * @param integer $status Status do evento de retorno.
+     */
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+
+    /**
+     * Retorna a descrição do status do objeto.
+     * 
      * @return string
      */
     public function getAcaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]) ?
-                     Correios::$statusRastreamento[$this->getStatus()][$this->tipoEvento]['acao'] :
-                     'Ação desconhecida.';
+        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]) ?
+                Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]['acao'] :
+                'Ação desconhecida.';
     }
 
 }

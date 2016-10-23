@@ -28,7 +28,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
     /**
      * Contém resultados em forma de eventos.
      *
-     * @var CorreiosRastreamentoResultadoOjeto[]
+     * @var CorreiosRastreamentoResultadoObjeto[]
      */
     private $resultados;
 
@@ -53,9 +53,9 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
     /**
      * Adiciona um resultado de objeto.
      *
-     * @param CorreiosRastreamentoResultadoOjeto $objeto Resultado.
+     * @param CorreiosRastreamentoResultadoObjeto $objeto Resultado.
      */
-    public function addResultado(CorreiosRastreamentoResultadoOjeto $objeto) {
+    public function addResultado(CorreiosRastreamentoResultadoObjeto $objeto) {
         $this->resultados[] = $objeto;
     }
 
@@ -80,7 +80,7 @@ class CorreiosRastreamentoResultado extends CorreiosRastreamento {
     /**
      * Retorna os resultados em forma de eventos.
      *
-     * @return CorreiosRastreamentoResultadoOjeto[]
+     * @return CorreiosRastreamentoResultadoObjeto[]
      */
     public function getResultados() {
         return $this->resultados;
