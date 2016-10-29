@@ -27,7 +27,7 @@ Os manuais de especificação estão salvos na pasta [docs](/docs/rastreamento) 
 
 A versão atual das classes está trabalhando de acordo com a versão 1.5 do webservice dos [Correios](http://www.correios.com.br).
 
-	Desde a última alteração da URL de rastreamento, notamos uma lentidão enorme nas chamadas SOAP. Já estou trabalhando para criar uma alternativa utilizando cUrl. Infelizmente por falta de tempo, não tenho previsão e se você desejar ajudar, faça ajustes e envie um Pull Request.
+> Desde a última alteração da URL de rastreamento, notamos uma lentidão enorme nas chamadas SOAP. Já estou trabalhando para criar uma alternativa utilizando cUrl. Infelizmente por falta de tempo, não tenho previsão e se você desejar ajudar, faça ajustes e envie um Pull Request.
 
 
 ## Validação/Identificação/Geração de dígito verificador de códigos de rastreio (SRO)
