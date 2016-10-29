@@ -166,7 +166,6 @@ class CorreiosRastreamento extends Correios {
 
         ini_set("allow_url_fopen", 1);
         ini_set("soap.wsdl_cache_enabled", 0);
-        ini_set("default_socket_timeout", 15);
 
         $retorno = FALSE;
         //Valida se o servidor está no ar
