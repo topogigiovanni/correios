@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/ivanwhm/correios.svg)](https://travis-ci.org/ivanwhm/correios)
 [![Build Status](https://scrutinizer-ci.com/g/ivanwhm/correios/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ivanwhm/correios/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ivanwhm/correios/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ivanwhm/correios/?branch=master)
+-
 
 ## Cálculo de Preço e Prazo de entrega
 
