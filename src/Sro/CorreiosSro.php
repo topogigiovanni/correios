@@ -1,26 +1,26 @@
 <?php
 
 /**
- * Classe base para para a validação e geração de dígito verificador
- * de SRO dos Correios.
+ * This class help us to working with SRO number from Brazilian Postal Services (Correios).
+ * SRO is a acronym to Serviço de Rastreamento de Objetos (Brazilian Postal Object Tracking Service).
  *
- * @author Ivan Wilhelm <ivan.whm@outlook.com>
- * @version 1.2
+ * @author Ivan Wilhelm <ivan.whm@me.com>
+ * @version 1.5
  * @abstract
  */
 
 namespace correios\Sro;
 
-abstract class CorreiosSro {
+abstract class CorreiosSro
+{
 
     /**
-     * Contém as siglas e suas respectivas descrições, adotadas
-     * no sistema de identificador de objetos.
+     * This list provide all the acronyms adopted by SRO identification.
      *
      * @see http://www.correios.com.br/para-voce/precisa-de-ajuda/como-rastrear-um-objeto/siglas-utilizadas-no-rastreamento-de-objeto
      * @var array
      */
-    protected static $siglasComDescricao = array(
+    protected static $sroAcronymsWithDescription = array(
         'AL' => 'AGENTES DE LEITURA',
         'AR' => 'AVISO DE RECEBIMENTO',
         'AS' => 'ENCOMENDA PAC – AÇÃO SOCIAL',
@@ -253,60 +253,73 @@ abstract class CorreiosSro {
     );
 
     /**
-     * Realiza a validação completa do SRO.
-     * @param string $sro
+     * Makes the complete validation of a SRO number.
+     *
+     * @param string $sro SRO number to validate.
      * @return boolean
      */
-    public static function validaSro($sro) {
-        //Valida a estrutura do SRO
-        if ( ! preg_match('/[A-Z]{2}[0-9]{9}[A-Z]{2}/', $sro)) {
+    public static function validateSro($sro)
+    {
+        //Validate the SRO number structure, using regular expressions
+        if (!preg_match('/[A-Z]{2}[0-9]{9}[A-Z]{2}/', $sro))
+        {
             return false;
         }
 
-        //Valida a sigla do SRO
-        if ( ! isset(self::$siglasComDescricao[substr($sro, 0, 2)])) {
+        //Validate the SRO number acronym
+        if (!isset(self::$sroAcronymsWithDescription[substr($sro, 0, 2)]))
+        {
             return false;
         }
 
-        //Valida o dígito verificador
-        if (self::calculaDigitoVerificador(substr($sro, 2, 8)) != substr($sro, 10, 1)) {
+        //Validate the SRO number digit
+        if (self::calculateSroDigit(substr($sro, 2, 8)) != substr($sro, 10, 1))
+        {
             return false;
         }
-    
+
         return true;
     }
 
     /**
-     * Calcula o dígito verificador do SRO.
-     * Retorna -1 se o cálculo for incorreto.
-     * @param string $sro SRO
+     * Makes the complete calculation to generate the digit from a SRO number.
+     * It will return a -1 number if wrong an SRO was informed or
+     * a correct digit from a SRO number.
+     *
+     * @param string $sro SRO SRO number to validate.
      * @return int
      */
-    public static function calculaDigitoVerificador($sro) {
-        //Inicializa o retorno
-        $retorno = -1;
-        //Valida a quantidade de caracteres
-        if (strlen(trim($sro)) === 8) {
-            //Valida
-            $soma = 0;
-            for ($i = 0; $i <= 8; $i++) {
-                $soma = $soma + (int) substr($sro, $i, 1) * (int) substr('86423597', $i, 1);
+    public static function calculateSroDigit($sro)
+    {
+        //Initializing
+        $return = -1;
+
+        //Validate the correct length
+        if (strlen(trim($sro)) === 8)
+        {
+            //Makes de calculation to generate the SRO number digit
+            $sum = 0;
+            for ($i = 0; $i <= 8; $i++)
+            {
+                $sum = $sum + (int)substr($sro, $i, 1) * (int)substr('86423597', $i, 1);
             }
-            //Calcula o dígito validador
-            switch ($soma % 11) {
+
+            switch ($sum % 11)
+            {
                 case 0:
-                    $retorno = 5;
+                    $return = 5;
                     break;
                 case 1:
-                    $retorno = 0;
+                    $return = 0;
                     break;
                 default:
-                    $retorno = 11 - ($soma % 11);
+                    $return = 11 - ($sum % 11);
                     break;
             }
         }
-        //Retorna
-        return $retorno;
+
+        //Return
+        return $return;
     }
 
 }

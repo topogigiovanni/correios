@@ -13,7 +13,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use correios\Correios;
 use correios\Rastreamento\CorreiosRastreamento;
-use correios\Sro\CorreiosSroDados;
+use correios\Sro\CorreiosSroData;
 
 //Ajusta a codificação e o tipo do conteúdo
 header('Content-type: text/txt; charset=utf-8');
@@ -43,8 +43,8 @@ try {
                 echo 'Nome...................................: ' . $resultado->getNome() . PHP_EOL;
                 echo 'Categoria..............................: ' . $resultado->getCategoria() . PHP_EOL;
                 //Se desejar obter informações sobre o objeto
-                $dadosObjeto = new CorreiosSroDados($resultado->getObjeto());
-                echo 'Serviço................................: ' . $dadosObjeto->getDescricaoTipoServico() . PHP_EOL;
+                $dadosObjeto = new CorreiosSroData($resultado->getObjeto());
+                echo 'Serviço................................: ' . $dadosObjeto->getServiceDescription() . PHP_EOL;
                 echo 'Eventos do objeto: ' . PHP_EOL;
                 foreach ($resultado->getEventos() as $eventos) {
                     echo PHP_EOL;

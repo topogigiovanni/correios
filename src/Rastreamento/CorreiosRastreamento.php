@@ -113,7 +113,7 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function addObjeto($objeto) {
-        if (CorreiosSro::validaSro($objeto)) {
+        if (CorreiosSro::validateSro($objeto)) {
             $this->objetos[] = $objeto;
         } else {
             throw new \Exception('O número de objeto informado é inválido.');
