@@ -37,7 +37,7 @@ A versão atual das classes está trabalhando de acordo com a versão 1.5 do web
 Conjunto de funções responsável por validar, identificar os parâmetros e gerar dígito de validação
 de código de rastreamento (ou número de objeto) SRO dos [Correios](http://www.correios.com.br). Pode ser útil quando se deseja obter informações a respeito de um objeto ou para entrada de dados externas em seus sistemas.
 
-Você pode ter um exemplo de uso [clicando aqui](/examples/sro_information_sro.php).
+Você pode ter um exemplo de uso [clicando aqui](/examples/sro_information.php).
 
 ## Como reportar problemas
 
