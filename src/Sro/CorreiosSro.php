@@ -50,24 +50,24 @@ abstract class CorreiosSro
         'CX' => 'OBJETO INTERNACIONAL',
         'CY' => 'OBJETO INTERNACIONAL',
         'CZ' => 'OBJETO INTERNACIONAL',
-        'DA' => 'REM EXPRES COM AR DIGITAL',
-        'DB' => 'REM EXPRES COM AR DIGITAL BRADESCO',
+        'DA' => 'REM EXPRESS COM AR DIGITAL',
+        'DB' => 'REM EXPRESS COM AR DIGITAL BRADESCO',
         'DC' => 'REM EXPRESSA CRLV/CRV/CNH e NOTIFICAÇÃO',
         'DD' => 'DEVOLUÇÃO DE DOCUMENTOS',
         'DE' => 'REMESSA EXPRESSA TALÃO E CARTÃO C/ AR',
         'DF' => 'E-SEDEX (LÓGICO)',
         'DG' => 'SEDEX',
-        'DI' => 'REM EXPRES COM AR DIGITAL ITAU',
+        'DI' => 'REM EXPRESS COM AR DIGITAL ITAU',
         'DJ' => 'SEDEX',
         'DK' => 'PAC Extra Grande',
         'DL' => 'ENCOMENDA SEDEX (LÓGICO)',
         'DM' => 'e-SEDEX',
         'DN' => 'SEDEX',
         'DO' => 'SEDEX ou Remessa Expressa com AR Digital (Itaú)',
-        'DP' => 'REM EXPRES COM AR DIGITAL PRF',
+        'DP' => 'REM EXPRESS COM AR DIGITAL PRF',
         'DQ' => 'SEDEX ou Remessa Expressa com AR Digital (Santander)',
         'DR' => 'Remessa Expressa com AR Digital (Santander)',
-        'DS' => 'REM EXPRES COM AR DIGITAL SANTANDER',
+        'DS' => 'REM EXPRESS COM AR DIGITAL SANTANDER',
         'DT' => 'REMESSA ECON.SEG.TRANSITO C/AR DIGITAL',
         'DU' => 'e-SEDEX',
         'DV' => 'SEDEX c/ AR digital',
@@ -230,12 +230,12 @@ abstract class CorreiosSro
         'SQ' => 'SEDEX',
         'SR' => 'SEDEX',
         'SS' => 'SEDEX FÍSICO',
-        'ST' => 'REM EXPRES TALAO/CARTAO SEM AR DIGITAL',
+        'ST' => 'REM EXPRESS TALAO/CARTAO SEM AR DIGITAL',
         'SU' => 'ENCOMENDA SERVIÇO EXPRESSA ECT',
-        'SV' => 'REM EXPRES CRLV/CRV/CNH COM AR DIGITAL',
+        'SV' => 'REM EXPRESS CRLV/CRV/CNH COM AR DIGITAL',
         'SW' => 'E-SEDEX',
         'SX' => 'SEDEX 10',
-        'SY' => 'REM EXPRES TALAO/CARTAO COM AR DIGITAL',
+        'SY' => 'REM EXPRESS TALAO/CARTAO COM AR DIGITAL',
         'SZ' => 'SEDEX AGÊNCIA',
         'TC' => 'Objeto para treinamento',
         'TE' => 'TESTE (OBJETO PARA TREINAMENTO)',
@@ -260,20 +260,11 @@ abstract class CorreiosSro
      */
     public static function validateSro($sro)
     {
-        //Validate the SRO number structure, using regular expressions
-        if (!preg_match('/[A-Z]{2}[0-9]{9}[A-Z]{2}/', $sro))
-        {
-            return false;
-        }
-
-        //Validate the SRO number acronym
-        if (!isset(self::$sroAcronymsWithDescription[substr($sro, 0, 2)]))
-        {
-            return false;
-        }
-
-        //Validate the SRO number digit
-        if (self::calculateSroDigit(substr($sro, 2, 8)) != substr($sro, 10, 1))
+        //Validate the SRO number structure, using regular expressions, the SRO number acronym and SRO number digit
+        if ((!preg_match('/[A-Z]{2}[0-9]{9}[A-Z]{2}/', $sro)) ||
+            (!isset(self::$sroAcronymsWithDescription[substr($sro, 0, 2)])) ||
+            (self::calculateSroDigit(substr($sro, 2, 8)) != substr($sro, 10, 1))
+        )
         {
             return false;
         }
@@ -286,40 +277,52 @@ abstract class CorreiosSro
      * It will return a -1 number if wrong an SRO was informed or
      * a correct digit from a SRO number.
      *
-     * @param string $sro SRO SRO number to validate.
+     * @param string $sro SRO number to validate.
      * @return int
      */
     public static function calculateSroDigit($sro)
     {
-        //Initializing
-        $return = -1;
+        return (strlen(trim($sro)) === 8) ? self::getSroDigit(self::generateSroSum($sro)) : -1;
+    }
 
-        //Validate the correct length
-        if (strlen(trim($sro)) === 8)
+    /**
+     * Return the correct SRO digit.
+     *
+     * @param $sum int SUM of SRO code.
+     * @return int
+     */
+    private static function getSroDigit($sum)
+    {
+        switch ($sum % 11)
         {
-            //Makes de calculation to generate the SRO number digit
-            $sum = 0;
-            for ($i = 0; $i <= 8; $i++)
-            {
-                $sum = $sum + (int) substr($sro, $i, 1) * (int) substr('86423597', $i, 1);
-            }
-
-            switch ($sum % 11)
-            {
-                case 0:
-                    $return = 5;
-                    break;
-                case 1:
-                    $return = 0;
-                    break;
-                default:
-                    $return = 11 - ($sum % 11);
-                    break;
-            }
+            case 0:
+                $return = 5;
+                break;
+            case 1:
+                $return = 0;
+                break;
+            default:
+                $return = 11 - ($sum % 11);
+                break;
         }
-
-        //Return
         return $return;
+    }
+
+    /**
+     * Return the SUM of SRO code.
+     * Makes de calculation to generate the SRO number digit.
+     *
+     * @param $sro int SRO number to validate.
+     * @return int
+     */
+    private static function generateSroSum($sro)
+    {
+        $sum = 0;
+        for ($i = 0; $i <= 8; $i++)
+        {
+            $sum = $sum + (int)substr($sro, $i, 1) * (int)substr('86423597', $i, 1);
+        }
+        return $sum;
     }
 
 }
