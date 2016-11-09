@@ -264,7 +264,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      */
     public function getAcaoStatus() {
         return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]) ?
-                Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]['acao'] :  'Ação desconhecida.';
+                Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]['acao'] : 'Ação desconhecida.';
     }
 
 }
