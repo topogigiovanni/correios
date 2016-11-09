@@ -49,3 +49,5 @@ Caso queira ajudar no projeto, terei o maior prazer em tê-lo(a), para isto, sug
 
 
 Feito com &hearts; por **Ivan Wilhelm**
+
+Coded with [PhpStorm](https://www.jetbrains.com/phpstorm/) by [JetBrains](https://www.jetbrains.com/)
