@@ -301,7 +301,7 @@ abstract class CorreiosSro
             $sum = 0;
             for ($i = 0; $i <= 8; $i++)
             {
-                $sum = $sum + (int)substr($sro, $i, 1) * (int)substr('86423597', $i, 1);
+                $sum = $sum + (int) substr($sro, $i, 1) * (int) substr('86423597', $i, 1);
             }
 
             switch ($sum % 11)

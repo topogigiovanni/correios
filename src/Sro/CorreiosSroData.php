@@ -74,8 +74,7 @@ final class CorreiosSroData extends CorreiosSro
             $this->objectCode = substr($sro, 2, 8);
             $this->digit = substr($sro, 10, 1);
             $this->originCountry = substr($sro, 11, 2);
-        }
-        else
+        } else
         {
             throw new \Exception('SRO number is invalid.');
         }
