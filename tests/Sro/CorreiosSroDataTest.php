@@ -20,7 +20,8 @@ class CorreiosSroDataTest extends \PHPUnit_Framework_TestCase
      * @expectedException \Exception
      * @expectedExceptionMessage SRO number is invalid.
      */
-    public function testSroNumberInvalid() {
+    public function testSroNumberInvalid()
+    {
         $data = new CorreiosSroData("SW592067298BR");
         print $data->getCode();
     }
@@ -29,7 +30,8 @@ class CorreiosSroDataTest extends \PHPUnit_Framework_TestCase
      * Tests if the SRO number is correct.
      *
      */
-    public function testCodeCorrect() {
+    public function testCodeCorrect()
+    {
         $data = new CorreiosSroData("SW592067296BR");
         $this->assertEquals($data->getCode(), "SW592067296BR");
     }
@@ -37,7 +39,8 @@ class CorreiosSroDataTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests if the service acronym is correct.
      */
-    public function testServiceAcronymCorrect() {
+    public function testServiceAcronymCorrect()
+    {
         $data = new CorreiosSroData("SW592067296BR");
         $this->assertEquals($data->getServiceAcronym(), "SW");
     }
@@ -63,7 +66,8 @@ class CorreiosSroDataTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests if the SRO digit is correct.
      */
-    public function testDigitCorrect() {
+    public function testDigitCorrect()
+    {
         $data = new CorreiosSroData("SW592067296BR");
         $this->assertEquals($data->getDigit(), "6");
     }

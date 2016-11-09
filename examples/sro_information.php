@@ -20,11 +20,11 @@ header('Content-type: text/txt; charset=utf-8');
 
 try {
     echo '======================' . PHP_EOL;
-    echo 'SRO validation example' . PHP_EOL;
+    echo 'SRO Validation Example' . PHP_EOL;
     echo '======================' . PHP_EOL;
 
     echo 'SRO....: SW592067296BR' . PHP_EOL;
-    echo 'Valid.: ' . ((CorreiosSro::validateSro('SW592067296BR')) ? 'Yes' : 'No') . PHP_EOL . PHP_EOL;
+    echo 'Valid..: ' . ((CorreiosSro::validateSro('SW592067296BR')) ? 'Yes' : 'No') . PHP_EOL . PHP_EOL;
 } catch (\Exception $ex) {
     echo 'An error occurred: ' . $ex->getMessage() . PHP_EOL . PHP_EOL;
 }
@@ -33,22 +33,22 @@ try {
 try {
     $objectData = new CorreiosSroData('SW592067296BR');
     echo '================' . PHP_EOL;
-    echo 'SRO data example' . PHP_EOL;
+    echo 'SRO Data Example' . PHP_EOL;
     echo '================' . PHP_EOL;
 
     echo 'SRO...................: ' . $objectData->getCode() . PHP_EOL;
-    echo 'Service acronym.......: ' . $objectData->getServiceAcronym() . PHP_EOL;
-    echo 'Service description...: ' . $objectData->getServiceDescription() . PHP_EOL;
-    echo 'Object code...........: ' . $objectData->getObjectCode() . PHP_EOL;
-    echo 'SRO digit.............: ' . $objectData->getDigit() . PHP_EOL;
-    echo 'Origin country........: ' . $objectData->getOriginCountry() . PHP_EOL . PHP_EOL;
+    echo 'Service Acronym.......: ' . $objectData->getServiceAcronym() . PHP_EOL;
+    echo 'Service Description...: ' . $objectData->getServiceDescription() . PHP_EOL;
+    echo 'Object Code...........: ' . $objectData->getObjectCode() . PHP_EOL;
+    echo 'SRO Digit.............: ' . $objectData->getDigit() . PHP_EOL;
+    echo 'Origin Country........: ' . $objectData->getOriginCountry() . PHP_EOL . PHP_EOL;
 } catch (\Exception $ex) {
     echo 'An error occurred: ' . $ex->getMessage() . PHP_EOL . PHP_EOL;
 }
 
 try {
     echo '============================' . PHP_EOL;
-    echo 'SRO digit generation example' . PHP_EOL;
+    echo 'SRO Digit Generation Example' . PHP_EOL;
     echo '============================' . PHP_EOL;
 
     echo 'SRO Code..: 59206729' . PHP_EOL;
