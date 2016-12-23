@@ -183,6 +183,7 @@ abstract class CorreiosSro
         'PJ' => 'PAC',
         'PK' => 'PAC Extra Grande',
         'PL' => 'PAC',
+        'PN' => 'PAC',
         'PR' => 'REEMBOLSO POSTAL - CLIENTE AVULSO',
         'QQ' => 'Objeto de teste (SIGEP Web)',
         'RA' => 'REGISTRADO PRIORITÁRIO',
