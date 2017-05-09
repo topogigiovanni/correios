@@ -50,7 +50,7 @@
         if ($retorno->getErro() === 0)
         {
           //Imprime o resultado
-          echo 'Serviço................................: ' . $retorno->getCodigo() . ' (' . Correios::$descricaoServico[$retorno->getCodigo()] . ')' . PHP_EOL;
+          echo 'Serviço................................: ' . sprintf("%'05s", $retorno->getCodigo()) . ' (' . Correios::$descricaoServico[sprintf("%'05s", $retorno->getCodigo())] . ')' . PHP_EOL;
           if ($calculo->getDataBaseCalculo() instanceof DateTime)
           {
             echo 'Database de cálculo....................: ' . $calculo->getDataBaseCalculo()->format('d/m/Y') . PHP_EOL;
@@ -79,7 +79,7 @@
           echo PHP_EOL;
         } else
         {
-          echo 'Ocorreu um erro no cálculo do serviço ' . $retorno->getCodigo() . ' (' . Correios::$descricaoServico[$retorno->getCodigo()] . '): ' . $retorno->getMensagemErro() . PHP_EOL . PHP_EOL;
+          echo 'Ocorreu um erro no cálculo do serviço ' . sprintf("%'05s", $retorno->getCodigo()) . ' (' . Correios::$descricaoServico[sprintf("%'05s", $retorno->getCodigo())] . '): ' . $retorno->getMensagemErro() . PHP_EOL . PHP_EOL;
         }
       }
     } else
