@@ -27,8 +27,10 @@ abstract class Correios {
     const SERVICO_SEDEX_COM_CONTRATO_3 = '40444';
     const SERVICO_SEDEX_COM_CONTRATO_4 = '40568';
     const SERVICO_SEDEX_COM_CONTRATO_5 = '40606';
+	const SERVICO_SEDEX_COM_CONTRATO_AGENCIA = '04162';
     const SERVICO_PAC_SEM_CONTRATO = '41106';
     const SERVICO_PAC_COM_CONTRATO = '41068';
+	const SERVICO_PAC_COM_CONTRATO_AGENCIA = '04669';
     const SERVICO_ESEDEX_COM_CONTRATO = '81019';
     const SERVICO_ESEDEX_PRIORITARIO_COM_CONTRATO = '81027';
     const SERVICO_ESEDEX_EXPRESS_COM_CONTRATO = '81025';
@@ -102,8 +104,10 @@ abstract class Correios {
         self::SERVICO_SEDEX_COM_CONTRATO_3,
         self::SERVICO_SEDEX_COM_CONTRATO_4,
         self::SERVICO_SEDEX_COM_CONTRATO_5,
+		self::SERVICO_SEDEX_COM_CONTRATO_AGENCIA,
         self::SERVICO_PAC_SEM_CONTRATO,
         self::SERVICO_PAC_COM_CONTRATO,
+		self::SERVICO_PAC_COM_CONTRATO_AGENCIA,
         self::SERVICO_ESEDEX_COM_CONTRATO,
         self::SERVICO_ESEDEX_PRIORITARIO_COM_CONTRATO,
         self::SERVICO_ESEDEX_EXPRESS_COM_CONTRATO,
@@ -211,8 +215,10 @@ abstract class Correios {
         self::SERVICO_SEDEX_COM_CONTRATO_3 => 'Sedex com contrato',
         self::SERVICO_SEDEX_COM_CONTRATO_4 => 'Sedex com contrato',
         self::SERVICO_SEDEX_COM_CONTRATO_5 => 'Sedex com contrato',
+		self::SERVICO_SEDEX_COM_CONTRATO_AGENCIA => 'Sedex com contrato agência',
         self::SERVICO_PAC_SEM_CONTRATO => 'PAC sem contrato',
         self::SERVICO_PAC_COM_CONTRATO => 'PAC com contrato',
+		self::SERVICO_PAC_COM_CONTRATO_AGENCIA => 'PAC com contrato agência',
         self::SERVICO_ESEDEX_COM_CONTRATO => 'eSedex com contrato',
         self::SERVICO_ESEDEX_PRIORITARIO_COM_CONTRATO => 'eSedex Prioritário com contrato',
         self::SERVICO_ESEDEX_EXPRESS_COM_CONTRATO => 'eSedex Express com contrato',
