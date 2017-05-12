@@ -171,7 +171,7 @@ abstract class CorreiosSro
         'MZ' => 'TELEGRAMA VIA CORREIOS ON LINE',
         'NE' => 'TELE SENA RESGATADA',
         'NX' => 'EDEI Econômico (não urgente)',
-		'OC' => 'E-SEDEX',
+        'OC' => 'E-SEDEX',
         'PA' => 'PASSAPORTE',
         'PB' => 'ENCOMENDA PAC - NÃO URGENTE',
         'PC' => 'ENCOMENDA PAC A COBRAR',
