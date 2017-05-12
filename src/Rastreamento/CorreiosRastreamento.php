@@ -179,8 +179,12 @@ class CorreiosRastreamento extends Correios {
                     $rastreamento->setVersao(isset($resultado->return->versao) ? (string) $resultado->return->versao : '');
                     $rastreamento->setQuantidade(isset($resultado->return->qtd) ? (int) $resultado->return->qtd : 0);
                     if ($rastreamento->getQuantidade() > 0 && isset($resultado->return->objeto)) {
+                        $objetos = $resultado->return->objeto;
+                        if (!is_array($objetos)) {
+                            $objetos = array($objetos);
+                        }
                         //Verifica os objetos
-                        foreach ((array) $resultado->return->objeto as $objetoDetalhe) {
+                        foreach ($objetos as $objetoDetalhe) {
                             if (!isset($objetoDetalhe->erro)) {
                                 $objeto = new CorreiosRastreamentoResultadoObjeto();
                                 $objeto->setObjeto(isset($objetoDetalhe->numero) ? (string) $objetoDetalhe->numero : '');
