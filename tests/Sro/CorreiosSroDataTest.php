@@ -51,7 +51,7 @@ class CorreiosSroDataTest extends \PHPUnit_Framework_TestCase
     public function testServiceDescriptionCorrect()
     {
         $data = new CorreiosSroData("SW592067296BR");
-        $this->assertEquals($data->getServiceDescription(), "E-SEDEX");
+        $this->assertEquals($data->getServiceDescription(), "e-SEDEX");
     }
 
     /**
