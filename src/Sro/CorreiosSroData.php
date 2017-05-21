@@ -4,7 +4,7 @@
  * This class help us to understand all the information about a SRO number.
  * SRO is a acronym to Serviço de Rastreamento de Objetos (Brazilian Postal Object Tracking Service).
  *
- * @author Ivan Wilhelm <ivan.whm@me.com>
+ * @author Ivan Wilhelm <ivan.whm@icloud.com>
  * @version 1.5
  * @final
  */
