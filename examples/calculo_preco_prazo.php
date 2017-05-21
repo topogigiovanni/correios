@@ -28,10 +28,8 @@ try {
     //Parâmetros necessários apenas nos tipos de cálculo todos OU SO_PRAZO
     $calculo->setCepOrigem('89050100');
     $calculo->setCepDestino('89010130');
-    $calculo->addServico(Correios::SERVICO_SEDEX_SEM_CONTRATO);
-    $calculo->addServico(Correios::SERVICO_PAC_SEM_CONTRATO);
-    $calculo->addServico(Correios::SERVICO_SEDEX_10_SEM_CONTRATO);
-    $calculo->addServico(Correios::SERVICO_ESEDEX_COM_CONTRATO);
+    $calculo->addServico(Correios::SERVICO_PAC_SEM_CONTRATO_AGENCIA);
+    $calculo->addServico(Correios::SERVICO_SEDEX_SEM_CONTRATO_AGENCIA);
     //Parâmetros necessários apenas nos tipos de cálculo TODOS ou SO_PRECO
     $calculo->setFormato(Correios::FORMATO_CAIXA_PACOTE);
     $calculo->setPeso(9.56);

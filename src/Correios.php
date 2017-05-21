@@ -18,6 +18,7 @@ abstract class Correios {
     const FORMATO_ROLO_PRISMA = 2;
     const FORMATO_ENVELOPE = 3;
     const SERVICO_SEDEX_SEM_CONTRATO = '40010';
+    const SERVICO_SEDEX_SEM_CONTRATO_AGENCIA = '04014';
     const SERVICO_SEDEX_A_COBRAR_SEM_CONTRATO_1 = '40045';
     const SERVICO_SEDEX_A_COBRAR_COM_CONTRATO_2 = '40126';
     const SERVICO_SEDEX_10_SEM_CONTRATO = '40215';
@@ -29,6 +30,7 @@ abstract class Correios {
     const SERVICO_SEDEX_COM_CONTRATO_5 = '40606';
 	const SERVICO_SEDEX_COM_CONTRATO_AGENCIA = '04162';
     const SERVICO_PAC_SEM_CONTRATO = '41106';
+    const SERVICO_PAC_SEM_CONTRATO_AGENCIA = '04510';
     const SERVICO_PAC_COM_CONTRATO = '41068';
 	const SERVICO_PAC_COM_CONTRATO_AGENCIA = '04669';
     const SERVICO_ESEDEX_COM_CONTRATO = '81019';
@@ -95,6 +97,7 @@ abstract class Correios {
      */
     protected static $servicos = array(
         self::SERVICO_SEDEX_SEM_CONTRATO,
+        self::SERVICO_SEDEX_SEM_CONTRATO_AGENCIA,
         self::SERVICO_SEDEX_A_COBRAR_SEM_CONTRATO_1,
         self::SERVICO_SEDEX_A_COBRAR_COM_CONTRATO_2,
         self::SERVICO_SEDEX_10_SEM_CONTRATO,
@@ -106,6 +109,7 @@ abstract class Correios {
         self::SERVICO_SEDEX_COM_CONTRATO_5,
 		self::SERVICO_SEDEX_COM_CONTRATO_AGENCIA,
         self::SERVICO_PAC_SEM_CONTRATO,
+        self::SERVICO_PAC_SEM_CONTRATO_AGENCIA,
         self::SERVICO_PAC_COM_CONTRATO,
 		self::SERVICO_PAC_COM_CONTRATO_AGENCIA,
         self::SERVICO_ESEDEX_COM_CONTRATO,
@@ -206,6 +210,7 @@ abstract class Correios {
      */
     public static $descricaoServico = array(
         self::SERVICO_SEDEX_SEM_CONTRATO => 'Sedex sem contrato',
+        self::SERVICO_SEDEX_SEM_CONTRATO_AGENCIA => 'Sedex sem contrato agência',
         self::SERVICO_SEDEX_A_COBRAR_SEM_CONTRATO_1 => 'Sedex a Cobrar sem contrato',
         self::SERVICO_SEDEX_A_COBRAR_COM_CONTRATO_2 => 'Sedex a Cobrar com contrato',
         self::SERVICO_SEDEX_10_SEM_CONTRATO => 'Sedex 10 sem contrato',
@@ -217,6 +222,7 @@ abstract class Correios {
         self::SERVICO_SEDEX_COM_CONTRATO_5 => 'Sedex com contrato',
 		self::SERVICO_SEDEX_COM_CONTRATO_AGENCIA => 'Sedex com contrato agência',
         self::SERVICO_PAC_SEM_CONTRATO => 'PAC sem contrato',
+        self::SERVICO_PAC_SEM_CONTRATO_AGENCIA => 'PAC sem contrato agência',
         self::SERVICO_PAC_COM_CONTRATO => 'PAC com contrato',
 		self::SERVICO_PAC_COM_CONTRATO_AGENCIA => 'PAC com contrato agência',
         self::SERVICO_ESEDEX_COM_CONTRATO => 'eSedex com contrato',

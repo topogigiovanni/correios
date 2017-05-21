@@ -213,7 +213,7 @@ final class CorreiosPrecoPrazoResultado {
      * @return string
      */
     public function getCodigo() {
-        return $this->codigo;
+        return sprintf("%'05s", $this->codigo);
     }
 
     /**
