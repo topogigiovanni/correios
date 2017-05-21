@@ -4,7 +4,7 @@
  * Classe que irá conter o resultado de uma consulta remota de preço
  * e prazo de entrega dos Correios.
  *
- * @author Ivan Wilhelm <ivan.whm@outlook.com>
+ * @author Ivan Wilhelm <ivan.whm@icloud.com>
  * @version 1.3
  * @final
  */
@@ -13,7 +13,8 @@ namespace correios\PrecoPrazo;
 
 use correios\Correios;
 
-final class CorreiosPrecoPrazoResultado {
+final class CorreiosPrecoPrazoResultado
+{
 
     /**
      * Contém o código do serviço.
@@ -92,7 +93,8 @@ final class CorreiosPrecoPrazoResultado {
      * @param \stdClass $retorno Retorno da consulta.
      * @param string $tipoCalculo Tipo de cálculo.
      */
-    public function __construct(\stdClass $retorno, $tipoCalculo) {
+    public function __construct(\stdClass $retorno, $tipoCalculo)
+    {
         $this->setCodigo($retorno->Codigo);
         $this->setErro($retorno->Erro);
         $this->setMensagemErro($retorno->MsgErro);
@@ -100,7 +102,8 @@ final class CorreiosPrecoPrazoResultado {
         if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) ||
             ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) ||
             ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) ||
-            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)
+        ) {
             $this->setPrazoEntrega($retorno->PrazoEntrega);
             $this->setEntregaDomiciliar($retorno->EntregaDomiciliar);
             $this->setEntregaSabado($retorno->EntregaSabado);
@@ -109,7 +112,8 @@ final class CorreiosPrecoPrazoResultado {
         if (($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS) ||
             ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO) ||
             ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE) ||
-            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE)) {
+            ($tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE)
+        ) {
             $this->setValor($retorno->Valor);
             $this->setValorMaoPropria($retorno->ValorMaoPropria);
             $this->setValorAvisoRecebimento($retorno->ValorAvisoRecebimento);
@@ -122,8 +126,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $codigo Código do serviço.
      */
-    private function setCodigo($codigo) {
-        $this->codigo = (string) $codigo;
+    private function setCodigo($codigo)
+    {
+        $this->codigo = (string)$codigo;
     }
 
     /**
@@ -131,8 +136,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $valor Valor do frete.
      */
-    private function setValor($valor) {
-        $this->valor = (float) str_replace(',', '.', $valor);
+    private function setValor($valor)
+    {
+        $this->valor = (float)str_replace(',', '.', $valor);
     }
 
     /**
@@ -140,8 +146,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $prazoEntrega Prazo de entrega.
      */
-    private function setPrazoEntrega($prazoEntrega) {
-        $this->prazoEntrega = (integer) $prazoEntrega;
+    private function setPrazoEntrega($prazoEntrega)
+    {
+        $this->prazoEntrega = (integer)$prazoEntrega;
     }
 
     /**
@@ -149,8 +156,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $valorMaoPropria Valor da mão própria.
      */
-    private function setValorMaoPropria($valorMaoPropria) {
-        $this->valorMaoPropria = (float) str_replace(',', '.', $valorMaoPropria);
+    private function setValorMaoPropria($valorMaoPropria)
+    {
+        $this->valorMaoPropria = (float)str_replace(',', '.', $valorMaoPropria);
     }
 
     /**
@@ -158,8 +166,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $valorAvisoRecebimento Valor do aviso de recebimento.
      */
-    private function setValorAvisoRecebimento($valorAvisoRecebimento) {
-        $this->valorAvisoRecebimento = (float) str_replace(',', '.', $valorAvisoRecebimento);
+    private function setValorAvisoRecebimento($valorAvisoRecebimento)
+    {
+        $this->valorAvisoRecebimento = (float)str_replace(',', '.', $valorAvisoRecebimento);
     }
 
     /**
@@ -167,8 +176,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $valorValorDeclarado Valor do valor declarado.
      */
-    private function setValorValorDeclarado($valorValorDeclarado) {
-        $this->valorValorDeclarado = (float) str_replace(',', '.', $valorValorDeclarado);
+    private function setValorValorDeclarado($valorValorDeclarado)
+    {
+        $this->valorValorDeclarado = (float)str_replace(',', '.', $valorValorDeclarado);
     }
 
     /**
@@ -176,8 +186,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $entregaDomiciliar Entrega domiciliar.
      */
-    private function setEntregaDomiciliar($entregaDomiciliar) {
-        $this->entregaDomiciliar = (boolean) ($entregaDomiciliar == 'S');
+    private function setEntregaDomiciliar($entregaDomiciliar)
+    {
+        $this->entregaDomiciliar = (boolean)($entregaDomiciliar == 'S');
     }
 
     /**
@@ -185,8 +196,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $entregaSabado Entrega aos sábados.
      */
-    private function setEntregaSabado($entregaSabado) {
-        $this->entregaSabado = (boolean) ($entregaSabado == 'S');
+    private function setEntregaSabado($entregaSabado)
+    {
+        $this->entregaSabado = (boolean)($entregaSabado == 'S');
     }
 
     /**
@@ -194,8 +206,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $erro Código do erro.
      */
-    private function setErro($erro) {
-        $this->erro = (integer) $erro;
+    private function setErro($erro)
+    {
+        $this->erro = (integer)$erro;
     }
 
     /**
@@ -203,8 +216,9 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @param string $mensagemErro Mensagem de erro.
      */
-    private function setMensagemErro($mensagemErro) {
-        $this->mensagemErro = (string) $mensagemErro;
+    private function setMensagemErro($mensagemErro)
+    {
+        $this->mensagemErro = (string)$mensagemErro;
     }
 
     /**
@@ -212,7 +226,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return string
      */
-    public function getCodigo() {
+    public function getCodigo()
+    {
         return sprintf("%'05s", $this->codigo);
     }
 
@@ -221,7 +236,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return float
      */
-    public function getValor() {
+    public function getValor()
+    {
         return $this->valor;
     }
 
@@ -230,7 +246,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return integer
      */
-    public function getPrazoEntrega() {
+    public function getPrazoEntrega()
+    {
         return $this->prazoEntrega;
     }
 
@@ -239,7 +256,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return float
      */
-    public function getValorMaoPropria() {
+    public function getValorMaoPropria()
+    {
         return $this->valorMaoPropria;
     }
 
@@ -248,7 +266,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return float
      */
-    public function getValorAvisoRecebimento() {
+    public function getValorAvisoRecebimento()
+    {
         return $this->valorAvisoRecebimento;
     }
 
@@ -257,7 +276,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return float
      */
-    public function getValorValorDeclarado() {
+    public function getValorValorDeclarado()
+    {
         return $this->valorValorDeclarado;
     }
 
@@ -266,7 +286,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return boolean
      */
-    public function getEntregaDomiciliar() {
+    public function getEntregaDomiciliar()
+    {
         return $this->entregaDomiciliar;
     }
 
@@ -275,7 +296,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return boolean
      */
-    public function getEntregaSabado() {
+    public function getEntregaSabado()
+    {
         return $this->entregaSabado;
     }
 
@@ -285,7 +307,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return integer
      */
-    public function getErro() {
+    public function getErro()
+    {
         return $this->erro;
     }
 
@@ -294,7 +317,8 @@ final class CorreiosPrecoPrazoResultado {
      *
      * @return string
      */
-    public function getMensagemErro() {
+    public function getMensagemErro()
+    {
         return $this->mensagemErro;
     }
 

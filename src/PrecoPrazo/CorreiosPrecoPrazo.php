@@ -13,7 +13,7 @@
  * Correios realizar o cálculo, porém, neste caso os preços apresentados serão aqueles
  * praticados no balcão da agência.
  *
- * @author Ivan Wilhelm <ivan.whm@outlook.com>
+ * @author Ivan Wilhelm <ivan.whm@icloud.com>
  * @version 1.3
  * @final
  */
@@ -22,7 +22,8 @@ namespace correios\PrecoPrazo;
 
 use correios\Correios;
 
-final class CorreiosPrecoPrazo extends Correios {
+final class CorreiosPrecoPrazo extends Correios
+{
 
     /**
      * Contém o tipo de cálculo de preço.
@@ -125,7 +126,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param string $senha Senha.
      * @param string $tipoCalculo Tipo de cálculo.
      */
-    public function __construct($usuario = '', $senha = '', $tipoCalculo = Correios::TIPO_CALCULO_PRECO_TODOS) {
+    public function __construct($usuario = '', $senha = '', $tipoCalculo = Correios::TIPO_CALCULO_PRECO_TODOS)
+    {
         parent::__construct($usuario, $senha);
         $this->setTipoCalculo($tipoCalculo);
     }
@@ -136,7 +138,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param string $tipoCalculo Tipo de cálculo.
      * @throws \Exception
      */
-    private function setTipoCalculo($tipoCalculo) {
+    private function setTipoCalculo($tipoCalculo)
+    {
         if (in_array($tipoCalculo, parent::$tiposCalculo)) {
             $this->tipoCalculo = $tipoCalculo;
         } else {
@@ -150,7 +153,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param string $codigoServico Código do serviço.
      * @throws \Exception
      */
-    public function addServico($codigoServico) {
+    public function addServico($codigoServico)
+    {
         if (in_array($codigoServico, parent::$servicos)) {
             $this->servicosConsulta[] = $codigoServico;
         } else {
@@ -163,7 +167,8 @@ final class CorreiosPrecoPrazo extends Correios {
      *
      * @param string $cepOrigem CEP de origem.
      */
-    public function setCepOrigem($cepOrigem) {
+    public function setCepOrigem($cepOrigem)
+    {
         $this->cepOrigem = $cepOrigem;
     }
 
@@ -172,7 +177,8 @@ final class CorreiosPrecoPrazo extends Correios {
      *
      * @param string $cepDestino CEP de destino.
      */
-    public function setCepDestino($cepDestino) {
+    public function setCepDestino($cepDestino)
+    {
         $this->cepDestino = $cepDestino;
     }
 
@@ -183,7 +189,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param float $peso Peso da encomenda.
      * @throws \Exception
      */
-    public function setPeso($peso) {
+    public function setPeso($peso)
+    {
         if (is_float($peso)) {
             $this->peso = $peso;
         } else {
@@ -197,7 +204,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param integer $formato Formato da encomenda.
      * @throws \Exception
      */
-    public function setFormato($formato) {
+    public function setFormato($formato)
+    {
         if (in_array($formato, parent::$formatos)) {
             $this->formato = $formato;
         } else {
@@ -211,7 +219,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param float $comprimento Comprimento da encomenda.
      * @throws \Exception
      */
-    public function setComprimento($comprimento) {
+    public function setComprimento($comprimento)
+    {
         if (is_float($comprimento)) {
             $this->comprimento = $comprimento;
         } else {
@@ -225,7 +234,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param float $altura Altura da embalagem.
      * @throws \Exception
      */
-    public function setAltura($altura) {
+    public function setAltura($altura)
+    {
         if (is_float($altura)) {
             $this->altura = $altura;
         } else {
@@ -239,7 +249,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param float $largura Largura da embalagem.
      * @throws \Exception
      */
-    public function setLargura($largura) {
+    public function setLargura($largura)
+    {
         if (is_float($largura)) {
             $this->largura = $largura;
         } else {
@@ -253,7 +264,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param float $diametro Diâmetro da embalagem.
      * @throws \Exception
      */
-    public function setDiametro($diametro) {
+    public function setDiametro($diametro)
+    {
         if (is_float($diametro)) {
             $this->diametro = $diametro;
         } else {
@@ -267,7 +279,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param boolean $maoPropria Mão própria.
      * @throws \Exception
      */
-    public function hasMaoPropria($maoPropria) {
+    public function hasMaoPropria($maoPropria)
+    {
         if (is_bool($maoPropria)) {
             $this->maoPropria = $maoPropria;
         } else {
@@ -282,7 +295,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param float $valorDeclarado Valor declarado da encomenda.
      * @throws \Exception
      */
-    public function setValorDeclarado($valorDeclarado) {
+    public function setValorDeclarado($valorDeclarado)
+    {
         if (is_float($valorDeclarado)) {
             $this->valorDeclarado = $valorDeclarado;
         } else {
@@ -296,7 +310,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @param boolean $avisoRecebimento Aviso de recebimento.
      * @throws \Exception
      */
-    public function hasAvisoRecebimento($avisoRecebimento) {
+    public function hasAvisoRecebimento($avisoRecebimento)
+    {
         if (is_bool($avisoRecebimento)) {
             $this->avisoRecebimento = $avisoRecebimento;
         } else {
@@ -309,7 +324,8 @@ final class CorreiosPrecoPrazo extends Correios {
      *
      * @param \DateTime $dataBaseCalculo Database do cálculo.
      */
-    public function setDataBaseCalculo(\DateTime $dataBaseCalculo) {
+    public function setDataBaseCalculo(\DateTime $dataBaseCalculo)
+    {
         $this->dataBaseCalculo = $dataBaseCalculo;
     }
 
@@ -318,7 +334,8 @@ final class CorreiosPrecoPrazo extends Correios {
      *
      * @return string
      */
-    public function getTipoCalculo() {
+    public function getTipoCalculo()
+    {
         return $this->tipoCalculo;
     }
 
@@ -326,7 +343,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * Retorna a database de cálculo.
      * @return \DateTime
      */
-    public function getDataBaseCalculo() {
+    public function getDataBaseCalculo()
+    {
         return $this->dataBaseCalculo;
     }
 
@@ -335,7 +353,8 @@ final class CorreiosPrecoPrazo extends Correios {
      *
      * @return string
      */
-    private function getServicos() {
+    private function getServicos()
+    {
         $servicos = implode(',', $this->servicosConsulta);
         return $servicos;
     }
@@ -345,8 +364,49 @@ final class CorreiosPrecoPrazo extends Correios {
      *
      * @return CorreiosPrecoPrazoResultado[]
      */
-    public function getRetorno() {
+    public function getRetorno()
+    {
         return $this->retornos;
+    }
+
+    /**
+     * Retorna os parâmetros quando só deseja o prazo.
+     *
+     * @return array
+     */
+    private function getParametrosSoPrazo()
+    {
+        return array(
+            'nCdServico' => (string)$this->getServicos(),
+            'sCepOrigem' => (string)$this->cepOrigem,
+            'sCepDestino' => (string)$this->cepDestino,
+        );
+
+    }
+
+    /**
+     * Retorna os parâmetros quando deseja o cálculo total.
+     *
+     * @return array
+     */
+    private function getParametrosTotal()
+    {
+        return array(
+            'nCdEmpresa' => (string)$this->getUsuario(),
+            'sDsSenha' => (string)$this->getSenha(),
+            'nCdServico' => (string)$this->getServicos(),
+            'sCepOrigem' => (string)$this->cepOrigem,
+            'sCepDestino' => (string)$this->cepDestino,
+            'nVlPeso' => (float)$this->peso,
+            'nCdFormato' => (integer)$this->formato,
+            'nVlComprimento' => (float)$this->comprimento,
+            'nVlAltura' => (float)$this->altura,
+            'nVlLargura' => (float)$this->largura,
+            'nVlDiametro' => (float)$this->diametro,
+            'sCdMaoPropria' => (string)$this->maoPropria ? 'S' : 'N',
+            'nVlValorDeclarado' => (float)$this->valorDeclarado,
+            'sCdAvisoRecebimento' => (string)$this->avisoRecebimento ? 'S' : 'N',
+        );
     }
 
     /**
@@ -354,39 +414,67 @@ final class CorreiosPrecoPrazo extends Correios {
      *
      * @return array
      */
-    protected function getParametros() {
+    protected function getParametros()
+    {
         if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) ||
-            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)) {
-            $parametros = array(
-                'nCdServico' => (string) $this->getServicos(),
-                'sCepOrigem' => (string) $this->cepOrigem,
-                'sCepDestino' => (string) $this->cepDestino,
-            );
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)
+        ) {
+            $parametros = $this->getParametrosSoPrazo();
         } else {
-            $parametros = array(
-                'nCdEmpresa' => (string) $this->getUsuario(),
-                'sDsSenha' => (string) $this->getSenha(),
-                'nCdServico' => (string) $this->getServicos(),
-                'sCepOrigem' => (string) $this->cepOrigem,
-                'sCepDestino' => (string) $this->cepDestino,
-                'nVlPeso' => (float) $this->peso,
-                'nCdFormato' => (integer) $this->formato,
-                'nVlComprimento' => (float) $this->comprimento,
-                'nVlAltura' => (float) $this->altura,
-                'nVlLargura' => (float) $this->largura,
-                'nVlDiametro' => (float) $this->diametro,
-                'sCdMaoPropria' => (string) $this->maoPropria ? 'S' : 'N',
-                'nVlValorDeclarado' => (float) $this->valorDeclarado,
-                'sCdAvisoRecebimento' => (string) $this->avisoRecebimento ? 'S' : 'N',
-            );
+            $parametros = $this->getParametrosTotal();
         }
         //Se as chamadas tiverem database de cálculo
         if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE) ||
             ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE) ||
-            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE)) {
-            $parametros['sDtCalculo'] = (string) $this->dataBaseCalculo->format('d/m/Y');
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE)
+        ) {
+            $parametros['sDtCalculo'] = (string)$this->dataBaseCalculo->format('d/m/Y');
         }
         return $parametros;
+    }
+
+    /**
+     * Returns the methods to use into webservice.
+     *
+     * @return array
+     */
+    private function getWebserviceMethods()
+    {
+        $consulta = '';
+        $retorno = '';
+
+        //Define os métodos de consulta e retorno
+        switch ($this->tipoCalculo) {
+            case Correios::TIPO_CALCULO_PRECO_TODOS:
+                $consulta = 'CalcPrecoPrazo';
+                $retorno = 'CalcPrecoPrazoResult';
+                break;
+            case Correios::TIPO_CALCULO_PRECO_SO_PRAZO:
+                $consulta = 'CalcPrazo';
+                $retorno = 'CalcPrazoResult';
+                break;
+            case Correios::TIPO_CALCULO_PRECO_SO_PRECO:
+                $consulta = 'CalcPreco';
+                $retorno = 'CalcPrecoResult';
+                break;
+            case Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE:
+                $consulta = 'CalcPrecoPrazoData';
+                $retorno = 'CalcPrecoPrazoDataResult';
+                break;
+            case Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE:
+                $consulta = 'CalcPrazoData';
+                $retorno = 'CalcPrazoDataResult';
+                break;
+            case Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE:
+                $consulta = 'CalcPrecoData';
+                $retorno = 'CalcPrecoDataResult';
+                break;
+        }
+
+        return array(
+            'consulta' => $consulta,
+            'retorno' => $retorno
+        );
     }
 
     /**
@@ -395,7 +483,8 @@ final class CorreiosPrecoPrazo extends Correios {
      * @return boolean
      * @throws \Exception
      */
-    public function processaConsulta() {
+    public function processaConsulta()
+    {
         //Ativa o uso de URL FOpen
         ini_set("allow_url_fopen", 1);
         ini_set("soap.wsdl_cache_enabled", 0);
@@ -404,61 +493,38 @@ final class CorreiosPrecoPrazo extends Correios {
             if (@fopen(parent::URL_CALCULADOR, 'r')) {
                 $soap = new \SoapClient(parent::URL_CALCULADOR);
 
-                $metodoConsulta = '';
-                $metodoRetorno = '';
-                
-                //Define os métodos de consulta e retorno
-                switch ($this->tipoCalculo) {
-                    case Correios::TIPO_CALCULO_PRECO_TODOS:
-                        $metodoConsulta = 'CalcPrecoPrazo';
-                        $metodoRetorno = 'CalcPrecoPrazoResult';
-                        break;
-                    case Correios::TIPO_CALCULO_PRECO_SO_PRAZO:
-                        $metodoConsulta = 'CalcPrazo';
-                        $metodoRetorno = 'CalcPrazoResult';
-                        break;
-                    case Correios::TIPO_CALCULO_PRECO_SO_PRECO:
-                        $metodoConsulta = 'CalcPreco';
-                        $metodoRetorno = 'CalcPrecoResult';
-                        break;
-                    case Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE:
-                        $metodoConsulta = 'CalcPrecoPrazoData';
-                        $metodoRetorno = 'CalcPrecoPrazoDataResult';
-                        break;
-                    case Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE:
-                        $metodoConsulta = 'CalcPrazoData';
-                        $metodoRetorno = 'CalcPrazoDataResult';
-                        break;
-                    case Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE:
-                        $metodoConsulta = 'CalcPrecoData';
-                        $metodoRetorno = 'CalcPrecoDataResult';
-                        break;
-                }
+                $metodos = $this->getWebserviceMethods();
+                $metodoConsulta = $metodos['consulta'];
+                $metodoRetorno = $metodos['retorno'];
 
                 //Consulta os dados
                 $retorno = $soap->$metodoConsulta($this->getParametros());
 
                 //Pega o retorno
                 if ($retorno instanceof \stdClass) {
-                    $retornosConsulta = $retorno->$metodoRetorno->Servicos->cServico;
-                    if (is_array($retornosConsulta)) {
-                        foreach ($retornosConsulta as $retornoConsulta) {
-                            $servico = new CorreiosPrecoPrazoResultado($retornoConsulta, $this->tipoCalculo);
-                            $this->retornos[] = $servico;
-                        }
-                    } else if ($retornosConsulta instanceof \stdClass) {
-                        $servico = new CorreiosPrecoPrazoResultado($retornosConsulta, $this->tipoCalculo);
-                        $this->retornos[] = $servico;
-                    }
+                    $this->tratarRetorno($retorno->$metodoRetorno->Servicos->cServico);
                     return TRUE;
-                } else {
-                    return FALSE;
                 }
-            } else {
-                return FALSE;
             }
+            return FALSE;
         } catch (\SoapFault $sf) {
             throw new \Exception($sf->getMessage());
+        }
+    }
+
+    /**
+     * Efetua o tratamento do retorno do webservice.
+     *
+     * @param $retornosConsulta
+     */
+    private function tratarRetorno($retornosConsulta)
+    {
+        if (is_array($retornosConsulta)) {
+            foreach ($retornosConsulta as $retornoConsulta) {
+                $this->retornos[] = new CorreiosPrecoPrazoResultado($retornoConsulta, $this->tipoCalculo);
+            }
+        } else if ($retornosConsulta instanceof \stdClass) {
+            $this->retornos[] = new CorreiosPrecoPrazoResultado($retornosConsulta, $this->tipoCalculo);
         }
     }
 
