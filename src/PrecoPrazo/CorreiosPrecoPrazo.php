@@ -370,6 +370,28 @@ final class CorreiosPrecoPrazo extends Correios
     }
 
     /**
+     * Retorna se o cálculo é apenas para prazo.
+     * @return bool
+     */
+    private function isSoPrazo()
+    {
+        return ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) ||
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE);
+    }
+
+    /**
+     * Retorna se o cálculo tem data base.
+     *
+     * @return bool
+     */
+    private function hasDataBase()
+    {
+        return ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE) ||
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE) ||
+            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE);
+    }
+
+    /**
      * Retorna os parâmetros quando só deseja o prazo.
      *
      * @return array
@@ -416,18 +438,14 @@ final class CorreiosPrecoPrazo extends Correios
      */
     protected function getParametros()
     {
-        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO) ||
-            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE)
-        ) {
+        if ($this->isSoPrazo()) {
             $parametros = $this->getParametrosSoPrazo();
         } else {
             $parametros = $this->getParametrosTotal();
         }
         //Se as chamadas tiverem database de cálculo
-        if (($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE) ||
-            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE) ||
-            ($this->tipoCalculo == Correios::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE)
-        ) {
+        if ($this->hasDataBase())
+        {
             $parametros['sDtCalculo'] = (string)$this->dataBaseCalculo->format('d/m/Y');
         }
         return $parametros;
