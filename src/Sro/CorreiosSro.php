@@ -88,7 +88,6 @@ abstract class CorreiosSro
         'EK' => 'Encomenda Internacional - EMS',
         'EL' => 'Encomenda Internacional - EMS',
         'EM' => 'Encomenda Internacional - SEDEX Mundi',
-        'EM' => 'Encomenda Internacional - EMS Importação',
         'EN' => 'Encomenda Internacional - EMS',
         'EO' => 'Encomenda Internacional - EMS',
         'EP' => 'Encomenda Internacional - EMS',

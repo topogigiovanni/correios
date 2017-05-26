@@ -4,7 +4,7 @@
  * A simple example of SRO data information.
  * SRO is a acronym to Serviço de Rastreamento de Objetos (Brazilian Postal Object Tracking Service).
  *
- * @author Ivan Wilhelm <ivan.whm@me.com>
+ * @author Ivan Wilhelm <ivan.whm@icloud.com>
  * @version 1.5
  */
 
