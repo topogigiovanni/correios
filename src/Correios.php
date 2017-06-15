@@ -128,6 +128,39 @@ abstract class Correios {
     );
 
     /**
+     * Contains all the methods used in the Correios webservice to delivery and price calculations.
+     *
+     * @var array
+     * @static
+     */
+    protected static $deliveryPriceMethods = array(
+        Correios::CALCULATION_TYPE_ALL_PRICE => array(
+            'consultation' => 'CalcPrecoPrazo',
+            'return' => 'CalcPrecoPrazoResult'
+        ),
+        Correios::CALCULATION_TYPE_ONLY_DELIVERY => array(
+            'consultation' => 'CalcPrazo',
+            'return' => 'CalcPrazoResult'
+        ),
+        Correios::CALCULATION_TYPE_ONLY_PRICE => array(
+            'consultation' => 'CalcPreco',
+            'return' => 'CalcPrecoResult'
+        ),
+        Correios::CALCULATION_TYPE_ALL_PRICE_WITH_BASE_DATE => array(
+            'consultation' => 'CalcPrecoPrazoData',
+            'return' => 'CalcPrecoPrazoDataResult'
+        ),
+        Correios::CALCULATION_TYPE_ONLY_DELIVERY_WITH_BASE_DATE => array(
+            'consultation' => 'CalcPrazoData',
+            'return' => 'CalcPrazoDataResult'
+        ),
+        Correios::CALCULATION_TYPE_ONLY_PRICE_WITH_BASE_DATE => array(
+            'consultation' => 'CalcPrecoData',
+            'return' => 'CalcPrecoDataResult'
+        )
+    );
+
+    /**
      * Contém os tipos de rastreamento aceitos.
      *
      * @var array

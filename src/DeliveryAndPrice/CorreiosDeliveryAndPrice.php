@@ -287,16 +287,6 @@ final class CorreiosDeliveryAndPrice extends Correios
     }
 
     /**
-     * Sets the calculation date base.
-     *
-     * @param DateTime $calculationDateBase Calculation date base.
-     */
-    public function setCalculationDateBase(DateTime $calculationDateBase)
-    {
-        $this->calculationDateBase = $calculationDateBase;
-    }
-
-    /**
      * Sets if the package will be delivered with the additional service called "Own Hands".
      *
      * @param boolean $ownHandsService Has own hands service.
@@ -363,6 +353,16 @@ final class CorreiosDeliveryAndPrice extends Correios
     }
 
     /**
+     * Sets the calculation date base.
+     *
+     * @param DateTime $calculationDateBase Calculation date base.
+     */
+    public function setCalculationDateBase(DateTime $calculationDateBase)
+    {
+        $this->calculationDateBase = $calculationDateBase;
+    }
+
+    /**
      * Returns the calculation return.
      *
      * @return CorreiosDeliveryAndPriceResult[]
@@ -410,10 +410,25 @@ final class CorreiosDeliveryAndPrice extends Correios
         ini_set("allow_url_fopen", 1);
         ini_set("soap.wsdl_cache_enabled", 0);
 
-        if (!@fopen(parent::URL_CALCULADOR, 'r'))
-        {
+        if (!@fopen(parent::URL_CALCULADOR, 'r')) {
             throw new Exception('There is no connection with Correios webservice. Try again later.');
         }
+    }
+
+    /**
+     * Returns the methods to use into webservice.
+     *
+     * @see Correios::$calculationTypes
+     * @return array
+     */
+    private function getWebserviceMethods()
+    {
+        $data = parent::$deliveryPriceMethods;
+
+        return array(
+            'consultation' => $data[$this->calculationType]['consultation'],
+            'return' => $data[$this->calculationType]['return']
+        );
     }
 
     /**
@@ -433,47 +448,6 @@ final class CorreiosDeliveryAndPrice extends Correios
     }
 
     /**
-     * Returns the methods to use into webservice.
-     *
-     * @see Correios::$calculationTypes
-     * @return array
-     */
-    private function getWebserviceMethods()
-    {
-        $data =  array(
-            Correios::CALCULATION_TYPE_ALL_PRICE => array(
-                'consultation' => 'CalcPrecoPrazo',
-                'return' => 'CalcPrecoPrazoResult'
-            ),
-            Correios::CALCULATION_TYPE_ONLY_DELIVERY => array(
-                'consultation' => 'CalcPrazo',
-                'return' => 'CalcPrazoResult'
-            ),
-            Correios::CALCULATION_TYPE_ONLY_PRICE => array(
-                'consultation' => 'CalcPreco',
-                'return' => 'CalcPrecoResult'
-            ),
-            Correios::CALCULATION_TYPE_ALL_PRICE_WITH_BASE_DATE => array(
-                'consultation' => 'CalcPrecoPrazoData',
-                'return' => 'CalcPrecoPrazoDataResult'
-            ),
-            Correios::CALCULATION_TYPE_ONLY_DELIVERY_WITH_BASE_DATE => array(
-                'consultation' => 'CalcPrazoData',
-                'return' => 'CalcPrazoDataResult'
-            ),
-            Correios::CALCULATION_TYPE_ONLY_PRICE_WITH_BASE_DATE => array(
-                'consultation' => 'CalcPrecoData',
-                'return' => 'CalcPrecoDataResult'
-            )
-        );
-
-        return array(
-            'consultation' => $data[$this->calculationType]['consultation'],
-            'return' => $data[$this->calculationType]['return']
-        );
-    }
-
-    /**
      * Returns the necessary parameters to consultation.
      *
      * @return array
@@ -487,7 +461,7 @@ final class CorreiosDeliveryAndPrice extends Correios
         }
         //If the need to consider the date base
         if ($this->hasDateBase()) {
-            $parameters['sDtCalculo'] = (string)$this->calculationDateBase->format('d/m/Y');
+            $parameters['sDtCalculo'] = (string) $this->calculationDateBase->format('d/m/Y');
         }
         return $parameters;
     }
@@ -512,9 +486,9 @@ final class CorreiosDeliveryAndPrice extends Correios
     private function getOnlyDeliveryParameters()
     {
         return array(
-            'nCdServico' => (string)$this->getServices(),
-            'sCepOrigem' => (string)$this->initiatingZipCode,
-            'sCepDestino' => (string)$this->receivingZipCode,
+            'nCdServico' => (string) $this->getServices(),
+            'sCepOrigem' => (string) $this->initiatingZipCode,
+            'sCepDestino' => (string) $this->receivingZipCode,
         );
 
     }
@@ -538,20 +512,20 @@ final class CorreiosDeliveryAndPrice extends Correios
     private function getAllParameters()
     {
         return array(
-            'nCdEmpresa' => (string)$this->getUsuario(),
-            'sDsSenha' => (string)$this->getSenha(),
-            'nCdServico' => (string)$this->getServices(),
-            'sCepOrigem' => (string)$this->initiatingZipCode,
-            'sCepDestino' => (string)$this->receivingZipCode,
-            'nVlPeso' => (float)$this->packageWeight,
-            'nCdFormato' => (integer)$this->packageShape,
-            'nVlComprimento' => (float)$this->packageLength,
-            'nVlAltura' => (float)$this->packageHeight,
-            'nVlLargura' => (float)$this->packageWidth,
-            'nVlDiametro' => (float)$this->packageDiameter,
-            'sCdMaoPropria' => (string)$this->hasOwnHandsService ? 'S' : 'N',
-            'nVlValorDeclarado' => (float)$this->hasDeclaredProductPriceService,
-            'sCdAvisoRecebimento' => (string)$this->hasReceiptNoticeService ? 'S' : 'N',
+            'nCdEmpresa' => (string) $this->getUsuario(),
+            'sDsSenha' => (string) $this->getSenha(),
+            'nCdServico' => (string) $this->getServices(),
+            'sCepOrigem' => (string) $this->initiatingZipCode,
+            'sCepDestino' => (string) $this->receivingZipCode,
+            'nVlPeso' => (float) $this->packageWeight,
+            'nCdFormato' => (integer) $this->packageShape,
+            'nVlComprimento' => (float) $this->packageLength,
+            'nVlAltura' => (float) $this->packageHeight,
+            'nVlLargura' => (float) $this->packageWidth,
+            'nVlDiametro' => (float) $this->packageDiameter,
+            'sCdMaoPropria' => (string) $this->hasOwnHandsService ? 'S' : 'N',
+            'nVlValorDeclarado' => (float) $this->hasDeclaredProductPriceService,
+            'sCdAvisoRecebimento' => (string) $this->hasReceiptNoticeService ? 'S' : 'N',
         );
     }
 
