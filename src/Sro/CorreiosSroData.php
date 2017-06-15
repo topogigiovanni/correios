@@ -11,6 +11,8 @@
 
 namespace correios\Sro;
 
+use Exception;
+
 final class CorreiosSroData extends CorreiosSro
 {
 
@@ -62,7 +64,7 @@ final class CorreiosSroData extends CorreiosSro
      * Create a new SRO data object.
      *
      * @param string $sro SRO number.
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct($sro)
     {
@@ -76,7 +78,7 @@ final class CorreiosSroData extends CorreiosSro
             $this->originCountry = substr($sro, 11, 2);
         } else
         {
-            throw new \Exception('SRO number is invalid.');
+            throw new Exception('SRO number is invalid.');
         }
     }
 

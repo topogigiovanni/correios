@@ -84,14 +84,14 @@ try
                 echo PHP_EOL;
             } else
             {
-                echo 'There is an error in the calculation of the service ' . $return->getServiceCode() . ' (' . Correios::$serviceName[$return->getServiceCode()] . '): ' . $return->getErrorMessage() . PHP_EOL . PHP_EOL;
+                echo 'An error occurred in the calculation of the service ' . $return->getServiceCode() . ' (' . Correios::$serviceName[$return->getServiceCode()] . '): ' . $return->getErrorMessage() . PHP_EOL . PHP_EOL;
             }
         }
     } else
     {
-        echo 'That\'s bad. Try again later.' . PHP_EOL;
+        echo 'An error occurred. Try again later.' . PHP_EOL;
     }
 } catch (Exception $e)
 {
-    echo 'There is an error. Error: ' . $e->getMessage() . PHP_EOL;
+    echo 'An error occurred. Error: ' . $e->getMessage() . PHP_EOL;
 }

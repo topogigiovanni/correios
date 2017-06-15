@@ -14,6 +14,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use correios\Sro\CorreiosSro;
 use correios\Sro\CorreiosSroData;
+use Exception;
 
 //Adjust the text content-type to UTF-8 return
 header('Content-type: text/txt; charset=utf-8');
@@ -25,7 +26,7 @@ try {
 
     echo 'SRO....: SW592067296BR' . PHP_EOL;
     echo 'Valid..: ' . ((CorreiosSro::validateSro('SW592067296BR')) ? 'Yes' : 'No') . PHP_EOL . PHP_EOL;
-} catch (\Exception $ex) {
+} catch (Exception $ex) {
     echo 'An error occurred: ' . $ex->getMessage() . PHP_EOL . PHP_EOL;
 }
 
@@ -42,7 +43,7 @@ try {
     echo 'Object Code...........: ' . $objectData->getObjectCode() . PHP_EOL;
     echo 'SRO Digit.............: ' . $objectData->getDigit() . PHP_EOL;
     echo 'Origin Country........: ' . $objectData->getOriginCountry() . PHP_EOL . PHP_EOL;
-} catch (\Exception $ex) {
+} catch (Exception $ex) {
     echo 'An error occurred: ' . $ex->getMessage() . PHP_EOL . PHP_EOL;
 }
 
@@ -53,6 +54,6 @@ try {
 
     echo 'SRO Code..: 59206729' . PHP_EOL;
     echo 'SRO Digit.: ' . CorreiosSro::calculateSroDigit('59206729') . PHP_EOL . PHP_EOL;
-} catch (\Exception $ex) {
+} catch (Exception $ex) {
     echo 'An error occurred: ' . $ex->getMessage() . PHP_EOL . PHP_EOL;
 }
