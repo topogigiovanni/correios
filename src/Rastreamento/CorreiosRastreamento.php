@@ -144,7 +144,7 @@ class CorreiosRastreamento extends Correios {
      *
      * @return array
      */
-    protected function getParametros() {
+    protected function getParameters() {
         $parametros = array(
             'usuario' => (string) $this->getUsuario(),
             'senha' => (string) $this->getSenha(),
@@ -162,7 +162,7 @@ class CorreiosRastreamento extends Correios {
      * @return boolean
      * @throws Exception
      */
-    public function processaConsulta() {
+    public function process() {
 
         ini_set("allow_url_fopen", 1);
         ini_set("soap.wsdl_cache_enabled", 0);
@@ -172,7 +172,7 @@ class CorreiosRastreamento extends Correios {
         if (@fopen(parent::URL_RASTREADOR, 'r')) {
             try {
                 $soap = new \SoapClient(parent::URL_RASTREADOR);
-                $resultado = $soap->buscaEventosLista($this->getParametros());
+                $resultado = $soap->buscaEventosLista($this->getParameters());
 
                 if ($resultado instanceof \stdClass) {
                     $rastreamento = new CorreiosRastreamentoResultado();

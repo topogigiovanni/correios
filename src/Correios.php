@@ -14,35 +14,40 @@ abstract class Correios {
 
     const URL_CALCULADOR = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL';
     const URL_RASTREADOR = 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl';
-    const FORMATO_CAIXA_PACOTE = 1;
-    const FORMATO_ROLO_PRISMA = 2;
-    const FORMATO_ENVELOPE = 3;
-    const SERVICO_SEDEX_SEM_CONTRATO = '40010';
-    const SERVICO_SEDEX_SEM_CONTRATO_AGENCIA = '04014';
-    const SERVICO_SEDEX_A_COBRAR_SEM_CONTRATO_1 = '40045';
-    const SERVICO_SEDEX_A_COBRAR_COM_CONTRATO_2 = '40126';
-    const SERVICO_SEDEX_10_SEM_CONTRATO = '40215';
-    const SERVICO_SEDEX_HOJE_SEM_CONTRATO = '40290';
-    const SERVICO_SEDEX_COM_CONTRATO_1 = '40096';
-    const SERVICO_SEDEX_COM_CONTRATO_2 = '40436';
-    const SERVICO_SEDEX_COM_CONTRATO_3 = '40444';
-    const SERVICO_SEDEX_COM_CONTRATO_4 = '40568';
-    const SERVICO_SEDEX_COM_CONTRATO_5 = '40606';
-	const SERVICO_SEDEX_COM_CONTRATO_AGENCIA = '04162';
-    const SERVICO_PAC_SEM_CONTRATO = '41106';
-    const SERVICO_PAC_SEM_CONTRATO_AGENCIA = '04510';
-    const SERVICO_PAC_COM_CONTRATO = '41068';
-	const SERVICO_PAC_COM_CONTRATO_AGENCIA = '04669';
-    const SERVICO_ESEDEX_COM_CONTRATO = '81019';
-    const SERVICO_ESEDEX_PRIORITARIO_COM_CONTRATO = '81027';
-    const SERVICO_ESEDEX_EXPRESS_COM_CONTRATO = '81025';
-    const SERVICO_ESEDEX_COM_CONTRATO_GRUPO_1 = '81868';
-    const SERVICO_ESEDEX_COM_CONTRATO_GRUPO_2 = '81833';
-    const SERVICO_ESEDEX_COM_CONTRATO_GRUPO_3 = '81850';
+
+    const PACKAGE_SHAPE_BOX_PARCEL = 1;
+    const PACKAGE_SHAPE_ROLLER_PRISM = 2;
+    const PACKAGE_SHAPE_ENVELOPE = 3;
+
+    const SERVICE_SEDEX_WITHOUT_CONTRACT = '40010';
+    const SERVICE_SEDEX_WITHOUT_AGENCY_CONTRACT = '04014';
+    const SERVICE_SEDEX_OUTSTANDING_PAYABLE_WITHOUT_CONTRACT_1 = '40045';
+    const SERVICE_SEDEX_OUTSTANDING_PAYABLE_WITHOUT_CONTRACT_2 = '40126';
+    const SERVICE_SEDEX_10_WITHOUT_CONTRACT = '40215';
+    const SERVICE_SEDEX_TODAY_WITHOUT_CONTRACT = '40290';
+    const SERVICE_SEDEX_WITH_CONTRACT_1 = '40096';
+    const SERVICE_SEDEX_WITH_CONTRACT_2 = '40436';
+    const SERVICE_SEDEX_WITH_CONTRACT_3 = '40444';
+    const SERVICE_SEDEX_WITH_CONTRACT_4 = '40568';
+    const SERVICE_SEDEX_WITH_CONTRACT_5 = '40606';
+	const SERVICE_SEDEX_WITH_CONTRACT_AGENCY = '04162';
+    const SERVICE_PAC_WITHOUT_CONTRACT = '41106';
+    const SERVICE_PAC_WITHOUT_CONTRACT_AGENCY = '04510';
+    const SERVICE_PAC_WITH_CONTRACT = '41068';
+	const SERVICE_PAC_WITH_CONTRACT_AGENCY = '04669';
+    const SERVICE_SEDEX_WITH_CONTRACT = '81019';
+    const SERVICE_ESEDEX_PRIME_WITH_CONTRACT = '81027';
+    const SERVICE_ESEDEX_EXPRESS_WITH_CONTRACT = '81025';
+    const SERVICE_ESEDEX_WITH_CONTRACT_GROUP_1 = '81868';
+    const SERVICE_ESEDEX_WITH_CONTRACT_GROUP_2 = '81833';
+    const SERVICE_ESEDEX_WITH_CONTRACT_GROUP_3 = '81850';
+
     const TIPO_RASTREAMENTO_LISTA = 'L';
     const TIPO_RASTREAMENTO_INTERVALO = 'F';
+
     const RESULTADO_RASTREAMENTO_TODOS = 'T';
     const RESULTADO_RASTREAMENTO_ULTIMO = 'U';
+
     const TIPO_EVENTO_BDE = 'BDE';
     const TIPO_EVENTO_BDI = 'BDI';
     const TIPO_EVENTO_BDR = 'BDR';
@@ -68,56 +73,58 @@ abstract class Correios {
     const TIPO_EVENTO_RO = 'RO';
     const TIPO_EVENTO_TR = 'TR';
     const TIPO_EVENTO_TRI = 'TRI';
-    const TIPO_CALCULO_PRECO_SO_PRECO = 'P';
-    const TIPO_CALCULO_PRECO_SO_PRAZO = 'Z';
-    const TIPO_CALCULO_PRECO_TODOS = 'T';
-    const TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE = 'PD';
-    const TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE = 'ZD';
-    const TIPO_CALCULO_PRECO_TODOS_COM_DATABASE = 'TD';
+
+    const CALCULATION_TYPE_ONLY_PRICE = 'P';
+    const CALCULATION_TYPE_ONLY_DELIVERY = 'Z';
+    const CALCULATION_TYPE_ALL_PRICE = 'T';
+    const CALCULATION_TYPE_ONLY_PRICE_WITH_BASE_DATE = 'PD';
+    const CALCULATION_TYPE_ONLY_DELIVERY_WITH_BASE_DATE = 'ZD';
+    const CALCULATION_TYPE_ALL_PRICE_WITH_BASE_DATE = 'TD';
+
     const LINGUA_PORTUGUES = '101';
     const LINGUA_INGLES = '102';
 
     /**
-     * Contém os formatos aceitos.
+     * Contains the package shapes accepted.
      *
      * @var array
      * @static
      */
-    protected static $formatos = array(
-        self::FORMATO_CAIXA_PACOTE,
-        self::FORMATO_ROLO_PRISMA,
-        self::FORMATO_ENVELOPE,
+    protected static $packageShapes = array(
+        self::PACKAGE_SHAPE_BOX_PARCEL,
+        self::PACKAGE_SHAPE_ROLLER_PRISM,
+        self::PACKAGE_SHAPE_ENVELOPE,
     );
 
     /**
-     * Contém todos os serviços aceitos.
+     * Contains all the accepted delivery services/products.
      *
      * @var array
      * @static
      */
-    protected static $servicos = array(
-        self::SERVICO_SEDEX_SEM_CONTRATO,
-        self::SERVICO_SEDEX_SEM_CONTRATO_AGENCIA,
-        self::SERVICO_SEDEX_A_COBRAR_SEM_CONTRATO_1,
-        self::SERVICO_SEDEX_A_COBRAR_COM_CONTRATO_2,
-        self::SERVICO_SEDEX_10_SEM_CONTRATO,
-        self::SERVICO_SEDEX_HOJE_SEM_CONTRATO,
-        self::SERVICO_SEDEX_COM_CONTRATO_1,
-        self::SERVICO_SEDEX_COM_CONTRATO_2,
-        self::SERVICO_SEDEX_COM_CONTRATO_3,
-        self::SERVICO_SEDEX_COM_CONTRATO_4,
-        self::SERVICO_SEDEX_COM_CONTRATO_5,
-		self::SERVICO_SEDEX_COM_CONTRATO_AGENCIA,
-        self::SERVICO_PAC_SEM_CONTRATO,
-        self::SERVICO_PAC_SEM_CONTRATO_AGENCIA,
-        self::SERVICO_PAC_COM_CONTRATO,
-		self::SERVICO_PAC_COM_CONTRATO_AGENCIA,
-        self::SERVICO_ESEDEX_COM_CONTRATO,
-        self::SERVICO_ESEDEX_PRIORITARIO_COM_CONTRATO,
-        self::SERVICO_ESEDEX_EXPRESS_COM_CONTRATO,
-        self::SERVICO_ESEDEX_COM_CONTRATO_GRUPO_1,
-        self::SERVICO_ESEDEX_COM_CONTRATO_GRUPO_2,
-        self::SERVICO_ESEDEX_COM_CONTRATO_GRUPO_3,
+    protected static $services = array(
+        self::SERVICE_SEDEX_WITHOUT_CONTRACT,
+        self::SERVICE_SEDEX_WITHOUT_AGENCY_CONTRACT,
+        self::SERVICE_SEDEX_OUTSTANDING_PAYABLE_WITHOUT_CONTRACT_1,
+        self::SERVICE_SEDEX_OUTSTANDING_PAYABLE_WITHOUT_CONTRACT_2,
+        self::SERVICE_SEDEX_10_WITHOUT_CONTRACT,
+        self::SERVICE_SEDEX_TODAY_WITHOUT_CONTRACT,
+        self::SERVICE_SEDEX_WITH_CONTRACT_1,
+        self::SERVICE_SEDEX_WITH_CONTRACT_2,
+        self::SERVICE_SEDEX_WITH_CONTRACT_3,
+        self::SERVICE_SEDEX_WITH_CONTRACT_4,
+        self::SERVICE_SEDEX_WITH_CONTRACT_5,
+		self::SERVICE_SEDEX_WITH_CONTRACT_AGENCY,
+        self::SERVICE_PAC_WITHOUT_CONTRACT,
+        self::SERVICE_PAC_WITHOUT_CONTRACT_AGENCY,
+        self::SERVICE_PAC_WITH_CONTRACT,
+		self::SERVICE_PAC_WITH_CONTRACT_AGENCY,
+        self::SERVICE_SEDEX_WITH_CONTRACT,
+        self::SERVICE_ESEDEX_PRIME_WITH_CONTRACT,
+        self::SERVICE_ESEDEX_EXPRESS_WITH_CONTRACT,
+        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_1,
+        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_2,
+        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_3,
     );
 
     /**
@@ -154,18 +161,18 @@ abstract class Correios {
     );
 
     /**
-     * Contém a lista de tipos de cálculo de preços e prazos possíveis.
+     * Contains the list with the possible calculation types for prices and deliveries.
      *
      * @var array
      * @static
      */
-    protected static $tiposCalculo = array(
-        self::TIPO_CALCULO_PRECO_TODOS,
-        self::TIPO_CALCULO_PRECO_SO_PRECO,
-        self::TIPO_CALCULO_PRECO_SO_PRAZO,
-        self::TIPO_CALCULO_PRECO_TODOS_COM_DATABASE,
-        self::TIPO_CALCULO_PRECO_SO_PRECO_COM_DATABASE,
-        self::TIPO_CALCULO_PRECO_SO_PRAZO_COM_DATABASE,
+    protected static $calculationTypes = array(
+        self::CALCULATION_TYPE_ALL_PRICE,
+        self::CALCULATION_TYPE_ONLY_PRICE,
+        self::CALCULATION_TYPE_ONLY_DELIVERY,
+        self::CALCULATION_TYPE_ALL_PRICE_WITH_BASE_DATE,
+        self::CALCULATION_TYPE_ONLY_PRICE_WITH_BASE_DATE,
+        self::CALCULATION_TYPE_ONLY_DELIVERY_WITH_BASE_DATE,
     );
 
     /**
@@ -203,34 +210,34 @@ abstract class Correios {
     );
 
     /**
-     * Contém a descrição dos serviços.
+     * Contains the name of the services/products.
      *
      * @var array
      * @static
      */
-    public static $descricaoServico = array(
-        self::SERVICO_SEDEX_SEM_CONTRATO => 'Sedex sem contrato',
-        self::SERVICO_SEDEX_SEM_CONTRATO_AGENCIA => 'Sedex sem contrato agência',
-        self::SERVICO_SEDEX_A_COBRAR_SEM_CONTRATO_1 => 'Sedex a Cobrar sem contrato',
-        self::SERVICO_SEDEX_A_COBRAR_COM_CONTRATO_2 => 'Sedex a Cobrar com contrato',
-        self::SERVICO_SEDEX_10_SEM_CONTRATO => 'Sedex 10 sem contrato',
-        self::SERVICO_SEDEX_HOJE_SEM_CONTRATO => 'Sedex Hoje sem contrato',
-        self::SERVICO_SEDEX_COM_CONTRATO_1 => 'Sedex com contrato',
-        self::SERVICO_SEDEX_COM_CONTRATO_2 => 'Sedex com contrato',
-        self::SERVICO_SEDEX_COM_CONTRATO_3 => 'Sedex com contrato',
-        self::SERVICO_SEDEX_COM_CONTRATO_4 => 'Sedex com contrato',
-        self::SERVICO_SEDEX_COM_CONTRATO_5 => 'Sedex com contrato',
-		self::SERVICO_SEDEX_COM_CONTRATO_AGENCIA => 'Sedex com contrato agência',
-        self::SERVICO_PAC_SEM_CONTRATO => 'PAC sem contrato',
-        self::SERVICO_PAC_SEM_CONTRATO_AGENCIA => 'PAC sem contrato agência',
-        self::SERVICO_PAC_COM_CONTRATO => 'PAC com contrato',
-		self::SERVICO_PAC_COM_CONTRATO_AGENCIA => 'PAC com contrato agência',
-        self::SERVICO_ESEDEX_COM_CONTRATO => 'eSedex com contrato',
-        self::SERVICO_ESEDEX_PRIORITARIO_COM_CONTRATO => 'eSedex Prioritário com contrato',
-        self::SERVICO_ESEDEX_EXPRESS_COM_CONTRATO => 'eSedex Express com contrato',
-        self::SERVICO_ESEDEX_COM_CONTRATO_GRUPO_1 => 'eSedex com contrato',
-        self::SERVICO_ESEDEX_COM_CONTRATO_GRUPO_2 => 'eSedex com contrato',
-        self::SERVICO_ESEDEX_COM_CONTRATO_GRUPO_3 => 'eSedex com contrato',
+    public static $serviceName = array(
+        self::SERVICE_SEDEX_WITHOUT_CONTRACT => 'Sedex sem contrato',
+        self::SERVICE_SEDEX_WITHOUT_AGENCY_CONTRACT => 'Sedex sem contrato agência',
+        self::SERVICE_SEDEX_OUTSTANDING_PAYABLE_WITHOUT_CONTRACT_1 => 'Sedex a Cobrar sem contrato',
+        self::SERVICE_SEDEX_OUTSTANDING_PAYABLE_WITHOUT_CONTRACT_2 => 'Sedex a Cobrar com contrato',
+        self::SERVICE_SEDEX_10_WITHOUT_CONTRACT => 'Sedex 10 sem contrato',
+        self::SERVICE_SEDEX_TODAY_WITHOUT_CONTRACT => 'Sedex Hoje sem contrato',
+        self::SERVICE_SEDEX_WITH_CONTRACT_1 => 'Sedex com contrato',
+        self::SERVICE_SEDEX_WITH_CONTRACT_2 => 'Sedex com contrato',
+        self::SERVICE_SEDEX_WITH_CONTRACT_3 => 'Sedex com contrato',
+        self::SERVICE_SEDEX_WITH_CONTRACT_4 => 'Sedex com contrato',
+        self::SERVICE_SEDEX_WITH_CONTRACT_5 => 'Sedex com contrato',
+		self::SERVICE_SEDEX_WITH_CONTRACT_AGENCY => 'Sedex com contrato agência',
+        self::SERVICE_PAC_WITHOUT_CONTRACT => 'PAC sem contrato',
+        self::SERVICE_PAC_WITHOUT_CONTRACT_AGENCY => 'PAC sem contrato agência',
+        self::SERVICE_PAC_WITH_CONTRACT => 'PAC com contrato',
+		self::SERVICE_PAC_WITH_CONTRACT_AGENCY => 'PAC com contrato agência',
+        self::SERVICE_SEDEX_WITH_CONTRACT => 'eSedex com contrato',
+        self::SERVICE_ESEDEX_PRIME_WITH_CONTRACT => 'eSedex Prioritário com contrato',
+        self::SERVICE_ESEDEX_EXPRESS_WITH_CONTRACT => 'eSedex Express com contrato',
+        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_1 => 'eSedex com contrato',
+        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_2 => 'eSedex com contrato',
+        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_3 => 'eSedex com contrato',
     );
 
     /**
@@ -1167,12 +1174,12 @@ abstract class Correios {
     /**
      * Cria um objeto de comunicação com os Correios.
      *
-     * @param string $usuario Usuário.
-     * @param string $senha Senha.
+     * @param string $user Usuário.
+     * @param string $password Senha.
      */
-    public function __construct($usuario = '', $senha = '') {
-        $this->usuario = $usuario;
-        $this->senha = $senha;
+    public function __construct($user = '', $password = '') {
+        $this->usuario = $user;
+        $this->senha = $password;
     }
 
     /**
@@ -1199,7 +1206,7 @@ abstract class Correios {
      * @return array
      * @abstract
      */
-    abstract protected function getParametros();
+    abstract protected function getParameters();
 
     /**
      * Realiza o processamento da consulta.
@@ -1207,5 +1214,5 @@ abstract class Correios {
      * @return boolean
      * @abstract
      */
-    abstract public function processaConsulta();
+    abstract public function process();
 }

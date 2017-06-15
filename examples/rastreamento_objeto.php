@@ -31,7 +31,7 @@ try {
     $rastreamento->addObjeto('PJ964348359BR');
     $rastreamento->addObjeto('PL125563535BR');
 
-    if ($rastreamento->processaConsulta()) {
+    if ($rastreamento->process()) {
         $retorno = $rastreamento->getRetorno();
         if ($retorno->getQuantidade() > 0) {
             echo 'Versão.................................: ' . $retorno->getVersao() . PHP_EOL;

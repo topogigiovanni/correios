@@ -10,7 +10,7 @@ O cálculo remoto de preços e prazos de encomendas dos [Correios](http://www.co
 
 É possível também a um cliente que **não** possui contrato de encomenda com os [Correios](http://www.correios.com.br) realizar o cálculo, porém, neste caso os preços apresentados serão aqueles praticados no balcão da agência.
 
-Os manuais de especificação estão salvos na pasta [docs](/docs/preco_prazo) deste projeto, e você pode ter um exemplo de uso [clicando aqui](/examples/calculo_preco_prazo.php).
+Os manuais de especificação estão salvos na pasta [docs](/docs/delivery_and_price) deste projeto, e você pode ter um exemplo de uso [clicando aqui](/examples/delivery_and_price_calculation.php).
 
 A versão atual das classes está trabalhando de acordo com a versão 1.9 do webservice dos [Correios](http://www.correios.com.br).
 
