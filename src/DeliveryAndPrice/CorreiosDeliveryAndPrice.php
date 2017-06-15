@@ -380,30 +380,56 @@ final class CorreiosDeliveryAndPrice extends Correios
      */
     public function process()
     {
-        ini_set("allow_url_fopen", 1);
-        ini_set("soap.wsdl_cache_enabled", 0);
+        $this->checkConnection();
+        $methods = $this->getWebserviceMethods();
 
         try {
-            if (@fopen(parent::URL_CALCULADOR, 'r')) {
-                $soap = new SoapClient(parent::URL_CALCULADOR);
+            //Gets the webservice return
+            $return = $this->requestData($methods['consultation']);
+            $returnMethod = $methods['return'];
 
-                $methods = $this->getWebserviceMethods();
-                $consultationMethod = $methods['consultation'];
-                $returnMethod = $methods['return'];
-
-                //Gets the returns
-                $return = $soap->$consultationMethod($this->getParameters());
-
-                //Threats the returns
-                if ($return instanceof stdClass) {
-                    $this->processReturn($return->$returnMethod->Servicos->cServico);
-                    return TRUE;
-                }
+            //Threats the returns
+            if ($return instanceof stdClass) {
+                $this->processReturn($return->$returnMethod->Servicos->cServico);
+                return TRUE;
             }
+
             return FALSE;
         } catch (SoapFault $sf) {
             throw new Exception($sf->getMessage());
         }
+    }
+
+    /**
+     * Checks if there connection with the Correios webservice.
+     *
+     * @throws Exception
+     */
+    private function checkConnection()
+    {
+        ini_set("allow_url_fopen", 1);
+        ini_set("soap.wsdl_cache_enabled", 0);
+
+        if (!@fopen(parent::URL_CALCULADOR, 'r'))
+        {
+            throw new Exception('There is no connection with Correios webservice. Try again later.');
+        }
+    }
+
+    /**
+     * Request data from Correios webservice.
+     *
+     * @param String $consultationMethod Name of the method used to request werbservice data.
+     * @return stdClass
+     */
+    private function requestData($consultationMethod)
+    {
+        //Create a SOAP client
+        $soap = new SoapClient(parent::URL_CALCULADOR);
+
+        //Gets the returns
+        return $soap->$consultationMethod($this->getParameters());
+
     }
 
     /**
@@ -414,39 +440,36 @@ final class CorreiosDeliveryAndPrice extends Correios
      */
     private function getWebserviceMethods()
     {
-        $consultation = '';
-        $return = '';
-
-        switch ($this->calculationType) {
-            case Correios::CALCULATION_TYPE_ALL_PRICE:
-                $consultation = 'CalcPrecoPrazo';
-                $return = 'CalcPrecoPrazoResult';
-                break;
-            case Correios::CALCULATION_TYPE_ONLY_DELIVERY:
-                $consultation = 'CalcPrazo';
-                $return = 'CalcPrazoResult';
-                break;
-            case Correios::CALCULATION_TYPE_ONLY_PRICE:
-                $consultation = 'CalcPreco';
-                $return = 'CalcPrecoResult';
-                break;
-            case Correios::CALCULATION_TYPE_ALL_PRICE_WITH_BASE_DATE:
-                $consultation = 'CalcPrecoPrazoData';
-                $return = 'CalcPrecoPrazoDataResult';
-                break;
-            case Correios::CALCULATION_TYPE_ONLY_DELIVERY_WITH_BASE_DATE:
-                $consultation = 'CalcPrazoData';
-                $return = 'CalcPrazoDataResult';
-                break;
-            case Correios::CALCULATION_TYPE_ONLY_PRICE_WITH_BASE_DATE:
-                $consultation = 'CalcPrecoData';
-                $return = 'CalcPrecoDataResult';
-                break;
-        }
+        $data =  array(
+            Correios::CALCULATION_TYPE_ALL_PRICE => array(
+                'consultation' => 'CalcPrecoPrazo',
+                'return' => 'CalcPrecoPrazoResult'
+            ),
+            Correios::CALCULATION_TYPE_ONLY_DELIVERY => array(
+                'consultation' => 'CalcPrazo',
+                'return' => 'CalcPrazoResult'
+            ),
+            Correios::CALCULATION_TYPE_ONLY_PRICE => array(
+                'consultation' => 'CalcPreco',
+                'return' => 'CalcPrecoResult'
+            ),
+            Correios::CALCULATION_TYPE_ALL_PRICE_WITH_BASE_DATE => array(
+                'consultation' => 'CalcPrecoPrazoData',
+                'return' => 'CalcPrecoPrazoDataResult'
+            ),
+            Correios::CALCULATION_TYPE_ONLY_DELIVERY_WITH_BASE_DATE => array(
+                'consultation' => 'CalcPrazoData',
+                'return' => 'CalcPrazoDataResult'
+            ),
+            Correios::CALCULATION_TYPE_ONLY_PRICE_WITH_BASE_DATE => array(
+                'consultation' => 'CalcPrecoData',
+                'return' => 'CalcPrecoDataResult'
+            )
+        );
 
         return array(
-            'consultation' => $consultation,
-            'return' => $return
+            'consultation' => $data[$this->calculationType]['consultation'],
+            'return' => $data[$this->calculationType]['return']
         );
     }
 
