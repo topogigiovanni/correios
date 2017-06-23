@@ -33,7 +33,7 @@ try
     $calculation->setInitiatingZipCode('89050100');
     $calculation->setReceivingZipCode('89010130');
     $calculation->addService(Correios::SERVICE_PAC_WITHOUT_CONTRACT_AGENCY);
-    $calculation->addService(Correios::SERVICE_SEDEX_WITHOUT_AGENCY_CONTRACT);
+    $calculation->addService(Correios::SERVICE_SEDEX_WITH_CONTRACT);
     $calculation->setPackageShape(Correios::PACKAGE_SHAPE_BOX_PARCEL);
     $calculation->setPackageWeight(9.56);
     $calculation->hasDeclaredProductPriceService(637.89);

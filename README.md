@@ -6,7 +6,7 @@
 
 ## Cálculo de Preço e Prazo de entrega
 
-O cálculo remoto de preços e prazos de encomendas dos [Correios](http://www.correios.com.br) é destinado aos clientes que possuem [contrato](http://www.correios.com.br/para-sua-empresa/servicos-para-o-seu-contrato) de Sedex, e-Sedex e PAC, que necessitam calcular, no seu site e de forma personalizada, o preço e o prazo de entrega de uma encomenda.
+O cálculo remoto de preços e prazos de encomendas dos [Correios](http://www.correios.com.br) é destinado aos clientes que possuem [contrato](http://www.correios.com.br/para-sua-empresa/servicos-para-o-seu-contrato) de Sedex e PAC, que necessitam calcular, no seu site e de forma personalizada, o preço e o prazo de entrega de uma encomenda.
 
 É possível também a um cliente que **não** possui contrato de encomenda com os [Correios](http://www.correios.com.br) realizar o cálculo, porém, neste caso os preços apresentados serão aqueles praticados no balcão da agência.
 

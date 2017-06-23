@@ -35,12 +35,6 @@ abstract class Correios {
     const SERVICE_PAC_WITHOUT_CONTRACT_AGENCY = '04510';
     const SERVICE_PAC_WITH_CONTRACT = '41068';
 	const SERVICE_PAC_WITH_CONTRACT_AGENCY = '04669';
-    const SERVICE_SEDEX_WITH_CONTRACT = '81019';
-    const SERVICE_ESEDEX_PRIME_WITH_CONTRACT = '81027';
-    const SERVICE_ESEDEX_EXPRESS_WITH_CONTRACT = '81025';
-    const SERVICE_ESEDEX_WITH_CONTRACT_GROUP_1 = '81868';
-    const SERVICE_ESEDEX_WITH_CONTRACT_GROUP_2 = '81833';
-    const SERVICE_ESEDEX_WITH_CONTRACT_GROUP_3 = '81850';
 
     const TIPO_RASTREAMENTO_LISTA = 'L';
     const TIPO_RASTREAMENTO_INTERVALO = 'F';
@@ -118,13 +112,7 @@ abstract class Correios {
         self::SERVICE_PAC_WITHOUT_CONTRACT,
         self::SERVICE_PAC_WITHOUT_CONTRACT_AGENCY,
         self::SERVICE_PAC_WITH_CONTRACT,
-		self::SERVICE_PAC_WITH_CONTRACT_AGENCY,
-        self::SERVICE_SEDEX_WITH_CONTRACT,
-        self::SERVICE_ESEDEX_PRIME_WITH_CONTRACT,
-        self::SERVICE_ESEDEX_EXPRESS_WITH_CONTRACT,
-        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_1,
-        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_2,
-        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_3,
+		self::SERVICE_PAC_WITH_CONTRACT_AGENCY
     );
 
     /**
@@ -264,13 +252,7 @@ abstract class Correios {
         self::SERVICE_PAC_WITHOUT_CONTRACT => 'PAC sem contrato',
         self::SERVICE_PAC_WITHOUT_CONTRACT_AGENCY => 'PAC sem contrato agência',
         self::SERVICE_PAC_WITH_CONTRACT => 'PAC com contrato',
-		self::SERVICE_PAC_WITH_CONTRACT_AGENCY => 'PAC com contrato agência',
-        self::SERVICE_SEDEX_WITH_CONTRACT => 'eSedex com contrato',
-        self::SERVICE_ESEDEX_PRIME_WITH_CONTRACT => 'eSedex Prioritário com contrato',
-        self::SERVICE_ESEDEX_EXPRESS_WITH_CONTRACT => 'eSedex Express com contrato',
-        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_1 => 'eSedex com contrato',
-        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_2 => 'eSedex com contrato',
-        self::SERVICE_ESEDEX_WITH_CONTRACT_GROUP_3 => 'eSedex com contrato',
+		self::SERVICE_PAC_WITH_CONTRACT_AGENCY => 'PAC com contrato agência'
     );
 
     /**
