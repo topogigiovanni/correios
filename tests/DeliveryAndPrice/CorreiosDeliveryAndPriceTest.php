@@ -209,18 +209,18 @@ class CorreiosDeliveryAndPriceTest extends PHPUnit_Framework_TestCase
      */
     public function testsDeclaredProductPriceServiceCorrect()
     {
-        $this->getData()->hasDeclaredProductPriceService(123.9);
+        $this->getData()->setDeclaredProductPriceService(123.9);
     }
 
     /**
      * Tests if the price of called "Declared Product Price" is incorrect.
      *
      * @expectedException Exception
-     * @expectedExceptionMessage The additional service called "Declared Product Price" is invalid.
+     * @expectedExceptionMessage The price to additional service called "Declared Product" is invalid.
      */
     public function testsDeclaredProductPriceServiceIncorrect()
     {
-        $this->getData()->hasDeclaredProductPriceService(123);
+        $this->getData()->setDeclaredProductPriceService(123);
     }
 
     /**

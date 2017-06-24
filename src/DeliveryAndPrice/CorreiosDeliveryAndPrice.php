@@ -304,15 +304,15 @@ final class CorreiosDeliveryAndPrice extends Correios
     /**
      * Sets if the package will be delivered with the additional service called "Declared Product Price".
      *
-     * @param float $hasDeclaredProductPriceService Has declared product price service.
+     * @param float $declaredProductPriceService Has declared product price service.
      * @throws Exception
      */
-    public function hasDeclaredProductPriceService($hasDeclaredProductPriceService)
+    public function setDeclaredProductPriceService($declaredProductPriceService)
     {
-        if (is_float($hasDeclaredProductPriceService)) {
-            $this->hasDeclaredProductPriceService = $hasDeclaredProductPriceService;
+        if (is_float($declaredProductPriceService)) {
+            $this->hasDeclaredProductPriceService = $declaredProductPriceService;
         } else {
-            throw new Exception('The additional service called "Declared Product Price" is invalid.');
+            throw new Exception('The price to additional service called "Declared Product" is invalid.');
         }
     }
 
