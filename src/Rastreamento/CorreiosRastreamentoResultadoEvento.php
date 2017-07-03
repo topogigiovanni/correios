@@ -100,7 +100,7 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoTipo() {
-        return (isset(Correios::$tipoEvento[$this->tipoDoEvento]) ? Correios::$tipoEvento[$this->tipoDoEvento] : '');
+        return (isset(Correios::$eventTypes[$this->tipoDoEvento]) ? Correios::$eventTypes[$this->tipoDoEvento] : '');
     }
 
     /**
@@ -235,8 +235,8 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getDescricaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]) ?
-                Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]['mensagem'] : 'Status desconhecido.';
+        return isset(Correios::$trackingStatus[$this->getStatus()][$this->tipoDoEvento]) ?
+                Correios::$trackingStatus[$this->getStatus()][$this->tipoDoEvento]['message'] : 'Status desconhecido.';
     }
 
     /**
@@ -263,8 +263,8 @@ final class CorreiosRastreamentoResultadoEvento extends CorreiosRastreamentoResu
      * @return string
      */
     public function getAcaoStatus() {
-        return isset(Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]) ?
-                Correios::$statusRastreamento[$this->getStatus()][$this->tipoDoEvento]['acao'] : 'Ação desconhecida.';
+        return isset(Correios::$trackingStatus[$this->getStatus()][$this->tipoDoEvento]) ?
+                Correios::$trackingStatus[$this->getStatus()][$this->tipoDoEvento]['action'] : 'Ação desconhecida.';
     }
 
 }

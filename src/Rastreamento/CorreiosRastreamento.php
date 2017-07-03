@@ -71,7 +71,7 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function setTipo($tipo) {
-        if (in_array($tipo, parent::$tiposRastreamento)) {
+        if (in_array($tipo, parent::$trackingTypes)) {
             $this->tipo = $tipo;
         } else {
             throw new \Exception('O tipo de rastreamento informado é inválido.');
@@ -85,7 +85,7 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function setLingua($lingua) {
-        if (in_array($lingua, parent::$linguasRastreamento)) {
+        if (in_array($lingua, parent::$trackingLanguages)) {
             $this->lingua = $lingua;
         } else {
             throw new \Exception('O idioma de rastreamento informado é inválido.');
@@ -99,7 +99,7 @@ class CorreiosRastreamento extends Correios {
      * @throws \Exception
      */
     public function setResultado($resultado) {
-        if (in_array($resultado, parent::$resultadosRastreamento)) {
+        if (in_array($resultado, parent::$trackingResults)) {
             $this->resultado = $resultado;
         } else {
             throw new \Exception('O tipos de resultado de rastreamento informado é inválido.');
@@ -146,8 +146,8 @@ class CorreiosRastreamento extends Correios {
      */
     protected function getParameters() {
         $parametros = array(
-            'usuario' => (string) $this->getUsuario(),
-            'senha' => (string) $this->getSenha(),
+            'usuario' => (string) $this->getUsername(),
+            'senha' => (string) $this->getPassword(),
             'tipo' => (string) $this->tipo,
             'lingua' => (string) $this->lingua,
             'resultado' => (string) $this->resultado,
@@ -169,9 +169,9 @@ class CorreiosRastreamento extends Correios {
 
         $retorno = FALSE;
         //Valida se o servidor está no ar
-        if (@fopen(parent::URL_RASTREADOR, 'r')) {
+        if (@fopen(parent::URL_TRACKING, 'r')) {
             try {
-                $soap = new \SoapClient(parent::URL_RASTREADOR);
+                $soap = new \SoapClient(parent::URL_TRACKING);
                 $resultado = $soap->buscaEventosLista($this->getParameters());
 
                 if ($resultado instanceof \stdClass) {

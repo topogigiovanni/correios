@@ -22,10 +22,10 @@ try {
     //Cria o objeto
     $rastreamento = new CorreiosRastreamento('ECT', 'SRO');
     //Envio dos parâmetros
-    $rastreamento->setTipo(Correios::TIPO_RASTREAMENTO_LISTA);
+    $rastreamento->setTipo(Correios::TRACKING_TYPE_LIST);
     //Não use a opção TIPO_RASTREAMENTO_INTERVALO. Quando utilizada está retornando NullPointerException
-    $rastreamento->setResultado(Correios::RESULTADO_RASTREAMENTO_ULTIMO);
-    $rastreamento->setLingua(Correios::LINGUA_PORTUGUES);
+    $rastreamento->setResultado(Correios::TRACKING_RESULT_LAST);
+    $rastreamento->setLingua(Correios::LANGUAGE_PORTUGUESE);
     $rastreamento->addObjeto('DU607265998BR');
     $rastreamento->addObjeto('JO144618395BR');
     $rastreamento->addObjeto('PJ964348359BR');

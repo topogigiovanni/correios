@@ -410,7 +410,7 @@ final class CorreiosDeliveryAndPrice extends Correios
         ini_set("allow_url_fopen", 1);
         ini_set("soap.wsdl_cache_enabled", 0);
 
-        if (!@fopen(parent::URL_CALCULADOR, 'r')) {
+        if (!@fopen(parent::URL_CALCULATION, 'r')) {
             throw new Exception('There is no connection with Correios webservice. Try again later.');
         }
     }
@@ -440,7 +440,7 @@ final class CorreiosDeliveryAndPrice extends Correios
     private function requestData($consultationMethod)
     {
         //Create a SOAP client
-        $soap = new SoapClient(parent::URL_CALCULADOR);
+        $soap = new SoapClient(parent::URL_CALCULATION);
 
         //Gets the returns
         return $soap->$consultationMethod($this->getParameters());
@@ -512,8 +512,8 @@ final class CorreiosDeliveryAndPrice extends Correios
     private function getAllParameters()
     {
         return array(
-            'nCdEmpresa' => (string) $this->getUsuario(),
-            'sDsSenha' => (string) $this->getSenha(),
+            'nCdEmpresa' => (string) $this->getUsername(),
+            'sDsSenha' => (string) $this->getPassword(),
             'nCdServico' => (string) $this->getServices(),
             'sCepOrigem' => (string) $this->initiatingZipCode,
             'sCepDestino' => (string) $this->receivingZipCode,

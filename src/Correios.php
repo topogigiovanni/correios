@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Classe base para os serviços dos Correios.
+ * Class Brazilian Postal Services (Correios).
  *
- * @author Ivan Wilhelm <ivan.whm@outlook.com>
+ * @author Ivan Wilhelm <ivan.whm@icloud.com>
  * @version 1.3
  * @abstract
  */
@@ -12,8 +12,8 @@ namespace correios;
 
 abstract class Correios {
 
-    const URL_CALCULADOR = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL';
-    const URL_RASTREADOR = 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl';
+    const URL_CALCULATION = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL';
+    const URL_TRACKING = 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl';
 
     const PACKAGE_SHAPE_BOX_PARCEL = 1;
     const PACKAGE_SHAPE_ROLLER_PRISM = 2;
@@ -36,37 +36,37 @@ abstract class Correios {
     const SERVICE_PAC_WITH_CONTRACT = '41068';
 	const SERVICE_PAC_WITH_CONTRACT_AGENCY = '04669';
 
-    const TIPO_RASTREAMENTO_LISTA = 'L';
-    const TIPO_RASTREAMENTO_INTERVALO = 'F';
+    const TRACKING_TYPE_LIST = 'L';
+    const TRACKING_TYPE_INTERVAL = 'F';
 
-    const RESULTADO_RASTREAMENTO_TODOS = 'T';
-    const RESULTADO_RASTREAMENTO_ULTIMO = 'U';
+    const TRACKING_RESULT_ALL = 'T';
+    const TRACKING_RESULT_LAST = 'U';
 
-    const TIPO_EVENTO_BDE = 'BDE';
-    const TIPO_EVENTO_BDI = 'BDI';
-    const TIPO_EVENTO_BDR = 'BDR';
-    const TIPO_EVENTO_BLQ = 'BLQ';
-    const TIPO_EVENTO_CAR = 'CAR';
-    const TIPO_EVENTO_CD = 'CD';
-    const TIPO_EVENTO_CMR = 'CMR';
-    const TIPO_EVENTO_CMT = 'CMT';
-    const TIPO_EVENTO_CO = 'CO';
-    const TIPO_EVENTO_CUN = 'CUN';
-    const TIPO_EVENTO_DO = 'DO';
-    const TIPO_EVENTO_EST = 'EST';
-    const TIPO_EVENTO_FC = 'FC';
-    const TIPO_EVENTO_IDC = 'IDC';
-    const TIPO_EVENTO_IE = 'IE';
-    const TIPO_EVENTO_IT = 'IT';
-    const TIPO_EVENTO_LDI = 'LDI';
-    const TIPO_EVENTO_LDE = 'LDE';
-    const TIPO_EVENTO_OEC = 'OEC';
-    const TIPO_EVENTO_PAR = 'PAR';
-    const TIPO_EVENTO_PMT = 'PMT';
-    const TIPO_EVENTO_PO = 'PO';
-    const TIPO_EVENTO_RO = 'RO';
-    const TIPO_EVENTO_TR = 'TR';
-    const TIPO_EVENTO_TRI = 'TRI';
+    const EVENT_TYPE_BDE = 'BDE';
+    const EVENT_TYPE_BDI = 'BDI';
+    const EVENT_TYPE_BDR = 'BDR';
+    const EVENT_TYPE_BLQ = 'BLQ';
+    const EVENT_TYPE_CAR = 'CAR';
+    const EVENT_TYPE_CD = 'CD';
+    const EVENT_TYPE_CMR = 'CMR';
+    const EVENT_TYPE_CMT = 'CMT';
+    const EVENT_TYPE_CO = 'CO';
+    const EVENT_TYPE_CUN = 'CUN';
+    const EVENT_TYPE_DO = 'DO';
+    const EVENT_TYPE_EST = 'EST';
+    const EVENT_TYPE_FC = 'FC';
+    const EVENT_TYPE_IDC = 'IDC';
+    const EVENT_TYPE_IE = 'IE';
+    const EVENT_TYPE_IT = 'IT';
+    const EVENT_TYPE_LDI = 'LDI';
+    const EVENT_TYPE_LDE = 'LDE';
+    const EVENT_TYPE_OEC = 'OEC';
+    const EVENT_TYPE_PAR = 'PAR';
+    const EVENT_TYPE_PMT = 'PMT';
+    const EVENT_TYPE_PO = 'PO';
+    const EVENT_TYPE_RO = 'RO';
+    const EVENT_TYPE_TR = 'TR';
+    const EVENT_TYPE_TRI = 'TRI';
 
     const CALCULATION_TYPE_ONLY_PRICE = 'P';
     const CALCULATION_TYPE_ONLY_DELIVERY = 'Z';
@@ -75,8 +75,8 @@ abstract class Correios {
     const CALCULATION_TYPE_ONLY_DELIVERY_WITH_BASE_DATE = 'ZD';
     const CALCULATION_TYPE_ALL_PRICE_WITH_BASE_DATE = 'TD';
 
-    const LINGUA_PORTUGUES = '101';
-    const LINGUA_INGLES = '102';
+    const LANGUAGE_PORTUGUESE = '101';
+    const LANGUAGE_ENGLISH = '102';
 
     /**
      * Contains the package shapes accepted.
@@ -149,36 +149,36 @@ abstract class Correios {
     );
 
     /**
-     * Contém os tipos de rastreamento aceitos.
+     * Contains all the accepted tracking types.
      *
      * @var array
      * @static
      */
-    protected static $tiposRastreamento = array(
-        self::TIPO_RASTREAMENTO_LISTA,
-        self::TIPO_RASTREAMENTO_INTERVALO,
+    protected static $trackingTypes = array(
+        self::TRACKING_TYPE_LIST,
+        self::TRACKING_TYPE_INTERVAL,
     );
 
     /**
-     * Contém os idiomas de rastreamento aceitos.
+     * Contains all the accepted languages.
      *
      * @var array
      * @static
      */
-    protected static $linguasRastreamento = array(
-        self::LINGUA_PORTUGUES,
-        self::LINGUA_INGLES
+    protected static $trackingLanguages = array(
+        self::LANGUAGE_PORTUGUESE,
+        self::LANGUAGE_ENGLISH
     );
 
     /**
-     * Contém os resultados de rastreamento aceitos.
+     * Contains all the accepted tracking results.
      *
      * @var array
      * @static
      */
-    protected static $resultadosRastreamento = array(
-        self::RESULTADO_RASTREAMENTO_TODOS,
-        self::RESULTADO_RASTREAMENTO_ULTIMO,
+    protected static $trackingResults = array(
+        self::TRACKING_RESULT_ALL,
+        self::TRACKING_RESULT_LAST,
     );
 
     /**
@@ -197,37 +197,37 @@ abstract class Correios {
     );
 
     /**
-     * Contém a lista dos eventos de rastreamento.
+     * Contains all the event types.
      *
      * @var array
      * @static
      */
-    protected static $tipoEvento = array(
-        self::TIPO_EVENTO_BDE => 'Baixa de distribuição externa',
-        self::TIPO_EVENTO_BDI => 'Baixa de distribuição interna',
-        self::TIPO_EVENTO_BDR => 'Baixa corretiva',
-        self::TIPO_EVENTO_BLQ => 'Bloqueado',
-        self::TIPO_EVENTO_CAR => 'Conferência de lista de registro',
-        self::TIPO_EVENTO_CD => 'Conferência de nota de despacho',
-        self::TIPO_EVENTO_CMR => 'Conferência de lista de registro',
-        self::TIPO_EVENTO_CMT => 'Conferência de lista de trânsito',
-        self::TIPO_EVENTO_CO => 'Coleta de objetos',
-        self::TIPO_EVENTO_CUN => 'Conferência de lista de registro',
-        self::TIPO_EVENTO_DO => 'Expedição de nota de despacho',
-        self::TIPO_EVENTO_EST => 'Estorno',
-        self::TIPO_EVENTO_FC => 'Função complementar',
-        self::TIPO_EVENTO_IDC => 'Indenização de objetos',
-        self::TIPO_EVENTO_IE => 'Comunicação de irregularidade de expedição',
-        self::TIPO_EVENTO_IT => 'Passagem interna de objetos',
-        self::TIPO_EVENTO_LDI => 'Lista de distribuição interna',
-        self::TIPO_EVENTO_LDE => 'Lista de distribuição externa',
-        self::TIPO_EVENTO_OEC => 'Lista de objetos entregues ao carteiro',
-        self::TIPO_EVENTO_PAR => 'Conferência unidade internacional',
-        self::TIPO_EVENTO_PMT => 'Partida meio de transporte',
-        self::TIPO_EVENTO_PO => 'Postagem',
-        self::TIPO_EVENTO_RO => 'Expedição de lista de registro',
-        self::TIPO_EVENTO_TR => 'Trânsito',
-        self::TIPO_EVENTO_TRI => 'Trânsito',
+    protected static $eventTypes = array(
+        self::EVENT_TYPE_BDE => 'Baixa de distribuição externa',
+        self::EVENT_TYPE_BDI => 'Baixa de distribuição interna',
+        self::EVENT_TYPE_BDR => 'Baixa corretiva',
+        self::EVENT_TYPE_BLQ => 'Bloqueado',
+        self::EVENT_TYPE_CAR => 'Conferência de lista de registro',
+        self::EVENT_TYPE_CD => 'Conferência de nota de despacho',
+        self::EVENT_TYPE_CMR => 'Conferência de lista de registro',
+        self::EVENT_TYPE_CMT => 'Conferência de lista de trânsito',
+        self::EVENT_TYPE_CO => 'Coleta de objetos',
+        self::EVENT_TYPE_CUN => 'Conferência de lista de registro',
+        self::EVENT_TYPE_DO => 'Expedição de nota de despacho',
+        self::EVENT_TYPE_EST => 'Estorno',
+        self::EVENT_TYPE_FC => 'Função complementar',
+        self::EVENT_TYPE_IDC => 'Indenização de objetos',
+        self::EVENT_TYPE_IE => 'Comunicação de irregularidade de expedição',
+        self::EVENT_TYPE_IT => 'Passagem interna de objetos',
+        self::EVENT_TYPE_LDI => 'Lista de distribuição interna',
+        self::EVENT_TYPE_LDE => 'Lista de distribuição externa',
+        self::EVENT_TYPE_OEC => 'Lista de objetos entregues ao carteiro',
+        self::EVENT_TYPE_PAR => 'Conferência unidade internacional',
+        self::EVENT_TYPE_PMT => 'Partida meio de transporte',
+        self::EVENT_TYPE_PO => 'Postagem',
+        self::EVENT_TYPE_RO => 'Expedição de lista de registro',
+        self::EVENT_TYPE_TR => 'Trânsito',
+        self::EVENT_TYPE_TRI => 'Trânsito',
     );
 
     /**
@@ -256,967 +256,964 @@ abstract class Correios {
     );
 
     /**
-     * Contém a relação de mensagens de retorno ao cliente quando ocorre algum
-     * evento na entrega pelos correios.
-     *
-     * Eventos atualizados de acordo com a nova tabela de eventos disponibilizada pelos Correios.
+     * Contains the return message list when a specific event occurs.
      *
      * @see http://www.correios.com.br/voce/acompanhar/rastreamento/atualizacaoSRO.cfm
-     *
      * @var array
      * @static
      */
-    public static $statusRastreamento = array(
+    public static $trackingStatus = array(
         0 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto entregue ao destinatário.',
-                'acao' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto entregue ao destinatário.',
+                'action' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto entregue ao destinatário.',
-                'acao' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto entregue ao destinatário.',
+                'action' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto entregue ao destinatário.',
-                'acao' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto entregue ao destinatário.',
+                'action' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
             ),
-            Correios::TIPO_EVENTO_CD => array(
-                'mensagem' => 'Objeto recebido na Unidade dos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CD => array(
+                'message' => 'Objeto recebido na Unidade dos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_CMT => array(
-                'mensagem' => 'Objeto recebido na Unidade dos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CMT => array(
+                'message' => 'Objeto recebido na Unidade dos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_CUN => array(
-                'mensagem' => 'Objeto recebido na Unidade dos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CUN => array(
+                'message' => 'Objeto recebido na Unidade dos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_DO => array(
-                'mensagem' => 'Objeto encaminhado para.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_DO => array(
+                'message' => 'Objeto encaminhado para.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_LDE => array(
-                'mensagem' => 'Objeto saiu para entrega ao remetente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_LDE => array(
+                'message' => 'Objeto saiu para entrega ao remetente.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_LDI => array(
-                'mensagem' => 'Objeto aguardando retirada no endereço indicado.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_LDI => array(
+                'message' => 'Objeto aguardando retirada no endereço indicado.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_OEC => array(
-                'mensagem' => 'Objeto saiu para entrega ao destinatário.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_OEC => array(
+                'message' => 'Objeto saiu para entrega ao destinatário.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_PO => array(
-                'mensagem' => 'Objeto postado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PO => array(
+                'message' => 'Objeto postado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_RO => array(
-                'mensagem' => 'Objeto encaminhado para.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_RO => array(
+                'message' => 'Objeto encaminhado para.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_TRI => array(
-                'mensagem' => 'Objeto encaminhado para.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_TRI => array(
+                'message' => 'Objeto encaminhado para.',
+                'action' => 'Acompanhar.',
             ),
         ),
         1 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto entregue ao destinatário.',
-                'acao' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto entregue ao destinatário.',
+                'action' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto entregue ao destinatário.',
-                'acao' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto entregue ao destinatário.',
+                'action' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto entregue ao destinatário.',
-                'acao' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto entregue ao destinatário.',
+                'action' => 'Finalizar a entrega. Não é mais necessário prosseguir com o acompanhamento.',
             ),
-            Correios::TIPO_EVENTO_BLQ => array(
-                'mensagem' => 'Entrega de objeto bloqueada a pedido do remetente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BLQ => array(
+                'message' => 'Entrega de objeto bloqueada a pedido do remetente.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_CD => array(
-                'mensagem' => 'Objeto recebido na Unidade dos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CD => array(
+                'message' => 'Objeto recebido na Unidade dos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_CO => array(
-                'mensagem' => 'Objeto coletado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CO => array(
+                'message' => 'Objeto coletado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_CUN => array(
-                'mensagem' => 'Objeto recebido na Unidade dos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CUN => array(
+                'message' => 'Objeto recebido na Unidade dos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_DO => array(
-                'mensagem' => 'Objeto encaminhado para.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_DO => array(
+                'message' => 'Objeto encaminhado para.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_EST => array(
-                'mensagem' => 'Favor desconsiderar a informação anterior.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_EST => array(
+                'message' => 'Favor desconsiderar a informação anterior.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_FC => array(
-                'mensagem' => 'Objeto será devolvido por solicitação do remetente.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_FC => array(
+                'message' => 'Objeto será devolvido por solicitação do remetente.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_IDC => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_IDC => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_LDI => array(
-                'mensagem' => 'Objeto aguardando retirada no endereço indicado.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_LDI => array(
+                'message' => 'Objeto aguardando retirada no endereço indicado.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_OEC => array(
-                'mensagem' => 'Objeto saiu para entrega ao destinatário.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_OEC => array(
+                'message' => 'Objeto saiu para entrega ao destinatário.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_PMT => array(
-                'mensagem' => 'Objeto encaminhado para.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PMT => array(
+                'message' => 'Objeto encaminhado para.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_PO => array(
-                'mensagem' => 'Objeto postado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PO => array(
+                'message' => 'Objeto postado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_RO => array(
-                'mensagem' => 'Objeto encaminhado para.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_RO => array(
+                'message' => 'Objeto encaminhado para.',
+                'action' => 'Acompanhar.',
             ),
         ),
         2 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_CD => array(
-                'mensagem' => 'Objeto recebido na Unidade dos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CD => array(
+                'message' => 'Objeto recebido na Unidade dos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_DO => array(
-                'mensagem' => 'Objeto encaminhado para.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_DO => array(
+                'message' => 'Objeto encaminhado para.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_EST => array(
-                'mensagem' => 'Favor desconsiderar a informação anterior.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_EST => array(
+                'message' => 'Favor desconsiderar a informação anterior.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_FC => array(
-                'mensagem' => 'Objeto com data de entrega agendada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_FC => array(
+                'message' => 'Objeto com data de entrega agendada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_IDC => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_IDC => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_LDI => array(
-                'mensagem' => 'Objeto disponível para retirada em Caixa Postal.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_LDI => array(
+                'message' => 'Objeto disponível para retirada em Caixa Postal.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
         ),
         3 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Remetente não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acompanhar. O interessado não buscou o objeto na unidade dos Correios durante o período de guarda.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Remetente não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acompanhar. O interessado não buscou o objeto na unidade dos Correios durante o período de guarda.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Remetente não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acompanhar. O interessado não buscou o objeto na unidade dos Correios durante o período de guarda.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Remetente não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acompanhar. O interessado não buscou o objeto na unidade dos Correios durante o período de guarda.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Remetente não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acompanhar. O interessado não buscou o objeto na unidade dos Correios durante o período de guarda.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Remetente não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acompanhar. O interessado não buscou o objeto na unidade dos Correios durante o período de guarda.',
             ),
-            Correios::TIPO_EVENTO_CD => array(
-                'mensagem' => 'Objeto recebido na Unidade dos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_CD => array(
+                'message' => 'Objeto recebido na Unidade dos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_EST => array(
-                'mensagem' => 'Favor desconsiderar a informação anterior.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_EST => array(
+                'message' => 'Favor desconsiderar a informação anterior.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_FC => array(
-                'mensagem' => 'Objeto mal encaminhado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_FC => array(
+                'message' => 'Objeto mal encaminhado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_IDC => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_IDC => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_LDI => array(
-                'mensagem' => 'Objeto aguardando retirada no endereço indicado.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_LDI => array(
+                'message' => 'Objeto aguardando retirada no endereço indicado.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
         ),
         4 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente recusou-se a receber.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente recusou-se a receber.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente recusou-se a receber.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente recusou-se a receber.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente recusou-se a receber.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente recusou-se a receber.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_EST => array(
-                'mensagem' => 'Favor desconsiderar a informação anterior.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_EST => array(
+                'message' => 'Favor desconsiderar a informação anterior.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_FC => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_FC => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_IDC => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_IDC => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acompanhar.',
             ),
         ),
         5 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_EST => array(
-                'mensagem' => 'Favor desconsiderar a informação anterior.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_EST => array(
+                'message' => 'Favor desconsiderar a informação anterior.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_FC => array(
-                'mensagem' => 'Objeto devolvido aos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_FC => array(
+                'message' => 'Objeto devolvido aos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_IDC => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_IDC => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acompanhar.',
             ),
         ),
         6 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente desconhecido no local.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente desconhecido no local.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente desconhecido no local.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente desconhecido no local.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente desconhecido no local.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente desconhecido no local.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_EST => array(
-                'mensagem' => 'Favor desconsiderar a informação anterior.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_EST => array(
+                'message' => 'Favor desconsiderar a informação anterior.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_IDC => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_IDC => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acompanhar.',
             ),
         ),
         7 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_FC => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_FC => array(
+                'message' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_IDC => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_IDC => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acompanhar.',
             ),
         ),
         8 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         9 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto não localizado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto não localizado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_EST => array(
-                'mensagem' => 'Favor desconsiderar a informação anterior.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_EST => array(
+                'message' => 'Favor desconsiderar a informação anterior.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_OEC => array(
-                'mensagem' => 'Objeto saiu para entrega ao destinatário.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_OEC => array(
+                'message' => 'Objeto saiu para entrega ao destinatário.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_PO => array(
-                'mensagem' => 'Objeto postado após o horário limite da agência.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PO => array(
+                'message' => 'Objeto postado após o horário limite da agência.',
+                'action' => 'Acompanhar.',
             )
         ),
         10 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente mudou-se.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente mudou-se.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente mudou-se.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente mudou-se.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Cliente mudou-se.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Cliente mudou-se.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         12 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Remetente não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Remetente não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Remetente não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Remetente não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Remetente não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Remetente não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
         ),
         14 => array(
-            Correios::TIPO_EVENTO_LDI => array(
-                'mensagem' => 'Objeto aguardando retirada no endereço indicado.',
-                'acao' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_LDI => array(
+                'message' => 'Objeto aguardando retirada no endereço indicado.',
+                'action' => 'Acompanhar. O interessado deverá buscar o objeto em uma Unidade dos Correios.',
             ),
         ),
         15 => array(
-            Correios::TIPO_EVENTO_PAR => array(
-                'mensagem' => 'Objeto recebido em destino.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PAR => array(
+                'message' => 'Objeto recebido em destino.',
+                'action' => 'Acompanhar.',
             ),
         ),
         16 => array(
-            Correios::TIPO_EVENTO_PAR => array(
-                'mensagem' => 'Objeto recebido no Brasil.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PAR => array(
+                'message' => 'Objeto recebido no Brasil.',
+                'action' => 'Acompanhar.',
             ),
         ),
         17 => array(
-            Correios::TIPO_EVENTO_PAR => array(
-                'mensagem' => 'Objeto liberado pela alfândega.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PAR => array(
+                'message' => 'Objeto liberado pela alfândega.',
+                'action' => 'Acompanhar.',
             ),
         ),
         18 => array(
-            Correios::TIPO_EVENTO_PAR => array(
-                'mensagem' => 'Objeto recebido na unidade de exportação.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_PAR => array(
+                'message' => 'Objeto recebido na unidade de exportação.',
+                'action' => 'Acompanhar.',
             ),
         ),
         19 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Endereço incorreto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Endereço incorreto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         20 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar.',
             ),
         ),
         21 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Carteiro não atendido.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         22 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto devolvido aos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto devolvido aos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto devolvido aos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto devolvido aos Correios.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto devolvido aos Correios.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto devolvido aos Correios.',
+                'action' => 'Acompanhar.',
             ),
         ),
         23 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto devolvido ao remetente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto devolvido ao remetente.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto devolvido ao remetente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto devolvido ao remetente.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto devolvido ao remetente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto devolvido ao remetente.',
+                'action' => 'Acompanhar.',
             ),
         ),
         24 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto disponível para retirada em Caixa Postal.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto disponível para retirada em Caixa Postal.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto disponível para retirada em Caixa Postal.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto disponível para retirada em Caixa Postal.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto disponível para retirada em Caixa Postal.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto disponível para retirada em Caixa Postal.',
+                'action' => 'Acompanhar.',
             ),
         ),
         25 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Empresa sem expediente.',
+                'action' => 'Acompanhar.',
             ),
         ),
         26 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Destinatário não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Destinatário não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Destinatário não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Destinatário não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Destinatário não retirou objeto na Unidade dos Correios.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Destinatário não retirou objeto na Unidade dos Correios.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         28 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto e/ou conteúdo avariado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto e/ou conteúdo avariado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto e/ou conteúdo avariado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto e/ou conteúdo avariado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto e/ou conteúdo avariado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto e/ou conteúdo avariado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
         ),
         32 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto com data de entrega agendada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto com data de entrega agendada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto com data de entrega agendada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto com data de entrega agendada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto com data de entrega agendada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto com data de entrega agendada.',
+                'action' => 'Acompanhar.',
             ),
         ),
         33 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Destinatário não apresentou documento exigido.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Destinatário não apresentou documento exigido.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Destinatário não apresentou documento exigido.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Destinatário não apresentou documento exigido.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Destinatário não apresentou documento exigido.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Destinatário não apresentou documento exigido.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         34 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Logradouro com numeração irregular.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega não pode ser efetuada - Logradouro com numeração irregular.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Logradouro com numeração irregular.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega não pode ser efetuada - Logradouro com numeração irregular.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega não pode ser efetuada - Logradouro com numeração irregular.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega não pode ser efetuada - Logradouro com numeração irregular.',
+                'action' => 'Acompanhar.',
             ),
         ),
         35 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Coleta ou entrega de objeto não efetuada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Coleta ou entrega de objeto não efetuada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Coleta ou entrega de objeto não efetuada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Coleta ou entrega de objeto não efetuada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Coleta ou entrega de objeto não efetuada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Coleta ou entrega de objeto não efetuada.',
+                'action' => 'Acompanhar.',
             ),
         ),
         36 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Coleta ou entrega de objeto não efetuada.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Coleta ou entrega de objeto não efetuada.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Coleta ou entrega de objeto não efetuada.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Coleta ou entrega de objeto não efetuada.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Coleta ou entrega de objeto não efetuada.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Coleta ou entrega de objeto não efetuada.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         37 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto e/ou conteúdo avariado por acidente com veículo.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto e/ou conteúdo avariado por acidente com veículo.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto e/ou conteúdo avariado por acidente com veículo.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto e/ou conteúdo avariado por acidente com veículo.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto e/ou conteúdo avariado por acidente com veículo.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto e/ou conteúdo avariado por acidente com veículo.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
         ),
         38 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto endereçado à empresa falida.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto endereçado à empresa falida.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto endereçado à empresa falida.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto endereçado à empresa falida.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto endereçado à empresa falida.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto endereçado à empresa falida.',
+                'action' => 'Acompanhar.',
             ),
         ),
         40 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A importação do objeto/conteúdo não foi autorizada pelos órgãos fiscalizadores.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A importação do objeto/conteúdo não foi autorizada pelos órgãos fiscalizadores.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A importação do objeto/conteúdo não foi autorizada pelos órgãos fiscalizadores.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A importação do objeto/conteúdo não foi autorizada pelos órgãos fiscalizadores.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A importação do objeto/conteúdo não foi autorizada pelos órgãos fiscalizadores.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A importação do objeto/conteúdo não foi autorizada pelos órgãos fiscalizadores.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         41 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'A entrega do objeto está condicionada à composição do lote.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'A entrega do objeto está condicionada à composição do lote.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'A entrega do objeto está condicionada à composição do lote.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'A entrega do objeto está condicionada à composição do lote.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'A entrega do objeto está condicionada à composição do lote.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'A entrega do objeto está condicionada à composição do lote.',
+                'action' => 'Acompanhar.',
             ),
         ),
         42 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Lote de objetos incompleto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Lote de objetos incompleto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Lote de objetos incompleto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Lote de objetos incompleto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Lote de objetos incompleto.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Lote de objetos incompleto.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         43 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto apreendido por órgão de fiscalização ou outro órgão anuente.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto apreendido por órgão de fiscalização ou outro órgão anuente.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto apreendido por órgão de fiscalização ou outro órgão anuente.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto apreendido por órgão de fiscalização ou outro órgão anuente.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto apreendido por órgão de fiscalização ou outro órgão anuente.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto apreendido por órgão de fiscalização ou outro órgão anuente.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
         ),
         45 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto recebido na unidade de distribuição.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto recebido na unidade de distribuição.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto recebido na unidade de distribuição.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto recebido na unidade de distribuição.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto recebido na unidade de distribuição.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto recebido na unidade de distribuição.',
+                'action' => 'Acompanhar.',
             ),
         ),
         46 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Tentativa de entrega não efetuada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Tentativa de entrega não efetuada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Tentativa de entrega não efetuada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Tentativa de entrega não efetuada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Tentativa de entrega não efetuada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Tentativa de entrega não efetuada.',
+                'action' => 'Acompanhar.',
             ),
         ),
         47 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Saída para entrega cancelada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Saída para entrega cancelada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Saída para entrega cancelada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Saída para entrega cancelada.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Saída para entrega cancelada.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Saída para entrega cancelada.',
+                'action' => 'Acompanhar.',
             ),
         ),
         48 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Retirada em Unidade dos Correios não autorizada pelo remetente.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Retirada em Unidade dos Correios não autorizada pelo remetente.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Retirada em Unidade dos Correios não autorizada pelo remetente.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Retirada em Unidade dos Correios não autorizada pelo remetente.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Retirada em Unidade dos Correios não autorizada pelo remetente.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Retirada em Unidade dos Correios não autorizada pelo remetente.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         49 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'As dimensões do objeto impossibilitam o tratamento e a entrega.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'As dimensões do objeto impossibilitam o tratamento e a entrega.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'As dimensões do objeto impossibilitam o tratamento e a entrega.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'As dimensões do objeto impossibilitam o tratamento e a entrega.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'As dimensões do objeto impossibilitam o tratamento e a entrega.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'As dimensões do objeto impossibilitam o tratamento e a entrega.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         50 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
         ),
         51 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
         ),
         52 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto roubado.',
-                'acao' => 'Acionar atendimento dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto roubado.',
+                'action' => 'Acionar atendimento dos Correios.',
             ),
         ),
         53 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto reimpresso e reenviado.',
-                'acao' => 'Acompanhar. O objeto impresso pelos Correios precisou ser refeito e reenviado.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto reimpresso e reenviado.',
+                'action' => 'Acompanhar. O objeto impresso pelos Correios precisou ser refeito e reenviado.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto reimpresso e reenviado.',
-                'acao' => 'Acompanhar. O objeto impresso pelos Correios precisou ser refeito e reenviado.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto reimpresso e reenviado.',
+                'action' => 'Acompanhar. O objeto impresso pelos Correios precisou ser refeito e reenviado.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto reimpresso e reenviado.',
-                'acao' => 'Acompanhar. O objeto impresso pelos Correios precisou ser refeito e reenviado.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto reimpresso e reenviado.',
+                'action' => 'Acompanhar. O objeto impresso pelos Correios precisou ser refeito e reenviado.',
             ),
         ),
         54 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Para recebimento do objeto, é necessário o pagamento do ICMS Importação.',
-                'acao' => 'Acompanhar. O interessado deverá pagar o imposto devido para retirar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Para recebimento do objeto, é necessário o pagamento do ICMS Importação.',
+                'action' => 'Acompanhar. O interessado deverá pagar o imposto devido para retirar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Para recebimento do objeto, é necessário o pagamento do ICMS Importação.',
-                'acao' => 'Acompanhar. O interessado deverá pagar o imposto devido para retirar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Para recebimento do objeto, é necessário o pagamento do ICMS Importação.',
+                'action' => 'Acompanhar. O interessado deverá pagar o imposto devido para retirar o objeto em uma Unidade dos Correios.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Para recebimento do objeto, é necessário o pagamento do ICMS Importação.',
-                'acao' => 'Acompanhar. O interessado deverá pagar o imposto devido para retirar o objeto em uma Unidade dos Correios.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Para recebimento do objeto, é necessário o pagamento do ICMS Importação.',
+                'action' => 'Acompanhar. O interessado deverá pagar o imposto devido para retirar o objeto em uma Unidade dos Correios.',
             ),
         ),
         55 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Solicitada revisão do tributo estabelecido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Solicitada revisão do tributo estabelecido.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Solicitada revisão do tributo estabelecido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Solicitada revisão do tributo estabelecido.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Solicitada revisão do tributo estabelecido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Solicitada revisão do tributo estabelecido.',
+                'action' => 'Acompanhar.',
             ),
         ),
         56 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Declaração aduaneira ausente ou incorreta.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Declaração aduaneira ausente ou incorreta.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Declaração aduaneira ausente ou incorreta.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Declaração aduaneira ausente ou incorreta.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Declaração aduaneira ausente ou incorreta.',
-                'acao' => 'Acompanhar o retorno do objeto ao remetente.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Declaração aduaneira ausente ou incorreta.',
+                'action' => 'Acompanhar o retorno do objeto ao remetente.',
             ),
         ),
         57 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Revisão de tributo concluída - Objeto liberado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Revisão de tributo concluída - Objeto liberado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Revisão de tributo concluída - Objeto liberado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Revisão de tributo concluída - Objeto liberado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Revisão de tributo concluída - Objeto liberado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Revisão de tributo concluída - Objeto liberado.',
+                'action' => 'Acompanhar.',
             ),
         ),
         58 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Revisão de tributo concluída - Tributo alterado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Revisão de tributo concluída - Tributo alterado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Revisão de tributo concluída - Tributo alterado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Revisão de tributo concluída - Tributo alterado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Revisão de tributo concluída - Tributo alterado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Revisão de tributo concluída - Tributo alterado.',
+                'action' => 'Acompanhar.',
             ),
         ),
         59 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Revisão de tributo concluída - Tributo mantido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Revisão de tributo concluída - Tributo mantido.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Revisão de tributo concluída - Tributo mantido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Revisão de tributo concluída - Tributo mantido.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Revisão de tributo concluída - Tributo mantido.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Revisão de tributo concluída - Tributo mantido.',
+                'action' => 'Acompanhar.',
             ),
         ),
         66 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Área com distribuição sujeita a prazo diferenciado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Área com distribuição sujeita a prazo diferenciado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Área com distribuição sujeita a prazo diferenciado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Área com distribuição sujeita a prazo diferenciado.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Área com distribuição sujeita a prazo diferenciado.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Área com distribuição sujeita a prazo diferenciado.',
+                'action' => 'Acompanhar.',
             ),
         ),
         69 => array(
-            Correios::TIPO_EVENTO_BDE => array(
-                'mensagem' => 'Objeto com atraso na entrega.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDE => array(
+                'message' => 'Objeto com atraso na entrega.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDI => array(
-                'mensagem' => 'Objeto com atraso na entrega.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDI => array(
+                'message' => 'Objeto com atraso na entrega.',
+                'action' => 'Acompanhar.',
             ),
-            Correios::TIPO_EVENTO_BDR => array(
-                'mensagem' => 'Objeto com atraso na entrega.',
-                'acao' => 'Acompanhar.',
+            Correios::EVENT_TYPE_BDR => array(
+                'message' => 'Objeto com atraso na entrega.',
+                'action' => 'Acompanhar.',
             ),
         ),
     );
 
     /**
-     * Contém o usuário de acesso aos serviços.
+     * Contains the access username.
      *
      * @var string
      */
-    private $usuario;
+    private $username;
 
     /**
-     * Contém a senha de acesso aos serviços.
+     * Contains the user password.
+     *
      * @var string
      */
-    private $senha;
+    private $password;
 
     /**
-     * Cria um objeto de comunicação com os Correios.
+     * Creates an object.
      *
      * @param string $user Usuário.
      * @param string $password Senha.
      */
     public function __construct($user = '', $password = '') {
-        $this->usuario = $user;
-        $this->senha = $password;
+        $this->username = $user;
+        $this->password = $password;
     }
 
     /**
-     * Retorna o usuário de acesso aos serviços.
+     * Returns the username.
      *
      * @return string
      */
-    protected function getUsuario() {
-        return $this->usuario;
+    protected function getUsername() {
+        return $this->username;
     }
 
     /**
-     * Retorna a senha de acesso aos serviços.
+     * Returns the password.
      *
      * @return string
      */
-    protected function getSenha() {
-        return $this->senha;
+    protected function getPassword() {
+        return $this->password;
     }
 
     /**
-     * Returna os parâmetros necessários para a chamada.
+     * Returns the parameters.
      *
      * @return array
      * @abstract
@@ -1224,7 +1221,7 @@ abstract class Correios {
     abstract protected function getParameters();
 
     /**
-     * Realiza o processamento da consulta.
+     * Do the process.
      *
      * @return boolean
      * @abstract
