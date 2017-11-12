@@ -1,5 +1,5 @@
 {
-	"name": "ivan/correios",
+	"name": "topogigiovanni/correios",
 	"description": "Várias Classes em PHP para diversos serviços dos Correios (Cálculo de preços e prazos de entrega, rastreamento de objetos e validação/geração de SRO)",
 	"type": "library",
 	"license": "Apache License",
@@ -7,6 +7,10 @@
 		{
 			"name": "Ivan Wilhelm",
 			"email": "ivan.whm@me.com"
+		},
+		{
+			"name": "Giovanni Mansueto",
+			"email": "topogigiovanni@gmail.com"
 		}
 	],
 	"require": {
